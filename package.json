@@ -1,0 +1,14 @@
+{
+  "name": "test_sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "linebot": "^1.6.1"
+  }
+}
