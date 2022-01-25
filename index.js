@@ -23,7 +23,7 @@ bot.on('message', function (event) {
     text:event.message.text,
     time:new Date()
   });
-  if(msg === "hi" || Hi) {
+  if(msg === "hi" || msg === "Hi") {
     event.reply({type:"text", text:"hello"});
   } else {
     event.reply({type:"text", text:`${dataAry.name}+${dataAry.text}`})
