@@ -5,7 +5,7 @@ let linebot = require('linebot');
 // const JSONParseError = require('@line/bot-sdk').JSONParseError;
 // const SignatureValidationFailed = require('@line/bot-sdk').SignatureValidationFailed;
 
-const app = express();
+// const app = express();
 
 // 初始化 line bot 需要的資訊，在 Heroku 上的設定的 Config Vars
 let bot = linebot({
