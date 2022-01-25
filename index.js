@@ -15,7 +15,7 @@ bot.on('message', function (event) {
 });
 
 // Bot 所監聽的 webhook 路徑與 port，heroku 會動態存取 port 所以不能用固定的 port，沒有的話用預設的 port 5000
-bot.listen('/', process.env.PORT || 8080, function () {
+bot.listen('/', process.env.PORT || 5000, function () {
   console.log('全國首家LINE線上機器人上線啦！！');
 });
 
