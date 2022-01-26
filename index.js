@@ -8,6 +8,11 @@ global.crypto = require('crypto');
 const app = new koa();
 const router = Router();
 
+app.use(bodyParser());
+app.use(logger());
+
+app.use(router.routes());
+
 let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 
@@ -40,10 +45,7 @@ router.post('/webhooks', async (ctx, next) => {
 app.use((ctx) => {
   ctx.status = 200;
 })
-app.use(bodyParser());
-app.use(logger());
 
-app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
   console.log("App now running on port", port);
