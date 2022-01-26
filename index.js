@@ -24,23 +24,36 @@ app.use(bodyParser());
 router.post('/webhooks', async (ctx, next) => {
 
 });
-
-// 當有人傳送訊息給 Bot 時
-bot.on('message', function (event) {
-  // 回覆訊息給使用者 (一問一答所以是回覆不是推送)
-  msg = event.message.text;
-  userData = event;
-  dataAry.push({
-    name:event.source.userId,
-    text:event.message.text,
-    time:new Date()
-  });
-  if(msg === "hi" || msg === "Hi") {
-    event.reply({type:"text", text:"hello"});
-  } else {
-    event.reply({type:"text", text:`+u`})
+responseText = (events, lineBotToken, resObject) => {
+    let message = events[0].message.text;
+    let replyToken = events[0].replyToken;
+    let options = {
+        method: 'POST',
+        uri: 'https://api.line.me/v2/bot/message/reply',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${lineBotToken}`
+        },
+        body: {
+            replyToken: replyToken,
+            messages: [{
+                type: "text",
+                text: resObject[message]
+            }]
+        },
+        json: true
+    }
+    return request(options);
   }
-  });
+
+router.post('/webhooks', async (ctx, next) => {
+    let events = ctx.request.body.events;
+    data = await responseText(events, lineBotToken, {
+        '哈囉': '你好阿',
+        '晚安': '晚安'
+    });
+    ctx.body = data;
+});
 
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
