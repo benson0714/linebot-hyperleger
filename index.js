@@ -22,9 +22,6 @@ let dataAry = new Array();
 
 app.use(bodyParser());
 
-router.post('/webhooks', async (ctx, next) => {
-
-});
 responseText = (events, lineBotToken, resObject) => {
     let message = events[0].message.text;
     let replyToken = events[0].replyToken;
@@ -60,4 +57,5 @@ app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
   console.log("App now running on port", port);
+  console.log(lineBotToken);
 });
