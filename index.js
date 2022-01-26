@@ -16,28 +16,28 @@ app.use(router.routes());
 let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 
-router.post('/webhooks', async (ctx, next) => {
+router.post('/webhooks', async (ctx) => {
   let events = ctx.request.body.events;
     let responseText = (events, lineBotToken) => {
-    let message = events[0].message.text;
-    let replyToken = events[0].replyToken;
-    let options = {
+      let message = events.message.text;
+      let replyToken = events.replyToken;
+      let options = {
         method: 'POST',
         uri: 'https://api.line.me/v2/bot/message/reply',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${lineBotToken}`
+            'Authorization': `Bearer ${lineBotToken}`,
         },
         body: {
             replyToken: replyToken,
             messages: [{
                 type: "text",
                 text: message
-            }]
+            }],
         },
         json: true
-    }
-    return(rq(options));
+    };
+    return(request(options));
   }
   ctx.body = responseText(events, lineBotToken);
 });
