@@ -11,15 +11,13 @@ let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 app.use(bodyParser());
 app.use(logger());
-
 router
   .post('/webhooks', async (ctx, next) => {
-    let replyToken = ctx.request.body.events[0].replyToken;
-    console.log('token = ', ctx.request.body.events[0].replyToken)
-});
+    let reply_token = ctx.request.body.events[0].replyToken;
+    console.log('token = ', ctx.request.body.events[0].replyToken);
 
-var rp_body = ({
-  replyToken: reply_Token,
+let rp_body = ({
+  replyToken: reply_token,
   messages: [{
           type: 'text',
           text: 'Hello'
@@ -30,7 +28,7 @@ var rp_body = ({
       }]
   });
 
-var options = {
+let options = {
   method: 'POST',
   url: 'https://api.line.me/v2/bot/message/reply',
   headers: {
@@ -48,6 +46,7 @@ request(options)
   .catch((err) => {
     console.log('server error', err, ctx);
   })
+});
 
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
