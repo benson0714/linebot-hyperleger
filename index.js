@@ -42,7 +42,7 @@ bot.on('message', function (event) {
   }
   });
 
-app.use(router.routers);
+app.use(router.routers());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
   console.log("App now running on port", port);
