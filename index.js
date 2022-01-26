@@ -22,7 +22,7 @@ let dataAry = new Array();
 
 app.use(bodyParser());
 
-responseText = (events, lineBotToken, resObject) => {
+let responseText = (events, lineBotToken, resObject) => {
     let message = events[0].message.text;
     let replyToken = events[0].replyToken;
     let options = {
