@@ -13,6 +13,7 @@
     "express": "^4.17.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
     "linebot": "^1.6.1",
     "promise": "^8.1.0",
