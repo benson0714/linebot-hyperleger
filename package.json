@@ -16,6 +16,7 @@
     "koa-router": "^10.1.1",
     "linebot": "^1.6.1",
     "promise": "^8.1.0",
+    "request": "^2.88.2",
     "request-promise": "^4.2.6"
   }
 }
