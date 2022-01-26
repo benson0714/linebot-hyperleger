@@ -50,6 +50,7 @@ router.post('/webhooks', async (ctx, next) => {
         '哈囉': '你好阿',
         '晚安': '晚安'
     });
+    ctx.status = 200;
     ctx.body = data;
 });
 
