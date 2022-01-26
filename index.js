@@ -24,7 +24,10 @@ router
     .post('/webhook', async (ctx, next) => {
         var reply_Token = ctx.request.body.events[0].replyToken;
         console.log('token = ' , ctx.request.body.events[0].replyToken);
-
+        if(reply_Token === '00000000000000000000000000000000') {
+          ctx.status = 200;
+      } else {
+          //POST METHOD
 var rp_body = ({
     replyToken: reply_Token,
     messages: [{
@@ -54,6 +57,7 @@ rp(options)
     .catch(function (err) {
         console.log('server error', err, ctx);
     });
+  }
 });
 
 app.listen(port);
