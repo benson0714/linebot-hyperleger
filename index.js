@@ -39,7 +39,8 @@ router.post('/webhooks', async (ctx) => {
     };
     return(request(options));
   }
-  ctx.body = responseText(events, lineBotToken);
+  data = await responseText(events, lineBotToken);
+  ctx.body = data;
 });
 
 app.use((ctx) => {
