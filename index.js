@@ -1,7 +1,7 @@
 const koa = require("koa");
 const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
-const request = require('request-promise');
+const rq = require('request-promise');
 const logger = require('koa-logger')
 global.crypto = require('crypto');
 
@@ -10,23 +10,36 @@ const router = Router();
 
 let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
-app.use(async (ctx, next) => {
-  const koaRequest = ctx.request;
-  const hash = crypto
-    .createHmac('sha256', channelSecret)
-    .update(JSON.stringify(koaRequest.body))
-    .digest('base64');
-  if (ctx.url == '/webhooks' && ctx.method == 'POST') {
-    if (koaRequest.headers['x-line-signature'] === hash) {
-      // User 送來的訊息
-      ctx.status = 200;
-    } else {
-      ctx.body = 'Unauthorized! Channel Serect and Request header aren\'t the same.';
-      ctx.status = 401;
+
+router.post('/webhooks', async (ctx, next) => {
+  let events = ctx.request.body.events;
+    let responseText = (events, lineBotToken) => {
+    let message = events[0].message.text;
+    let replyToken = events[0].replyToken;
+    let options = {
+        method: 'POST',
+        uri: 'https://api.line.me/v2/bot/message/reply',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${lineBotToken}`
+        },
+        body: {
+            replyToken: replyToken,
+            messages: [{
+                type: "text",
+                text: message
+            }]
+        },
+        json: true
     }
+    return(rq(options));
   }
-  await next();
+  ctx.body = responseText(events, lineBotToken);
 });
+
+app.use((ctx) => {
+  ctx.status = 200;
+})
 app.use(bodyParser());
 app.use(logger());
 
