@@ -25,8 +25,6 @@ router.post('/webhooks', async (ctx, next) => {
 
 });
 
-app.use(router.routers);
-
 // 當有人傳送訊息給 Bot 時
 bot.on('message', function (event) {
   // 回覆訊息給使用者 (一問一答所以是回覆不是推送)
@@ -44,7 +42,7 @@ bot.on('message', function (event) {
   }
   });
 
-
+app.use(router.routers);
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
   console.log("App now running on port", port);
