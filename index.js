@@ -3,6 +3,7 @@ const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
 const request = require('request-promise');
 const logger = require('koa-logger')
+global.crypto = require('crypto');
 
 const app = new koa();
 const router = Router();
