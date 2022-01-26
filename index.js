@@ -46,6 +46,7 @@ const responseText = (events, lineBotToken, resObject) => {
   }
 
 router.post('/webhooks', async (ctx, next) => {
+  console.log("12341234234234");
     let events = ctx.request.body.events;
     data = await responseText(events, lineBotToken, {
         '哈囉': '你好阿',
@@ -60,7 +61,5 @@ app.use((ctx) => {
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
-  console.log(msg);
   console.log("App now running on port", port);
-  console.log(lineBotToken);
 });
