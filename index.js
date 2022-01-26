@@ -24,6 +24,7 @@ app.use(bodyParser());
 
 let responseText = (events, lineBotToken, resObject) => {
     let message = events[0].message.text;
+    console.log(message);
     let replyToken = events[0].replyToken;
     let options = {
         method: 'POST',
