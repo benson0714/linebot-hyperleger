@@ -50,10 +50,12 @@ router.post('/webhooks', async (ctx, next) => {
         '哈囉': '你好阿',
         '晚安': '晚安'
     });
-    ctx.status = 200;
     ctx.body = data;
 });
 
+app.use((ctx) => {
+  ctx.status = 200;
+})
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
