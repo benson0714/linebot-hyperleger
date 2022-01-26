@@ -22,9 +22,8 @@ let dataAry = new Array();
 
 app.use(bodyParser());
 
-let responseText = (events, lineBotToken, resObject) => {
+const responseText = (events, lineBotToken, resObject) => {
     let message = events[0].message.text;
-    console.log(message);
     let replyToken = events[0].replyToken;
     let options = {
         method: 'POST',
@@ -60,6 +59,7 @@ app.use((ctx) => {
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
+  console.log(message);
   console.log("App now running on port", port);
   console.log(lineBotToken);
 });
