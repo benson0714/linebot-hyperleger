@@ -1,63 +1,54 @@
-// 引用 line bot SDK
-let linebot = require('linebot');
 const koa = require("koa");
 const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
+const request = require('request-promise');
+const logger = require('koa-logger')
 
 const app = new koa();
 const router = Router();
 
-// 初始化 line bot 需要的資訊，在 Heroku 上的設定的 Config Vars，可參考 Step2
-let bot = linebot({
-  channelId: process.env.LINE_CHANNEL_ID,
-  channelSecret: process.env.LINE_CHANNEL_SECRET,
-  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
-});
-
-lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-
-let msg;
-let userData;
-let dataAry = new Array();
+let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 app.use(bodyParser());
+app.use(logger());
 
-const responseText = (events, lineBotToken, resObject) => {
-    let message = events[0].message.text;
-    msg = message;
-    let replyToken = events[0].replyToken;
-    let options = {
-        method: 'POST',
-        uri: 'https://api.line.me/v2/bot/message/reply',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${lineBotToken}`
-        },
-        body: {
-            replyToken: replyToken,
-            messages: [{
-                type: "text",
-                text: resObject[message]
-            }]
-        },
-        json: true
-    }
-    return request(options);
-  }
-
-router.post('/webhooks', async (ctx, next) => {
-  console.log("12341234234234");
-    let events = ctx.request.body.events;
-    data = await responseText(events, lineBotToken, {
-        '哈囉': '你好阿',
-        '晚安': '晚安'
-    });
-    ctx.body = data;
+router
+  .post('/webhooks', async (ctx, next) => {
+    let replyToken = ctx.request.body.events[0].replyToken;
+    console.log('token = ', ctx.request.body.events[0].replyToken)
 });
 
-app.use((ctx) => {
-  ctx.status = 200;
-})
+var rp_body = ({
+  replyToken: reply_Token,
+  messages: [{
+          type: 'text',
+          text: 'Hello'
+      },
+      {
+          type: 'text',
+          text: 'How are you?'
+      }]
+  });
+
+var options = {
+  method: 'POST',
+  url: 'https://api.line.me/v2/bot/message/reply',
+  headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${lineBotToken}`
+  },
+  json: true,
+  body: rp_body
+};
+
+request(options)
+  .then((parsedBody) => {
+    console.log('rp sucess');
+  })
+  .catch((err) => {
+    console.log('server error', err, ctx);
+  })
+
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
   const port = server.address().port;
