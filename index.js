@@ -1,63 +1,33 @@
 const koa = require("koa");
 const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
-const rp = require('request-promise');
+const request = require('request-promise');
 const logger = require('koa-logger')
 
 const app = new koa();
 const router = Router();
 
 let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-
+const channelSecret = process.env.LINE_CHANNEL_SECRET;
+app.use(async (ctx, next) => {
+  const koaRequest = ctx.request;
+  const hash = crypto
+    .createHmac('sha256', channelSecret)
+    .update(JSON.stringify(koaRequest.body))
+    .digest('base64');
+  if (ctx.url == '/webhooks' && ctx.method == 'POST') {
+    if (koaRequest.headers['x-line-signature'] === hash) {
+      // User 送來的訊息
+      ctx.status = 200;
+    } else {
+      ctx.body = 'Unauthorized! Channel Serect and Request header aren\'t the same.';
+      ctx.status = 401;
+    }
+  }
+  await next();
+});
 app.use(bodyParser());
 app.use(logger());
-
-app.on('error', (err, ctx) => {
-  console.log('server error', err, ctx)
-});
-
-app.use(router.allowedMethods());
-
-router
-.get('/', (ctx, next) => {
-  console.log(ctx);
-  ctx.body = ctx;
-})
-  .post('/webhooks', async (ctx, next) => {
-    let reply_token = ctx.request.body.events[0].replyToken;
-    console.log('token = ', ctx.request.body.events[0].replyToken);
-
-let rp_body = ({
-  replyToken: reply_token,
-  messages: [{
-          type: 'text',
-          text: 'Hello'
-      },
-      {
-          type: 'text',
-          text: 'How are you?'
-      }]
-  });
-
-let options = {
-  method: 'POST',
-  url: 'https://api.line.me/v2/bot/message/reply',
-  headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${lineBotToken}`
-  },
-  json: true,
-  body: rp_body
-};
-
-rp(options)
-  .then((parsedBody) => {
-    console.log('rp sucess');
-  })
-  .catch((err) => {
-    console.log('server error', err, ctx);
-  });
-});
 
 app.use(router.routes());
 const server = app.listen(process.env.PORT || 3000, () => {
