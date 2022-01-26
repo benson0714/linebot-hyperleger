@@ -14,6 +14,7 @@ let bot = linebot({
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
 });
 
+lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 let msg;
 let userData;
