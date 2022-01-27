@@ -5,6 +5,8 @@ const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 const router = new Router();
 const port = process.env.PORT || 4000;
+var rp = require('request-promise');
+
 app.use(logger());
 app.use(bodyParser());
 
@@ -16,6 +18,30 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
+router
+  .post('/webhook', async (ctx, next) => {
+    let rp_body = ({
+      messages: [{
+              type: 'text',
+              text: 'Hello'
+          },
+          {
+              type: 'text',
+              text: 'How are you?'
+          }]
+      });
+  var options = {
+      method: 'POST',
+      url: 'https://api.line.me/v2/bot/message/reply',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${lineBotToken}`
+      },
+      json: true,
+      body: rp_body
+  };
+  await rp(options)
+})
 router
     .get('/', (ctx, next) => {
         console.log(ctx);
@@ -49,7 +75,6 @@ var options = {
     json: true,
     body: rp_body
 };
-var rp = require('request-promise');
 rp(options)
     .then(function (parsedBody){
         console.log('rq success');
