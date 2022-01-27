@@ -20,11 +20,13 @@ app.use(async (ctx, next) => {
 router
 .post('/', async(ctx) => {
 
-  let events = ctx.request.body.events;
-  let message = events[0].message.text;
-  let replyToken = events[0].replyToken;
-
+  let event = ctx.request.body.events;
+  let message = event[0].message.text;
+  let replyToken = event[0].replyToken;
+  console.log(replyToken);
+  console.log(message);
   let rp_body = {
+    replyToken: replyToken,
     messages: [{
             type: 'text',
             text: message
@@ -33,7 +35,6 @@ router
             type: 'text',
             text: replyToken
         }],
-     replyToken: replyToken,
     };
 let options = {
     method: 'POST',
