@@ -20,7 +20,7 @@ app.use(async (ctx, next) => {
   });
 router
 .post('/', async(ctx) => {
-  let event = ctx.query;
+  let event = ctx.querystring;
   console.log(event);
 
 });
