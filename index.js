@@ -24,8 +24,8 @@ router
   console.log(event);
   console.log(ctx.url);
   console.log(ctx.message);
-  console.log(`header${ctx.header}`);
-  console.log(`header${ctx.href}`);
+  console.log(`header${ctx.request.header}`);
+  console.log(`herf${ctx.href}`);
   
 })
 .post('/webhooks', async(ctx) => {
