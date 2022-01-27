@@ -19,7 +19,6 @@ app.use(async (ctx, next) => {
   });
 router
 .post('/', async(ctx) => {
-  console.log(replyToken);
   let event = ctx.query;
   console.log(event);
   let rp_body = {
