@@ -32,7 +32,7 @@ router
       });
   var options = {
       method: 'POST',
-      url: 'https://api.line.me/v2/bot/message/reply',
+      url: 'https://api.line.me/v2/bot/message/broadcast',
       headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${lineBotToken}`
