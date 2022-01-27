@@ -20,8 +20,10 @@ app.use(async (ctx, next) => {
   });
 router
 .post('/', async(ctx) => {
-  let event = ctx.querystring;
+  let event = ctx.body;
   console.log(event);
+  console.log(ctx.url);
+  console.log(ctx.message);
 
 });
 
