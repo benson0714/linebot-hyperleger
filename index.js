@@ -4,7 +4,6 @@ const rp = require('request-promise');
 
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-const koaBody = require('koa-body');
 const app = new koa();
 const router = Router();
 
