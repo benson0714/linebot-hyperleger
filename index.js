@@ -21,8 +21,40 @@ router
 .post('/', async(ctx) => {
   let event = ctx.request.body;
   console.log(event.events[0].replyToken);
-  console.log(event.events[0].message);
+  console.log(event.events[0].message.text);
+  replyToken = event.events[0].replyToken;
+  message = event.events[0].message.text;
+
+  let rp_body = {
+    replyToken: replyToken,
+    messages: [{
+            type: 'text',
+            text: message
+        },
+        {
+            type: 'text',
+            text: 'How are you?'
+        }]
+    };
+let options = {
+    method: 'POST',
+    url: 'https://api.line.me/v2/bot/message/broadcast',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${lineBotToken}`
+    },
+    json: true,
+    body: rp_body
+};
+ctx.body = rp(options)
+.then((body) => {
+    console.log('sucess');
 })
+.catch((err) => {
+    console.log('err');
+});
+
+});
 
 app.use(router.routes());  
 
