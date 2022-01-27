@@ -38,7 +38,7 @@ router
     };
 let options = {
     method: 'POST',
-    url: 'https://api.line.me/v2/bot/message/broadcast',
+    url: 'https://api.line.me/v2/bot/message/reply',
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${lineBotToken}`
