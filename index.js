@@ -2,7 +2,6 @@ const koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 //使用.env檔的參數
-const dotenv = require('dotenv').load();
 const linebot = require('./lib/linebot.js');
 
 const app = new koa();
