@@ -12,12 +12,13 @@ const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 app.use(logger());
-app.use((ctx) => {
+app.use(async (ctx, next) => {
   console.log(ctx.url);
   console.log(ctx.method);
+  await next();
   });
 router
-  .post('/webhooks', async(ctx) => {      
+  .post('/', async(ctx) => {      
 
     let rp_body = ({
         messages: [{
