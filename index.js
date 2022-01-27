@@ -1,89 +1,31 @@
-const Koa = require('koa');
+const koa = require('koa');
 const Router = require('koa-router');
-const logger = require('koa-logger');
 const bodyParser = require('koa-bodyparser');
-const app = new Koa();
-const router = new Router();
-const port = process.env.PORT || 4000;
-var rp = require('request-promise');
+//使用.env檔的參數
+const dotenv = require('dotenv').load();
+const linebot = require('./lib/linebot.js');
 
-app.use(logger());
+const app = new koa();
+const router = Router();
+const channelSecret = process.env.LINE_CHANNEL_SECRET;
+const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
+
 app.use(bodyParser());
 
-app.on('error', (err, ctx) => {
-    console.log('server error', err, ctx)
+router.post('/webhooks', async (ctx, next) => {
+    let events = ctx.request.body.events;
+    data = await responseText.responseText(events, lineBotToken, {
+        '哈囉': '你好阿',
+        '晚安': '晚安'
+    });
+    ctx.body = data;
 });
 
-app.use(router.routes());
-app.use(router.allowedMethods());
+app
+    .use(linebot.middleware(channelSecret))
+    .use(router.routes());
 
-let lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-router
-  .post('/webhook', async (ctx, next) => {
-    let rp_body = ({
-      messages: [{
-              type: 'text',
-              text: 'Hello'
-          },
-          {
-              type: 'text',
-              text: 'How are you?'
-          }]
-      });
-  var options = {
-      method: 'POST',
-      url: 'https://api.line.me/v2/bot/message/broadcast',
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${lineBotToken}`
-      },
-      json: true,
-      body: rp_body
-  };
-  await rp(options)
-})
-router
-    .get('/', (ctx, next) => {
-        console.log(ctx);
-        ctx.body = ctx;
-    })
-    .post('/webhook', async (ctx, next) => {
-        var reply_Token = ctx.request.body.events[0].replyToken;
-        console.log('token = ' , ctx.request.body.events[0].replyToken);
-        if(reply_Token === '00000000000000000000000000000000') {
-          ctx.status = 200;
-      } else {
-          //POST METHOD
-var rp_body = ({
-    replyToken: reply_Token,
-    messages: [{
-            type: 'text',
-            text: 'Hello'
-        },
-        {
-            type: 'text',
-            text: 'How are you?'
-        }]
-    });
-var options = {
-    method: 'POST',
-    url: 'https://api.line.me/v2/bot/message/reply',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${lineBotToken}`
-    },
-    json: true,
-    body: rp_body
-};
-rp(options)
-    .then(function (parsedBody){
-        console.log('rq success');
-    })
-    .catch(function (err) {
-        console.log('server error', err, ctx);
-    });
-  }
+const server = app.listen(process.env.PORT || 8080, function () {
+    const port = server.address().port;
+    console.log("App now running on port", port);
 });
-
-app.listen(port);
-module.exports = { app }
