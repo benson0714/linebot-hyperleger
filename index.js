@@ -20,12 +20,8 @@ app.use(async (ctx, next) => {
 router
 .post('/', async(ctx) => {
 
-  let event = ctx.request.body;
+  let event = ctx.request.query;
   console.log(event);
-  let message = event[0].message.text;
-  let replyToken = event[0].replyToken;
-  console.log(replyToken);
-  console.log(message);
   let rp_body = {
     replyToken: replyToken,
     messages: [{
