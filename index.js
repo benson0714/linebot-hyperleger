@@ -21,6 +21,8 @@ app.use(async (ctx, next) => {
   });
 router
 .post('/', async(ctx) => {
+  ctx.body="Hello";
+  ctx.status = 200;
   let event = ctx.request.body;
   console.log(event.events[0].replyToken);
   console.log(event.events[0].message.text);
