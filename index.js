@@ -15,40 +15,13 @@ app.use(logger());
 app.use(async (ctx, next) => {
   console.log(ctx.url);
   console.log(ctx.method);
+
   await next();
   });
 router
 .post('/', async(ctx) => {
   let event = ctx.query;
   console.log(event);
-  let rp_body = {
-    replyToken: replyToken,
-    messages: [{
-            type: 'text',
-            text: message
-        },
-        {
-            type: 'text',
-            text: replyToken
-        }],
-    };
-let options = {
-    method: 'POST',
-    url: 'https://api.line.me/v2/bot/message/reply',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${lineBotToken}`
-    },
-    json: true,
-    body: rp_body
-};
-ctx.body = rp(options)
-.then((body) => {
-    console.log('sucess');
-})
-.catch((err) => {
-    console.log('err');
-});
 
 });
 
