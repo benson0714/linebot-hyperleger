@@ -2,13 +2,9 @@ const koa = require('koa');
 const Router = require('koa-router');
 const rp = require('request-promise');
 
-const app = new koa();
-const router = Router();
-
-const koa = require('koa');
-const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
+
 const app = new koa();
 const router = Router();
 
