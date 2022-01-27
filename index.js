@@ -20,19 +20,9 @@ app.use(async (ctx, next) => {
 router
 .post('/', async(ctx) => {
   let event = ctx.request.body;
-  console.log(event);
-  console.log(ctx.url);
-  console.log(ctx.message);
-  console.log(`header${ctx.request.header}`);
-  console.log(`herf${ctx.href}`);
+  console.log(event.events[0].type);
   
 })
-.post('/webhooks', async(ctx) => {
-  let event = ctx.body;
-  console.log(event);
-  console.log(`webhook${ctx.url}`);
-  console.log(ctx.message);
-});
 
 app.use(router.routes());  
 
