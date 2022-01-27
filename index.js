@@ -4,13 +4,13 @@ const rp = require('request-promise');
 
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-
+const koaBody = require('koa-body');
 const app = new koa();
 const router = Router();
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-
+app.use(bodyParser());
 app.use(logger());
 app.use(async (ctx, next) => {
   console.log(ctx.url);
