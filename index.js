@@ -13,7 +13,7 @@ const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 app.use(logger());
 
-router.post('/webhook', async(ctx) => {      
+router.post('/', async(ctx) => {      
 
     let rp_body = ({
         messages: [{
