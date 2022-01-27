@@ -18,9 +18,7 @@ const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 app.use(logger());
 
 router.post('/webhook', async(ctx) => {      
-    let name = ctx.query.name;     
-    let talk = ctx.query.talk;      
-    ctx.body = `name${name}talk${talk}`;
+
     let rp_body = ({
         messages: [{
                 type: 'text',
@@ -41,7 +39,7 @@ router.post('/webhook', async(ctx) => {
         json: true,
         body: rp_body
     };
-    rp(options)
+    ctx.body = rp(options)
     .then((body) => {
         console.log('sucess');
     })
