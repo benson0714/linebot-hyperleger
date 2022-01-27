@@ -20,8 +20,8 @@ app.use(async (ctx, next) => {
 router
 .post('/', async(ctx) => {
   let event = ctx.request.body;
-  console.log(event.events[0].type);
-  
+  console.log(event.events[0].replyToken);
+  console.log(event.events[0].message);
 })
 
 app.use(router.routes());  
