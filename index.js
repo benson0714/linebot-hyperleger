@@ -46,21 +46,26 @@ ctx.body = data;
   let setDefaultRichMenuData = await richMenu.setDefaultRichMenu(richMenuId, lineBotToken);
   ctx.body = setDefaultRichMenuData;
 })
-.get('/listRichMenu', async (ctx, next) => {
+.get('/listRichMenu', async (ctx) => {
   console.log('11111111')
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   // richMenuList save all rich menu informations in json() type
-  console.log('22222222')
-  console.log(richMenuObj);
-  // let richMenuList = richMenuObj.richmenus;
+  
+  let print = () => {
 
-  // let replyRichMenu = [];
-  // for (let i = 0; i < richMenuList.length; i++) {
-  //     replyRichMenu.push(richMenuList[i].richMenuId);
-  // }
-  // console.log(replyRichMenu);
-  ctx.body = richMenuObj;
-  await next();
+    console.log('22222222')
+    console.log(richMenuObj);
+    // let richMenuList = richMenuObj.richmenus;
+  
+    // let replyRichMenu = [];
+    // for (let i = 0; i < richMenuList.length; i++) {
+    //     replyRichMenu.push(richMenuList[i].richMenuId);
+    // }
+    // console.log(replyRichMenu);
+    ctx.body = richMenuObj;
+  };
+  
+  await print();
 });
 
 
