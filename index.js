@@ -1,10 +1,9 @@
 const koa = require('koa');
 const Router = require('koa-router');
 const rp = require('request-promise');
-const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-
+const check= require('./lib/example/replyMessage.js');
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
@@ -23,7 +22,6 @@ app.use(async (ctx, next) => {
   });
 app
   .use(check.middleware(channelSecret));
-  const replyMessage= require('./lib/example/replyMessage.js');
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
