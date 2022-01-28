@@ -21,8 +21,7 @@ app.use(async (ctx, next) => {
   console.log(ctx.method);
   await next();
   });
-app
-  .use(check.middleware(channelSecret));
+app.use(check.middleware(channelSecret));
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
