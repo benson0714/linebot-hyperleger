@@ -45,6 +45,11 @@ ctx.body = data;
   // Set default rich menu
   let setDefaultRichMenuData = await richMenu.setDefaultRichMenu(richMenuId, lineBotToken);
   ctx.body = setDefaultRichMenuData;
+})
+.get('/listRichMenu', async (ctx) => {
+  let listRichMenu = await richMenu.listRichMenu(lineBotToken);
+  console.log(listRichMenu);
+  ctx.body = listRichMenu;
 });
 
 
