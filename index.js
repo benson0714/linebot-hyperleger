@@ -50,13 +50,13 @@ ctx.body = data;
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   // richMenuList save all rich menu informations in json() type
   console.log(richMenuObj);
-  let richMenuList = richMenuObj.richmenus;
+  // let richMenuList = richMenuObj.richmenus;
 
-  let replyRichMenu = [];
-  for (let i = 0; i < richMenuList.length; i++) {
-      replyRichMenu.push(richMenuList[i].richMenuId);
-  }
-  console.log(replyRichMenu);
+  // let replyRichMenu = [];
+  // for (let i = 0; i < richMenuList.length; i++) {
+  //     replyRichMenu.push(richMenuList[i].richMenuId);
+  // }
+  // console.log(replyRichMenu);
   ctx.body = replyRichMenu;
 });
 
