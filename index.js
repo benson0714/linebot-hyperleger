@@ -50,7 +50,6 @@ ctx.body = data;
   console.log('11111111')
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   // richMenuList save all rich menu informations in json() type
-  await print();
   var _include_headers = function(body, response, resolveWithFullResponse) {
     return {'headers': response.headers, 'data': body};
 }
@@ -85,7 +84,7 @@ rp(options)
     ctx.body = richMenuObj;
   };
 
-
+  await print();
 });
 
 
