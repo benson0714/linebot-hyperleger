@@ -49,6 +49,7 @@ ctx.body = data;
 .get('/listRichMenu', async (ctx) => {
   console.log('11111111')
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
+  ctx.body = richMenuObj;
 });
 
 app.use(router.routes());  
