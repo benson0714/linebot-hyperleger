@@ -47,10 +47,9 @@ ctx.body = data;
   ctx.body = setDefaultRichMenuData;
 })
 .get('/listRichMenu', async (ctx) => {
-  let listRichMenu = await richMenu.listRichMenu(lineBotToken);
-  let richMenuObj = richMenu.listRichMenu(lineBotToken);
+  let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   // let richMenuList = [];
-  richMenuList = richMenuObj;
+  let richMenuList = richMenuObj;
   console.log(richMenuList);
   // let replyRichMenu = [];
 
