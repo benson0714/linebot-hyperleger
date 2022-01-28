@@ -67,7 +67,6 @@ rp(options)
     console.log(response.data);
     let result = response.data;
     console.log(typeof(result));
-    return result;
 });
 
   let print = () => {
