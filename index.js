@@ -22,46 +22,19 @@ app.use(async (ctx, next) => {
   await next();
   });
 app
-  .use(check.middleware(channelSecret))
+  .use(check.middleware(channelSecret));
+  const replyMessage= require('./lib/example/replyMessage.js');
 router
 .post('/', async(ctx) => {
-  ctx.body="Hello";
-  ctx.status = 200;
-  let event = ctx.request.body;
-  console.log(event.events[0].replyToken);
-  console.log(event.events[0].message.text);
-  replyToken = event.events[0].replyToken;
-  message = event.events[0].message.text;
-
-  let rp_body = {
-    replyToken: replyToken,
-    messages: [{
-            type: 'text',
-            text: message
-        },
-        {
-            type: 'text',
-            text: 'How are you?'
-        }]
-    };
-  let options = {
-      method: 'POST',
-      url: 'https://api.line.me/v2/bot/message/reply',
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${lineBotToken}`
-      },
-      json: true,
-      body: rp_body
-  };
-  ctx.body = rp(options)
-  .then((body) => {
-      console.log('sucess');
-  })
-  .catch((err) => {
-      console.log('err');
-  });
-
+  let events = ctx.request.body.events;
+  let data = await responseText.responseText(events, lineBotToken, {
+    '哈囉': '你好阿',
+    '晚安': '晚安',
+    '終於': '做出來了',
+    '您' : '辛苦了',
+    '詠章' : '好帥'
+});
+ctx.body = data;
 })
 .get('/create', async (ctx) => {
   //create rich menu
