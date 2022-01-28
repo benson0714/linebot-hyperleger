@@ -49,8 +49,9 @@ ctx.body = data;
 .get('/listRichMenu', async (ctx) => {
   let richMenuObj = await richMenu.listRichMenu(lineBotToken).json();
   // richMenuList save all rich menu informations in json() type
-  let richMenuList = richMenuObj.richmenus;
   console.log(richMenuObj);
+  let richMenuList = richMenuObj.richmenus;
+
   let replyRichMenu = [];
   for (let i = 0; i < richMenuList.length; i++) {
       replyRichMenu.push(richMenuList[i].richMenuId);
