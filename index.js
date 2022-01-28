@@ -49,43 +49,7 @@ ctx.body = data;
 .get('/listRichMenu', async (ctx) => {
   console.log('11111111')
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
-  // richMenuList save all rich menu informations in json() type
-  var _include_headers = function(body, response, resolveWithFullResponse) {
-    return {'headers': response.headers, 'data': body};
-}
-
-let options = {
-    method: 'GET',
-    uri: 'https://api.line.me/v2/bot/richmenu/list',
-    transform: _include_headers,
-    headers: {
-        'Authorization': `Bearer ${lineBotToken}`
-    },
-};
-rp(options)
-.then((response) =>　{
-    console.log(response.data);
-    let result = response.data;
-    console.log(typeof(result));
 });
-
-  let print = () => {
-
-    console.log('22222222')
-    console.log(richMenuObj);
-    // let richMenuList = richMenuObj.richmenus;
-  
-    // let replyRichMenu = [];
-    // for (let i = 0; i < richMenuList.length; i++) {
-    //     replyRichMenu.push(richMenuList[i].richMenuId);
-    // }
-    // console.log(replyRichMenu);
-    ctx.body = richMenuObj;
-  };
-
-  await print();
-});
-
 
 app.use(router.routes());  
 
