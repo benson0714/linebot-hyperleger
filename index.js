@@ -56,7 +56,7 @@ ctx.body = data;
       replyRichMenu.push(richMenuList[i].richMenuId);
   }
   console.log(replyRichMenu);
-  ctx.body = richMenuObj;
+  ctx.body = replyRichMenu;
 });
 
 
