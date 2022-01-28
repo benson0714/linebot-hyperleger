@@ -51,12 +51,12 @@ ctx.body = data;
   // let richMenuList = [];
   let richMenuList = richMenuObj.richmenus;
   console.log(richMenuList);
-  // let replyRichMenu = [];
+  let replyRichMenu = [];
 
-  // for (let i = 0; i < richMenuList.length; i++) {
-  //     replyRichMenu.push(richMenuList[i].richMenuId);
-  // }
-  // console.log(listRichMenu);
+  for (let i = 0; i < richMenuList.length; i++) {
+      replyRichMenu.push(richMenuList[i].richMenuId);
+  }
+  console.log(listRichMenu);
   ctx.body = richMenuObj;
 });
 
