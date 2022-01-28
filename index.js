@@ -49,7 +49,7 @@ ctx.body = data;
 .get('/listRichMenu', async (ctx) => {
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   // let richMenuList = [];
-  let richMenuList = ctx.request.body;
+  let richMenuList = richMenuObj.richmenus[0];
   console.log(richMenuList);
   // let replyRichMenu = [];
 
