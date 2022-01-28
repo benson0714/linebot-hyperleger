@@ -56,7 +56,7 @@ ctx.body = data;
   for (let i = 0; i < richMenuList.length; i++) {
       replyRichMenu.push(richMenuList[i].richMenuId);
   }
-  console.log(listRichMenu);
+  console.log(replyRichMenu);
   ctx.body = richMenuObj;
 });
 
