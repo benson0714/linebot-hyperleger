@@ -13,7 +13,9 @@ let listRichMenu = (lineBotToken) => {
             'Authorization': `Bearer ${lineBotToken}`,
         },
     };
-    rp(options)
+    rp(options, (body)=>{
+        console.log(body);
+    })
     .then((response) =>　{
         console.log(response.data)
     });
