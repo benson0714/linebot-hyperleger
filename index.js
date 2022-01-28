@@ -1,24 +1,28 @@
 const koa = require('koa');
 const Router = require('koa-router');
 const rp = require('request-promise');
-
+const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
+
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-//use body parser to check ctx.request.body
+// use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
+
+// do something when someone POST/GET this server
 app.use(async (ctx, next) => {
   console.log(ctx.url);
   console.log(ctx.method);
-
   await next();
   });
+app
+  .use(check.middleware(channelSecret))
 router
 .post('/', async(ctx) => {
   ctx.body="Hello";
