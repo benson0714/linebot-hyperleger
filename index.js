@@ -27,7 +27,7 @@ app
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
-  let data = await responseText.responseText(events, lineBotToken, {
+  let data = await check.responseText(events, lineBotToken, {
     '哈囉': '你好阿',
     '晚安': '晚安',
     '終於': '做出來了',
