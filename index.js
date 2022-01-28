@@ -1,9 +1,10 @@
 const koa = require('koa');
 const Router = require('koa-router');
 const rp = require('request-promise');
+const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-const check= require('./lib/example/replyMessage.js');
+const replyMessage= require('./lib/example/replyMessage.js');
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
@@ -25,7 +26,7 @@ app
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
-  let data = await check.responseText(events, lineBotToken, {
+  let data = await replyMessage.replyMessage(events, lineBotToken, {
     '哈囉': '你好阿',
     '晚安': '晚安',
     '終於': '做出來了',
