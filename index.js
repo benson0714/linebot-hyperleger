@@ -57,7 +57,7 @@ ctx.body = data;
   //     replyRichMenu.push(richMenuList[i].richMenuId);
   // }
   // console.log(replyRichMenu);
-  ctx.body = replyRichObj;
+  ctx.body = richMenuObj;
 });
 
 
