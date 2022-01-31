@@ -5,6 +5,7 @@ const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
 const replyMessage= require('./lib/example/replyMessage.js');
+const hyperledger = require('./lib/example/hyperledger_api');
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
@@ -50,6 +51,18 @@ ctx.body = data;
   console.log('11111111')
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   ctx.body = richMenuObj;
+})
+.post('/login', async(ctx) => {
+  userid = 'mary';
+  password = '0000';
+  let login = await hyperledger.login(userid, password);
+  console.log(login);
+})
+.post('/trade_history', async(ctx) => {
+
+})
+.post('/trade', async(ctx) => {
+
 });
 
 app.use(router.routes());  
@@ -58,3 +71,4 @@ const server = app.listen(process.env.PORT || 8080, function () {
   const port = server.address().port;
   console.log("App now running on port", port);
 });
+
