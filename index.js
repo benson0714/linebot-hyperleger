@@ -64,7 +64,7 @@ ctx.body = data;
   loginstatus = 1;
 })
 .post('/trade', async(ctx) => {
-  if(loginstaus == 1) {
+  if(loginstatus == 1) {
     console.log('1');
   }
 })
