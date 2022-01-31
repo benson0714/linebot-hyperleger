@@ -57,7 +57,8 @@ ctx.body = data;
   password = '0000';
   let login = await hyperledger.login(userid, password);
   console.log(login);
-  let JWT_token = await login.response;
+  let JWT_token = await login.json();
+  JWT_token = await login.response;
   console.log(`JWT_token = ${JWT_token}`);
   ctx.body = login;
 })
