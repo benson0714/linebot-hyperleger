@@ -70,6 +70,7 @@ ctx.body = data;
       console.log('Please login first!');
     } else {
       let transfer_token = await hyperledger_api.transfercode
+      console.log(transfer_token)
       transfer_token = transfer_token.response.token;
       console.log(transfer_token);
     }
