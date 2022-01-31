@@ -38,6 +38,8 @@ router
 ctx.body = data;
 })
 .get('/create', async (ctx) => {
+  // delete old rich menu
+  let deleteRichMenu = await richMenu.deleteList(lineBotToken)
   //create rich menu
   let createDefaultRichMenu = await richMenu.createRichMenu(lineBotToken);
   let richMenuId = createDefaultRichMenu.richMenuId;
@@ -47,6 +49,7 @@ ctx.body = data;
   console.log(uploadRichMenuImageData);
   // Set default rich menu
   let setDefaultRichMenuData = await richMenu.setDefaultRichMenu(richMenuId, lineBotToken);
+  
   ctx.body = setDefaultRichMenuData;
 })
 .get('/listRichMenu', async (ctx) => {
@@ -65,13 +68,10 @@ ctx.body = data;
 
 })
 .post('/trade', async(ctx) => {
-    if(JWT_token === undefined || JWT_token === null) {
-      console.log('Please login first!');
-    } else {
-      let transfer_token = await hyperledger_api.transfercode(JWT_token);
-      transfer_token = transfer_token.response.token;
-      console.log(transfer_token);
-    }
+  let postData = ctx.request.body;
+  let transfer_token = await hyperledger_api.transfercode(JWT_token);
+  transfer_token = transfer_token.response.token;
+  console.log(transfer_token);
 })
 .post('/trade_history', async(ctx) => {
 
