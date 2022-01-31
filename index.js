@@ -69,7 +69,8 @@ ctx.body = data;
     if(JWT_token === undefined || JWT_token === null) {
       console.log('Please login first!');
     } else {
-      let transfer_token = await hyperledger_api.transfercode
+      console.log(JWT_token)
+      let transfer_token = await hyperledger_api.transfercode(JWT_token);
       console.log(transfer_token)
       transfer_token = transfer_token.response.token;
       console.log(transfer_token);
