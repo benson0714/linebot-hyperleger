@@ -57,6 +57,9 @@ ctx.body = data;
   password = '0000';
   let login = await hyperledger.login(userid, password);
   console.log(login);
+  let JWT_token = login.response.token;
+  console.log(`JWT_token = ${JWT_token}`);
+  ctx.body = login;
 })
 .post('/trade_history', async(ctx) => {
 
