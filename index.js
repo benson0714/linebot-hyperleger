@@ -10,6 +10,7 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 
+let loginstatus = 0;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // use body parser to check ctx.request.body
@@ -60,9 +61,12 @@ ctx.body = data;
   JWT_token = await JWT_token.response.token
   console.log(`JWT_token = ${JWT_token}`);
   ctx.body = JWT_token;
+  loginstatus = 1;
 })
 .post('/trade', async(ctx) => {
-
+  if(loginstaus == 1) {
+    console.log('1');
+  }
 })
 .post('/trade_history', async(ctx) => {
 
