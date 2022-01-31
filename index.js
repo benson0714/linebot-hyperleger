@@ -61,12 +61,12 @@ ctx.body = data;
   let JWT_token = await login.response.token
   console.log(`JWT_token = ${JWT_token}`);
   ctx.body = JWT_token;
+  console.log(loginstatus)
   loginstatus = 1;
+
 })
 .post('/trade', async(ctx) => {
-  if(loginstatus == 1) {
-    console.log('1');
-  }
+    console.log(loginstatus);
 })
 .post('/trade_history', async(ctx) => {
 
