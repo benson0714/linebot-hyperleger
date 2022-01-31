@@ -52,20 +52,18 @@ ctx.body = data;
   let richMenuObj = await richMenu.listRichMenu(lineBotToken);
   ctx.body = richMenuObj;
 })
+//login to hyperledger_api and get the token
 .post('/login', async(ctx) => {
   userid = 'mary';
   password = '0000';
-  let login = await hyperledger.login(userid, password);
-  console.log(login);
-  console.log(typeof(login))
-  let JWT_token = await login.response.token;
+  let JWT_token = await hyperledger.login(userid, password);
   console.log(`JWT_token = ${JWT_token}`);
-  ctx.body = login;
-})
-.post('/trade_history', async(ctx) => {
-
+  ctx.body = JWT_token;
 })
 .post('/trade', async(ctx) => {
+
+})
+.post('/trade_history', async(ctx) => {
 
 });
 
