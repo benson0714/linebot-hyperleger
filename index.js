@@ -12,7 +12,6 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 
 // if JWT_token == undefined then not login
-let JWT_token;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // use body parser to check ctx.request.body
@@ -57,10 +56,10 @@ ctx.body = data;
 })
 //login to hyperledger_api and get the token
 .post('/login', async(ctx) => {
-  userid = 'mary';
-  password = '0000';
+  userid = 'eric';
+  password = 'pw$168';
   let login = await hyperledger.login(userid, password);
-  JWT_token = await login.response.token
+  let JWT_token = await login.response.token;
   console.log(`JWT_token = ${JWT_token}`);
   ctx.body = JWT_token;
 
@@ -69,9 +68,7 @@ ctx.body = data;
     if(JWT_token === undefined || JWT_token === null) {
       console.log('Please login first!');
     } else {
-      console.log(JWT_token)
       let transfer_token = await hyperledger_api.transfercode(JWT_token);
-      console.log(transfer_token)
       transfer_token = transfer_token.response.token;
       console.log(transfer_token);
     }
