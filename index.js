@@ -9,8 +9,10 @@ const hyperledger = require('./lib/example/hyperledger_api.js');
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
+const hyperledger_api = require('./lib/example/hyperledger_api.js');
 
-let loginstatus = 0;
+// if JWT_token == undefined then not login
+let JWT_token;
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // use body parser to check ctx.request.body
@@ -58,15 +60,19 @@ ctx.body = data;
   userid = 'mary';
   password = '0000';
   let login = await hyperledger.login(userid, password);
-  let JWT_token = await login.response.token
+  JWT_token = await login.response.token
   console.log(`JWT_token = ${JWT_token}`);
   ctx.body = JWT_token;
-  console.log(loginstatus)
-  loginstatus = 1;
 
 })
 .post('/trade', async(ctx) => {
-    console.log(loginstatus);
+    if(JWT_token === undefined || JWT_token === null) {
+      console.log('Please login first!');
+    } else {
+      let transfer_token = await hyperledger_api.transfercode
+      transfer_token = transfer_token.response.token;
+      console.log(transfer_token);
+    }
 })
 .post('/trade_history', async(ctx) => {
 
