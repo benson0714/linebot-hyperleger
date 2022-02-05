@@ -2,7 +2,7 @@ window.onload = function () {
     // DO NOT CHANGE THIS
     let myLiffId = "";
 
-    fetch('/send-id')
+    fetch('/liff')
         .then(function (reqResponse) {
             return reqResponse.json();
         })
