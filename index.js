@@ -12,7 +12,7 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const views = require('koa-views');
 
-const __dirname = './public'
+__dirname = './public'
 app.use(views(__dirname, {     
   extension: 'html' 
 }));
