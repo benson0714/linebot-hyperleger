@@ -28,13 +28,18 @@ app.use(check.middleware(channelSecret));
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
+
+if(events[0].message !== undefined) {
   let data = await replyMessage.replyMessage(events, lineBotToken, {
     '哈囉': '你好阿',
     '晚安': '晚安',
     '終於': '做出來了',
     '您' : '辛苦了',
     '詠章' : '好帥'
-});
+  });
+}else {
+  let data = await replyPostback(events, lineBotToken)
+}
 ctx.body = data;
 })
 .get('/create', async (ctx) => {
@@ -75,7 +80,11 @@ ctx.body = data;
 })
 .post('/trade_history', async(ctx) => {
 
-});
+})
+.get('/send-id', function(req, res) {
+  res.json({id: myLiffId});
+});;
+
 
 app.use(router.routes());  
 
