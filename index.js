@@ -12,7 +12,7 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const views = require('koa-views');
 
-__dirname = './public'
+// __dirname = './public'
 app.use(views(__dirname, {     
   extension: 'html' 
 }));
@@ -88,7 +88,7 @@ ctx.body = data;
 
 })
 .get('/liff', async(ctx) => {
-  await ctx.read('index') 
+  await ctx.read('index');
   console.log('liff/send-id');
 });
 
