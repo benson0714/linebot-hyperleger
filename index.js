@@ -10,12 +10,11 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
-const views = require('koa-views');
+const liff = require('@line/liff');
 
-// __dirname = './public'
-app.use(views(__dirname, {     
-  extension: 'html' 
-}));
+liff.init({
+    liffId: '1234567890-AbcdEfgh', // Use own liffId
+});
 
 // if JWT_token == undefined then not login
 const channelSecret = process.env.LINE_CHANNEL_SECRET;

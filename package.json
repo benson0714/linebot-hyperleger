@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@line/bot-sdk": "^7.4.0",
+    "@line/liff": "^2.18.1",
     "cheerio": "^1.0.0-rc.10",
     "crypto": "^1.0.1",
     "express": "^4.17.2",
