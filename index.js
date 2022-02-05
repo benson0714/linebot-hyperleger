@@ -45,7 +45,7 @@ if(events[0].message !== undefined) {
     '詠章' : '好帥'
   });
 }else {
-  data = await replyPostback(events, lineBotToken)
+  data = await replyMessage.replyPostback(events, lineBotToken)
   console.log('postback')
 }
 ctx.body = data;
