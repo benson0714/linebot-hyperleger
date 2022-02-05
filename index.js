@@ -34,9 +34,10 @@ app.use(check.middleware(channelSecret));
 router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
-
+  let data = 'unsucess';
+  console.log(events[0].message);
 if(events[0].message !== undefined) {
-  let data = await replyMessage.replyMessage(events, lineBotToken, {
+  data = await replyMessage.replyMessage(events, lineBotToken, {
     '哈囉': '你好阿',
     '晚安': '晚安',
     '終於': '做出來了',
@@ -44,7 +45,8 @@ if(events[0].message !== undefined) {
     '詠章' : '好帥'
   });
 }else {
-  let data = await replyPostback(events, lineBotToken)
+  data = await replyPostback(events, lineBotToken)
+  console.log('postback')
 }
 ctx.body = data;
 })
