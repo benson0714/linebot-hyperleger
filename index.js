@@ -12,9 +12,6 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const liff = require('@line/liff');
 
-liff.init({
-    liffId: '1234567890-AbcdEfgh', // Use own liffId
-});
 
 // if JWT_token == undefined then not login
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -89,8 +86,11 @@ ctx.body = data;
 
 })
 .get('/liff', async(ctx) => {
-  await ctx.read('index');
-  console.log('liff/send-id');
+  await liff.init({
+    liffId: '1656864170-9NznnKD5', // Use own liffId
+    withLoginOnExternalBrowser: true, // Enable automatic login process
+  })
+
 });
 
 
