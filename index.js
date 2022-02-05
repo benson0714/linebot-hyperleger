@@ -35,8 +35,8 @@ router
 .post('/', async(ctx) => {
   let events = ctx.request.body.events;
   let data = 'unsucess';
-  console.log(events[0].message);
-if(events[0].message !== undefined) {
+  console.log(events[0].message.text);
+if(events[0].message.text !== undefined) {
   data = await replyMessage.replyMessage(events, lineBotToken, {
     '哈囉': '你好阿',
     '晚安': '晚安',
