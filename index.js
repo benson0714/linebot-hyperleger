@@ -10,8 +10,12 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
-const liff = require('@line/liff');
+import liff from '@line/liff';
 
+liff.init({
+  liffId: '1656864170-9NznnKD5', // Use own liffId
+  // withLoginOnExternalBrowser: true, // Enable automatic login process
+})
 
 // if JWT_token == undefined then not login
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -86,10 +90,7 @@ ctx.body = data;
 
 })
 .get('/liff', async(ctx) => {
-  await liff.init({
-    liffId: '1656864170-9NznnKD5', // Use own liffId
-    withLoginOnExternalBrowser: true, // Enable automatic login process
-  })
+  
 
 });
 
