@@ -10,12 +10,6 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
-import liff from '@line/liff';
-
-liff.init({
-  liffId: '1656864170-9NznnKD5', // Use own liffId
-  // withLoginOnExternalBrowser: true, // Enable automatic login process
-})
 
 // if JWT_token == undefined then not login
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -89,9 +83,8 @@ ctx.body = data;
 .post('/trade_history', async(ctx) => {
 
 })
-.get('/liff', async(ctx) => {
-  
-
+.get('/liff/send-id', async(req, res) => {
+  res.json({id: myLiffId});
 });
 
 
