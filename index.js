@@ -83,7 +83,7 @@ ctx.body = data;
 .post('/trade_history', async(ctx) => {
 
 })
-.get('/liff/send-id', async(req, res) => {
+.get('/send-id', async(req, res) => {
   console.log('1');
   res.json({id: myLiffId});
 });
