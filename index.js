@@ -88,9 +88,9 @@ ctx.body = data;
 .post('/trade_history', async(ctx) => {
 
 })
-.get('/send-id', async(req, res) => {
+.get('/send-id', async(ctx) => {
   console.log('1');
-  res.json({id: myLiffId});
+  ctx.json({id: myLiffId});
 });
 
 app.use(router.routes());  
