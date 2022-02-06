@@ -90,7 +90,7 @@ ctx.body = data;
 })
 .get('/send-id', async(ctx) => {
   console.log('1');
-  ctx.json({id: myLiffId});
+  ctx.body = {id: myLiffId};
 });
 
 app.use(router.routes());  
