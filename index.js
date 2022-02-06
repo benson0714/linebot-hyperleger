@@ -10,7 +10,7 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
-const serve = require('koa-static')
+const serve = require('koa-static');
 
 app.use(serve(path.join(__dirname, '/public')))
 
@@ -90,7 +90,6 @@ ctx.body = data;
   console.log('1');
   res.json({id: myLiffId});
 });
-
 
 app.use(router.routes());  
 
