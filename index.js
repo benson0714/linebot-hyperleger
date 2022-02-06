@@ -12,6 +12,7 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path')
+const myLiffId = process.env.MY_LIFF_ID;
 
 app.use(serve(path.join(__dirname, '/public')));
 
@@ -87,7 +88,7 @@ ctx.body = data;
 .post('/trade_history', async(ctx) => {
 
 })
-.get('/send-id', async(req, res) => {
+.get('/liff/send-id', async(req, res) => {
   console.log('1');
   res.json({id: myLiffId});
 });
