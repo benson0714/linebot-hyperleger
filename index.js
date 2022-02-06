@@ -84,6 +84,7 @@ ctx.body = data;
 
 })
 .get('/liff/send-id', async(req, res) => {
+  console.log('1');
   res.json({id: myLiffId});
 });
 
