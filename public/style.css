@@ -2,16 +2,6 @@ Body {
     font-family: Calibri, Helvetica, sans-serif;  
     background-color: white;  
   }  
-  button {   
-         background-color: #1c73d6;   
-         width: 40%;  
-          color: white;   
-          padding: 15px;   
-          margin: 10px 0px;   
-          text-align: center;  
-          border: none;   
-          cursor: pointer;   
-           }  
   
    input[type=text], input[type=password] {   
           width: 20%;   
