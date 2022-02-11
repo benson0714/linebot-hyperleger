@@ -91,6 +91,9 @@ ctx.body = data;
 .get('/send-id', async(ctx) => {
   console.log('1');
   ctx.body = {id: myLiffId};
+})
+.get('/send-register', async(ctx) => {
+
 });
 
 app.use(router.routes());  
