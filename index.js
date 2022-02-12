@@ -13,7 +13,7 @@ const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path')
 const replyFlexMessage = require('./lib/example/replyFlexMessage.js')
-const reply_Postback_action = require('./lib/replyRoot/replyPostMessage.js')
+const reply_Postback = require('./lib/replyRoot/replyPostMessage.js')
 app.use(serve(path.join(__dirname, '/public')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -46,7 +46,7 @@ router
         '您': '辛苦了',
       });
     } else {
-      data = await reply_Postback_action.replyPostback(events)
+      data = await reply_Postback.replyPostback(events);
       console.log('postback action done')
     }
     ctx.body = data;
