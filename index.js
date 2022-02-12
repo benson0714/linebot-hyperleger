@@ -91,13 +91,13 @@ router
 
   })
   .get('/send-id', async (ctx) => {
-    console.log('1');
     ctx.body = { id: myLiffId };
   })
   .get('/send-register', async (ctx) => {
 
   })
   .post('/flexMessage', async(ctx) => {
+    // recieve userId from user
     userId = ctx.request.body.userId;
     // POST your flex message json to line server and send flex message to user
     let message = await replyFlexMessage.postFlexMessage(lineBotToken, userId);
