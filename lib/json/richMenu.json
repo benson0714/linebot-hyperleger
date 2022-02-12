@@ -19,7 +19,7 @@
         "action": 
         {
           "type": "postback",
-          "data": "action=replyFlexMessage",
+          "data": "action=replyFlexMessage"
         }
       },
       {
@@ -33,7 +33,7 @@
         "action": 
         {
           "type": "postback",
-          "data":"action=template",
+          "data":"action=template"
         }
       },
 
