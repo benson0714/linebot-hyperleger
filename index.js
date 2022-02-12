@@ -46,7 +46,7 @@ router
         '您': '辛苦了',
       });
     } else {
-      data = await replyPostback.replyPostback(events);
+      data = await replyPostback.replyPostback(events, lineBotToken);
       console.log('postback action done')
     }
     ctx.body = data;
