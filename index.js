@@ -99,8 +99,9 @@ router
   })
   .post('/flexMessage', async(ctx) => {
     userId = ctx.request.body.userId;
-    replyFlexMessage = await replyFlexMessage.postFlexMessage(lineBotToken, userId);
-    ctx.body = replyFlexMessage;
+    // POST your flex message json to line server and send flex message to user
+    let message = await replyFlexMessage.postFlexMessage(lineBotToken, userId);
+    ctx.body = message;
   });
 
 app.use(router.routes());
