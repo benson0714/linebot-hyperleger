@@ -38,6 +38,7 @@ router
     console.log(`request = ${ctx.request}`);
     console.log(`body = ${ctx.request.body}`)
     let data = 'unsucess';
+    // message is text type
     if (events[0].message != undefined || events[0].message != null) {
       console.log(`typeof message = ${typeof (events[0].message)}`)
       data = await replyMessage.replyMessage(events, lineBotToken, {
@@ -47,8 +48,8 @@ router
         '您': '辛苦了',
       });
     } else {
+      // when get a postback action
       data = await replyPostback.replyPostback(events);
-      console.log('postback action done')
     }
     ctx.body = data;
   })
