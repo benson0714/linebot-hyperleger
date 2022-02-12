@@ -13,7 +13,7 @@ const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path')
 const replyFlexMessage = require('./lib/example/replyFlexMessage.js')
-const replyPostback = require('./lib/example/replyPostMessage.js')
+const replyPostback = require('./lib/replyRoot/replyPostMessage.js')
 app.use(serve(path.join(__dirname, '/public')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
