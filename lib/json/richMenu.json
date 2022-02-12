@@ -20,7 +20,6 @@
         {
           "type": "postback",
           "data": "action=replyFlexMessage",
-          "text": "flexMessage"
         }
       },
       {
@@ -35,7 +34,6 @@
         {
           "type": "postback",
           "data":"action=template",
-          "text":"template"
         }
       },
 
