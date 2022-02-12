@@ -12,8 +12,8 @@
               "text": "yes"
             },
             {
-              "type": "message",
-              "label": "No",
+              "type": "postback",
+              "label": "action=confirm&answer=no",
               "text": "no"
             }
         ]
