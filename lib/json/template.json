@@ -13,7 +13,8 @@
             },
             {
               "type": "postback",
-              "label": "action=confirm&answer=no",
+              "data":"action=confirm&answer=yes",
+              "label": "no",
               "text": "no"
             }
         ]
