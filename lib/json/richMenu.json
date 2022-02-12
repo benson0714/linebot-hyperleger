@@ -19,7 +19,8 @@
         "action": 
         {
           "type": "postback",
-          "data": "action=replyFlexMessage"
+          "data": "action=replyFlexMessage",
+          "text": "flexMessage"
         }
       },
       {
@@ -33,8 +34,8 @@
         "action": 
         {
           "type": "postback",
-          "data":"action=buy&itemid=111",
-          "text":"帳戶資訊"
+          "data":"action=template",
+          "text":"template"
         }
       },
 
