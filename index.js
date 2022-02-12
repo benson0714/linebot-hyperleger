@@ -47,6 +47,9 @@ router
           '終於': '做出來了',
           '您': '辛苦了',
         });
+      } else {
+        data = await replyPostback.replyPostback(events);
+        console.log('postback action done')
       }
     } else {
       data = await replyPostback.replyPostback(events);
