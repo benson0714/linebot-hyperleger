@@ -102,6 +102,13 @@ router
     // POST your flex message json to line server and send flex message to user
     let message = await replyFlexMessage.postFlexMessage(lineBotToken, userId);
     ctx.body = message;
+  })
+  .post('/template', async(ctx) => {
+    // recieve userId from user
+    userId = ctx.request.body.userId;
+    // POST your flex message json to line server and send flex message to user
+    let message = await replyTemplateMessage.postTemplateMessage(lineBotToken, userId);
+    ctx.body = message;
   });
 
 
