@@ -6,7 +6,8 @@
         "text": "Are you sure?",
         "actions": [
             {
-              "type": "message",
+              "type": "postback",
+              "data":"action=confirm&answer=yes",
               "label": "Yes",
               "text": "yes"
             },

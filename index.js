@@ -45,7 +45,7 @@ router
         '哈囉': '你好阿',
         '晚安': '晚安',
         '終於': '做出來了',
-        '您': '辛苦了',
+        'Benson': '辛苦了',
       });
     } else {
       // when get a postback action
