@@ -36,7 +36,7 @@ router
     console.log(`event type = ${events[0].type}`);
     console.log(`body = ${ctx.request.body}`)
     let data = 'unsucess';
-    if (events[0].message != undefined || events[0].message != null) {
+    if (events[0].type === 'message') {
       console.log(`typeof message = ${typeof (events[0].message)}`)
       data = await replyMessage.replyMessage(events, lineBotToken, {
         '哈囉': '你好阿',
@@ -44,7 +44,7 @@ router
         '終於': '做出來了',
         '您': '辛苦了',
       });
-    } else {
+    } else if(events[0].type === 'postback'){
       data = await replyPostback.replyPostback(events, lineBotToken);
       console.log('postback action done')
     }
