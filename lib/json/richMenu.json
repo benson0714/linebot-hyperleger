@@ -19,7 +19,7 @@
         "action": 
         {
           "type": "postback",
-          "data": "action=replyFlexMessage"
+          "data": "action=register"
         }
       },
       {
@@ -33,7 +33,7 @@
         "action": 
         {
           "type": "postback",
-          "data":"action=template"
+          "data":"action=myWallet"
         }
       },
 
@@ -45,8 +45,8 @@
           "height": 843
         },
         "action": {
-          "type": "uri",
-          "uri": "https://liff.line.me/1656865759-PBjaazkN"
+          "type": "postback",
+          "uri": "action=trade"
         }
       },
 
@@ -58,8 +58,8 @@
           "height": 843
         },
         "action": {
-          "type": "uri",
-          "uri": "https://www.youtube.com/"
+          "type": "postback",
+          "uri": "action=history"
         }
       }
     ]

@@ -1,6 +1,5 @@
 const koa = require('koa');
 const Router = require('koa-router');
-const rp = require('request-promise');
 const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
@@ -44,9 +43,10 @@ router
         '終於': '做出來了',
         '您': '辛苦了',
       });
-    } else if(events[0].type === 'postback'){
+    } else if(events[0].type === 'postback') {
+      console.log('detect postback action');
       data = await replyPostback.replyPostback(events, lineBotToken);
-      console.log('postback action done')
+      console.log('postback action done');
     }
     ctx.body = data;
   })
@@ -58,7 +58,7 @@ router
     let richMenuId = createDefaultRichMenu.richMenuId;
     console.log(richMenuId);
     // upload rich menu image
-    let uploadRichMenuImageData = await richMenu.uploadRichMenuImage(richMenuId, `coffee.jpg`, lineBotToken);
+    let uploadRichMenuImageData = await richMenu.uploadRichMenuImage(richMenuId, `Benson.jpg`, lineBotToken);
     console.log(uploadRichMenuImageData);
     // Set default rich menu
     let setDefaultRichMenuData = await richMenu.setDefaultRichMenu(richMenuId, lineBotToken);
