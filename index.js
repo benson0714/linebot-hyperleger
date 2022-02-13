@@ -12,9 +12,7 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path');
-const replyFlexMessage = require('./lib/lineAPI/replyFlexMessage.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-const replyTemplateMessage = require('./lib/lineAPI/replyTemplateMessage.js');
 app.use(serve(path.join(__dirname, '/public')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -38,7 +36,7 @@ router
     console.log(`request = ${ctx.request}`);
     console.log(`body = ${ctx.request.body}`)
     let data = 'unsucess';
-    if (events[0].message != undefined || events[0].message != null) {
+    if (events[0].replyToken != undefined || events[0].replyToken != null) {
       console.log(`typeof message = ${typeof (events[0].message)}`)
       data = await replyMessage.replyMessage(events, lineBotToken, {
         '哈囉': '你好阿',
@@ -96,20 +94,6 @@ router
   })
   .get('/send-register', async (ctx) => {
 
-  })
-  .post('/flexMessage', async(ctx) => {
-    // recieve userId from user
-    userId = ctx.request.body.userId;
-    // POST your flex message json to line server and send flex message to user
-    let message = await replyFlexMessage.postFlexMessage(lineBotToken, userId);
-    ctx.body = message;
-  })
-  .post('/template', async(ctx) => {
-    // recieve userId from user
-    userId = ctx.request.body.userId;
-    // POST your flex message json to line server and send flex message to user
-    let message = await replyTemplateMessage.postTemplateMessage(lineBotToken, userId);
-    ctx.body = message;
   });
 
 
