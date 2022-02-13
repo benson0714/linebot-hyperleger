@@ -58,7 +58,7 @@ router
     let richMenuId = createDefaultRichMenu.richMenuId;
     console.log(richMenuId);
     // upload rich menu image
-    let uploadRichMenuImageData = await richMenu.uploadRichMenuImage(richMenuId, `Benson.jpg`, lineBotToken);
+    let uploadRichMenuImageData = await richMenu.uploadRichMenuImage(richMenuId, `coffee.jpg`, lineBotToken);
     console.log(uploadRichMenuImageData);
     // Set default rich menu
     let setDefaultRichMenuData = await richMenu.setDefaultRichMenu(richMenuId, lineBotToken);
