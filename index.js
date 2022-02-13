@@ -33,7 +33,7 @@ app.use(check.middleware(channelSecret));
 router
   .post('/', async (ctx) => {
     let events = ctx.request.body.events;
-    console.log(`event replyToken = ${events[0].replyToken}`);
+    console.log(`event type = ${events[0].type}`);
     console.log(`body = ${ctx.request.body}`)
     let data = 'unsucess';
     if (events[0].message != undefined || events[0].message != null) {
