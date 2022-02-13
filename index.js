@@ -12,9 +12,9 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path');
-const replyFlexMessage = require('./lib/requestServer/replyFlexMessage.js');
+const replyFlexMessage = require('./lib/lineAPI/replyFlexMessage.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-const replyTemplateMessage = require('./lib/requestServer/replyTemplateMessage.js');
+const replyTemplateMessage = require('./lib/lineAPI/replyTemplateMessage.js');
 app.use(serve(path.join(__dirname, '/public')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
@@ -47,7 +47,7 @@ router
         '您': '辛苦了',
       });
     } else {
-      data = await replyPostback.replyPostback(events);
+      data = await replyPostback.replyPostback(events, lineBotToken);
       console.log('postback action done')
     }
     ctx.body = data;
