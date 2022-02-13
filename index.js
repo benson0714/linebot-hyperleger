@@ -45,7 +45,6 @@ router
         '您': '辛苦了',
       });
     } else if(events[0].type === 'postback'){
-      await setTimeout(() => {console.log('wait 50 ms')}, 50);
       data = await replyPostback.replyPostback(events, lineBotToken);
       console.log('postback action done')
     }
