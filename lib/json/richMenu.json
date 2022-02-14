@@ -4,7 +4,7 @@
       "height": 1670
     },
     "selected": false,
-    "name": "richmenu1",
+    "name": "richmenu",
     "chatBarText": "選單",
     "areas": [
 
@@ -46,7 +46,7 @@
         },
         "action": {
           "type": "postback",
-          "data": "action=trade"
+          "data": "action=coinOptions"
         }
       },
 
