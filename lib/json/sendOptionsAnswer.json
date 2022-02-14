@@ -12,9 +12,9 @@
             },
             {
               "type": "postback",
-              "data": "action=tradeOptions&answer=recieveOptionsAnswer",
+              "data": "action=tradeOptions&answer=recieveAddress",
               "label": "手動輸入"
             }
         ]
     }
-  }
+}
