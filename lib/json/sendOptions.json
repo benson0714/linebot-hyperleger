@@ -6,8 +6,8 @@
         "text": "想要掃碼或手動輸入地址?",
         "actions": [
             {
-              "type": "postback",
-              "data": "action=tradeOptionsAnswer&answer=sendQrcode",
+              "type": "uri",
+              "uri": "https://liff.line.me/1656864170-jApEEyN3",
               "label": "掃碼"
             },
             {
