@@ -7,12 +7,12 @@
         "actions": [
             {
               "type": "postback",
-              "data": "action=tradeOptionsAnswer&answer=sendOptions",
+              "data": "action=tradeOptionsAnswer&answer=send",
               "label": "send"
             },
             {
               "type": "postback",
-              "data": "action=tradeOptions&answer=recieveOptions",
+              "data": "action=tradeOptions&answer=recieve",
               "label": "recieve"
             }
         ]
