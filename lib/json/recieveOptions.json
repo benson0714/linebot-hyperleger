@@ -3,17 +3,17 @@
     "altText": "this is a trade template(recieve)",
     "template": {
         "type": "confirm",
-        "text": "想要掃碼或手動輸入地址?",
+        "text": "想要qrcode或地址?",
         "actions": [
             {
               "type": "postback",
               "data": "action=tradeOptionsAnswer&answer=recieveQrcode",
-              "label": "掃碼"
+              "label": "Qrcode"
             },
             {
               "type": "postback",
               "data": "action=tradeOptionsAnswer&answer=recieveAddress",
-              "label": "手動輸入"
+              "label": "Address"
             }
         ]
     }
