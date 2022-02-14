@@ -12,7 +12,7 @@
             },
             {
               "type": "postback",
-              "data": "action=tradeOptions&answer=recieve",
+              "data": "action=tradeOptionsAnswer&answer=recieve",
               "label": "recieve"
             }
         ]
