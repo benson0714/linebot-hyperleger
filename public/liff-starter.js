@@ -8,7 +8,7 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-        fetch('/send-id')
+        fetch('/send-register')
             .then(function(reqResponse) {
                 return reqResponse.json();
             })
