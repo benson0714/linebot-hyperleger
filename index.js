@@ -21,7 +21,7 @@ app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))))
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // const myLiffId = process.env.MY_LIFF_ID;
-const myLiffId = '1656864170-pOEXXm7R'
+const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
@@ -100,7 +100,7 @@ router
 
   })
   .get('/send-qrcode', async (ctx) => {
-    ctx.body = {id: myLiffId};
+    ctx.body = {id: myLiffIdQrcode};
   });
 app.use(router.routes());
 
