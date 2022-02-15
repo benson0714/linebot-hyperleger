@@ -98,6 +98,9 @@ router
   })
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffId};
+  })
+  .post('/qrcode', async(ctx) => {
+    app.use(serve(path.join(__dirname, '/liff/qrcode')));
   });
 
 app.use(router.routes());
