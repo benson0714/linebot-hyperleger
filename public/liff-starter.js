@@ -30,7 +30,7 @@ window.onload = function() {
 function register(myLiffId) {
     document.getElementById('sendBtn').addEventListener('click', function() {
         data = {
-            myLiffId:　myLiffId
+            myLiffId: myLiffId
         };
         fetch("/send-register", {
             body: JSON.stringify(data), // must match 'Content-Type' header
