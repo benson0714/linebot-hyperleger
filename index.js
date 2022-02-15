@@ -11,9 +11,10 @@ const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path');
+const mount = require('koa-mount')
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 // app.use(serve(path.join(__dirname, '/public')));
-app.use(serve(path.join(__dirname, '/liff/qrcode')));
+app.use(mount('/qrcode ',serve(path.join(__dirname, '/static'))))
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
@@ -98,12 +99,7 @@ router
   })
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffId};
-  })
-  .get('/qrcode', async(ctx) => {
-    console.log('enter qrcode')
-    serve(path.join(__dirname, '/liff/qrcode'));
   });
-
 app.use(router.routes());
 
 const server = app.listen(process.env.PORT || 8080, function () {
