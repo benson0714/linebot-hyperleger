@@ -6,7 +6,8 @@
         "text": "想要掃碼或手動輸入地址?",
         "actions": [
             {
-              "type": "camera",
+              "type": "uri",
+              "uri": "https://liff.line.me/1656864170-pOEXXm7R",
               "label": "掃碼"
             },
             {
