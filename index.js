@@ -13,6 +13,7 @@ const serve = require('koa-static');
 const path = require('path');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 app.use(serve(path.join(__dirname, '/public')));
+app.use(serve(path.join(__dirname, '/liff/qrcode')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
@@ -94,8 +95,10 @@ router
   })
   .get('/send-register', async (ctx) => {
 
+  })
+  .get('/send-qrcode', async (ctx) => {
+    ctx.body = {id: '1656864170-jApEEyN3'};
   });
-
 
 app.use(router.routes());
 

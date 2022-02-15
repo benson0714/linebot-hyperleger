@@ -32,7 +32,7 @@ function register(myLiffId) {
         data = {
             myLiffId: myLiffId
         };
-        fetch("/send-register", {
+        fetch("/send-qrcode", {
             body: JSON.stringify(data), // must match 'Content-Type' header
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: 'same-origin', // include, same-origin, *omit
