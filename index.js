@@ -96,7 +96,7 @@ router
   .get('/send-register', async (ctx) => {
 
   })
-  .get('/qrcode/send-qrcode', async (ctx) => {
+  .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: '1656864170-pOEXXm7R'};
   });
 
