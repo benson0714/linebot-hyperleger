@@ -97,7 +97,7 @@ router
 
   })
   .get('/send-qrcode', async (ctx) => {
-    ctx.body = {id: '1656864170-pOEXXm7R'};
+    ctx.body = {id: myLiffId};
   });
 
 app.use(router.routes());
