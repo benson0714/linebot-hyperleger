@@ -14,7 +14,7 @@ const path = require('path');
 const mount = require('koa-mount')
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 // app.use(serve(path.join(__dirname, '/public')));
-app.use(mount('/qrcode ',serve(path.join(__dirname, '/static'))))
+app.use(mount('/qrcode ',serve(path.join(__dirname, '/liff/qrcode'))))
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
