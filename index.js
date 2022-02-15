@@ -12,7 +12,7 @@ const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const serve = require('koa-static');
 const path = require('path');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-app.use(serve(path.join(__dirname, '/public')));
+// app.use(serve(path.join(__dirname, '/public')));
 app.use(serve(path.join(__dirname, '/liff/qrcode')));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
