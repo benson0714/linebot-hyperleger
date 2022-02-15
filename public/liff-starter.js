@@ -134,7 +134,9 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     // qrcode 
     document.getElementById('qrcode').addEventListener('click', function() {
-        liff.scanCodeV2();
+        liff.scanCodeV2().then(result => {
+             result = { value: 'abc' }
+          });
     });
 
     // openWindow call
