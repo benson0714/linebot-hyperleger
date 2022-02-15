@@ -9,11 +9,13 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
+
+// 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
 const mount = require('koa-mount')
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-// app.use(serve(path.join(__dirname, '/public')));
+
 app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))))
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
