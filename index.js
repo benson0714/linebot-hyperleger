@@ -101,7 +101,7 @@ router
   })
   .get('/qrcode', async(ctx) => {
     console.log('enter qrcode')
-    ctx.body = serve(path.join(__dirname, '/liff/qrcode'));
+    serve(path.join(__dirname, '/liff/qrcode'));
   });
 
 app.use(router.routes());
