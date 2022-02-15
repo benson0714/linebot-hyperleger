@@ -133,9 +133,9 @@ function displayIsInClientInfo() {
 */
 function registerButtonHandlers() {
     // qrcode 
-    // document.getElementById('qrcode').addEventListener('click', function() {
-    //     liff.scanCodeV2();
-    // });
+    document.getElementById('qrcode').addEventListener('click', function() {
+        liff.scanCodeV2();
+    });
 
     // openWindow call
     document.getElementById('openWindowButton').addEventListener('click', function() {
