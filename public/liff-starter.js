@@ -132,6 +132,11 @@ function displayIsInClientInfo() {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
+    // qrcode 
+    document.getElementById('qrcode').addEventListener('click', function() {
+        liff.scanCodeV2();
+    });
+
     // openWindow call
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
