@@ -97,7 +97,7 @@ router
 
   })
   .get('/send-qrcode', async (ctx) => {
-    ctx.body = {id: '1656864170-jApEEyN3'};
+    ctx.body = {id: '1656864170-pOEXXm7R'};
   });
 
 app.use(router.routes());
