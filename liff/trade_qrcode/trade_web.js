@@ -15,8 +15,7 @@ window.onload = function() {
             .then(function(jsonResponse) {
                 myLiffId = jsonResponse.id;
                 address = jsonResponse.address;
-                alert(myLiffId);
-                alert(address);
+
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
@@ -37,6 +36,8 @@ function initializeLiffOrDie(myLiffId) {
         alert('initializeLiff first');
     } else {
         initializeLiff(myLiffId);
+        alert(myLiffId);
+        alert(address);
     }
 }
 
