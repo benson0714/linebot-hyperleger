@@ -106,14 +106,13 @@ router
     ctx.body = {id: myLiffIdQrcode};
   })
   .get('/trade_address', async (ctx) => {
-    console.log(`header = ${ctx.request.header}`);
     ctx.body = {id: myLiffIdTradeAddress};
   })
   .get('/trade_qrcode', async (ctx) => {
-    // let address = ctx.request.body.address
+    let address = ctx.request.bodyliff.state;
     ctx.body = {
-      id: myLiffIdTradeWeb
-      // address: address
+      id: myLiffIdTradeWeb,
+      address: address
     };
   });
 
