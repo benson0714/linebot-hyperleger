@@ -15,6 +15,7 @@ window.onload = function() {
             .then(function(jsonResponse) {
                 myLiffId = jsonResponse.id;
                 address = jsonResponse.address;
+                alert(myLiffId);
                 alert(address);
                 initializeLiffOrDie(myLiffId);
             })
