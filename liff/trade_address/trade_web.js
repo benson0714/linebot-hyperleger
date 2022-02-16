@@ -60,48 +60,37 @@ function initializeLiff(myLiffId) {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
-    // qrcode 
-    document.getElementById('qrcode').addEventListener('click', function() {
-        liff.scanCodeV2()
-        .then(function(res) {
-        alert(res);
-        })
-        .catch(function(error) {
-          alert(error);
-        });
-    });
+    // // openWindow call
+    // document.getElementById('openWindowButton').addEventListener('click', function() {
+    //     liff.openWindow({
+    //         url: 'https://line.me',
+    //         external: true
+    //     });
+    // });
 
-    // openWindow call
-    document.getElementById('openWindowButton').addEventListener('click', function() {
-        liff.openWindow({
-            url: 'https://line.me',
-            external: true
-        });
-    });
+    // // closeWindow call
+    // document.getElementById('closeWindowButton').addEventListener('click', function() {
+    //     if (!liff.isInClient()) {
+    //         sendAlertIfNotInClient();
+    //     } else {
+    //         liff.closeWindow();
+    //     }
+    // });
 
-    // closeWindow call
-    document.getElementById('closeWindowButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.closeWindow();
-        }
-    });
-
-    // sendMessages call
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': "You've successfully sent a message! Hooray!"
-            }]).then(function() {
-                window.alert('Message sent');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
-    });
+    // // sendMessages call
+    // document.getElementById('sendMessageButton').addEventListener('click', function() {
+    //     if (!liff.isInClient()) {
+    //         sendAlertIfNotInClient();
+    //     } else {
+    //         liff.sendMessages([{
+    //             'type': 'text',
+    //             'text': "You've successfully sent a message! Hooray!"
+    //         }]).then(function() {
+    //             window.alert('Message sent');
+    //         }).catch(function(error) {
+    //             window.alert('Error sending message: ' + error);
+    //         });
+    //     }
+    // });
 
 }

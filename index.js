@@ -17,13 +17,14 @@ const path = require('path');
 const mount = require('koa-mount')
 
 app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
-app.use(mount('/trade_web',serve(path.join(__dirname, '/liff/trade'))));
+app.use(mount('/trade_address',serve(path.join(__dirname, '/liff/trade_address'))));
+app.use(mount('/trade_qrcode',serve(path.join(__dirname, '/liff/trade_qrcode'))));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // const myLiffId = process.env.MY_LIFF_ID;
 const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
-const myLiffIdTradeWeb = process.env.MY_LIFF_ID_TRADE_WEB;
+const myLiffIdTradeAddress = process.env.MY_LIFF_ID_TRADE_ADDRESS;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
@@ -104,9 +105,18 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
-  .get('/trade_web', async (ctx) => {
-    ctx.body = {id: myLiffIdTradeWeb};
+  .get('/trade_address', async (ctx) => {
+    ctx.body = {id: myLiffIdTradeAddress};
+  })
+  .get('/trade_qrcode', async (ctx) => {
+    // let address = ctx.request.body.address
+    ctx.body = {
+      id: myLiffIdTradeWeb
+      // address: address
+    };
   });
+
+
 app.use(router.routes());
 
 const server = app.listen(process.env.PORT || 8080, function () {
