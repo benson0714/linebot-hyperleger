@@ -60,6 +60,7 @@ function initializeLiff(myLiffId) {
 * Register event handlers for the buttons displayed in the app
 */
 function qrcode() {
+    alert('1');
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
