@@ -8,7 +8,6 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-        alert('enter useNodeJS');
         fetch('/send-qrcode')
             .then(function(reqResponse) {
                 return reqResponse.json();
@@ -64,10 +63,10 @@ function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
-        console.log(res);
+        alert(res);
     })
     .catch(function(error) {
-        console.log(error);
+        alert(error);
     });
 };
 

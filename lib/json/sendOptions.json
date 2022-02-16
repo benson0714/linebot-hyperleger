@@ -11,8 +11,8 @@
               "label": "掃碼"
             },
             {
-              "type": "postback",
-              "data": "action=tradeOptionsAnswer&answer=sendAddress",
+              "type": "uri",
+              "uri": "https://liff.line.me/1656864170-dk9oorKw",
               "label": "手動輸入"
             }
         ]
