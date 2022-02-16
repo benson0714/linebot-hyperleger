@@ -35,8 +35,7 @@ function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         alert('initializeLiff first');
     } else {
-        alert(myLiffId);
-        alert(address);
+
         initializeLiff(myLiffId);
 
     }
@@ -65,6 +64,9 @@ function initializeLiff(myLiffId) {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
+    alert('1');
+    alert(myLiffId);
+    alert(address);
     // // openWindow call
     // document.getElementById('openWindowButton').addEventListener('click', function() {
     //     liff.openWindow({
