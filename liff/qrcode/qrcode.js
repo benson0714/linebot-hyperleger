@@ -8,6 +8,7 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
+        console.log('enter useNodeJS');
         fetch('/send-qrcode')
             .then(function(reqResponse) {
                 return reqResponse.json();
@@ -31,8 +32,7 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add('hidden');
-        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+        console.log('initializeLiff first');
     } else {
         initializeLiff(myLiffId);
     }
@@ -52,8 +52,7 @@ function initializeLiff(myLiffId) {
             qrcode();
         })
         .catch((err) => {
-            document.getElementById("liffAppContent").classList.add('hidden');
-            document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            console.log(err);
         });
 }
 

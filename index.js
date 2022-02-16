@@ -9,19 +9,21 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
+const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
 const mount = require('koa-mount')
-const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 
-app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))))
+app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
+app.use(mount('/trade_web',serve(path.join(__dirname, '/liff/trade'))));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 // const myLiffId = process.env.MY_LIFF_ID;
-const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE
+const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
+const myLiffIdTradeWeb = process.env.MY_LIFF_ID_TRADE_WEB;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
@@ -101,6 +103,9 @@ router
   })
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
+  })
+  .get('/trade_web', async (ctx) => {
+    ctx.body = {id: myLiffIdTradeWeb};
   });
 app.use(router.routes());
 

@@ -26,33 +26,6 @@ window.onload = function() {
     }
 };
 
-// register
-function register(myLiffId) {
-    document.getElementById('sendBtn').addEventListener('click', function() {
-        data = {
-            myLiffId: myLiffId
-        };
-        fetch("/send-register", {
-            body: JSON.stringify(data), // must match 'Content-Type' header
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, same-origin, *omit
-            headers: {
-              'user-agent': 'Mozilla/4.0 MDN Example',
-              'content-type': 'application/json'
-            },
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            redirect: 'follow', // manual, *follow, error
-            referrer: 'no-referrer', // *client, no-referrer
-          })
-            .then(function(reqResponse) {
-                return reqResponse.json();
-            })
-            .then(function(jsonResponse) {
-
-            })
-    });
-}
 
 /**
 * Check if myLiffId is null. If null do not initiate liff.
