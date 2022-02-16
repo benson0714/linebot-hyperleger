@@ -106,7 +106,7 @@ router
     ctx.body = {id: myLiffIdQrcode};
   })
   .get('/trade_address', async (ctx) => {
-    console.log(ctx.request.header);
+    console.log(`header = ${ctx.request.header}`);
     ctx.body = {id: myLiffIdTradeAddress};
   })
   .get('/trade_qrcode', async (ctx) => {
