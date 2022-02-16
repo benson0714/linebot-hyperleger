@@ -35,9 +35,10 @@ function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         alert('initializeLiff first');
     } else {
-        initializeLiff(myLiffId);
         alert(myLiffId);
         alert(address);
+        initializeLiff(myLiffId);
+
     }
 }
 
