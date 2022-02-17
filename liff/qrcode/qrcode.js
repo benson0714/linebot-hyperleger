@@ -63,6 +63,7 @@ function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
+        alert(res);
     })
     .catch(function(error) {
         alert(error);
