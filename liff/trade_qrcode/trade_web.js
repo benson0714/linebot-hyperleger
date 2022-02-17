@@ -42,6 +42,7 @@ function initializeLiffOrDie(myLiffId) {
 * @param {string} myLiffId The LIFF ID of the selected element
 */
 function initializeLiff(myLiffId) {
+    console.log(`enter initializeLiff ${myLiffId}`);
     liff
         .init({
             liffId: myLiffId
