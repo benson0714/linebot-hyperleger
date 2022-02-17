@@ -116,8 +116,12 @@ router
     };
   })
   .post('/upload', async (ctx) => {
-      console.log(`${ctx.request.body}`);
-      console.log(`test console.log`);
+    let data = ctx.request.body;
+    console.log(`data = ${data}`);
+    console.log(`amount = ${data.lastname}`);
+    console.log(`nchu = ${data.nchu}`);
+    console.log(`qrcode_address = ${data.qrcode_address}`);
+    console.log(`test console.log`);
   });
 
 
