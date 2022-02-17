@@ -70,3 +70,23 @@ function qrcode() {
     });
 };
 
+$('button').click(function(e){
+    e.preventDefault();
+    var form = $('form')[0];
+    var formData = new FormData(form);
+    $.ajax({
+        url:'/upload',
+        type : "POST",
+        data : formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success : function(data) 
+        {
+            console.log(data);
+        },error: function(data) 
+        {
+            console.log('無法送出');
+        }
+    })
+});
