@@ -114,6 +114,10 @@ router
       id: myLiffIdTradeWeb,
       address: address
     };
+  })
+  .post('/upload', async (ctx) => {
+      console.log(`${ctx.request.body}`);
+      console.log(`test console.log`);
   });
 
 
