@@ -117,12 +117,15 @@ router
   })
   .post('/upload', async (ctx) => {
     let data = ctx.request.body;
-    let dataj = JSON.stringify(data);
-    console.log(`data = ${dataj}`);
     console.log(`amount = ${data.lastname}`);
-    console.log(`nchu = ${data.nchu}`);
     console.log(`qrcode_address = ${data.qrcode_address}`);
+    console.log(`coin = ${data.coin}`);
     console.log(`test console.log`);
+    ctx.body = {
+      amount: data.lastname,
+      qrcode_address: data.qrcode_address,
+      coin: data.coin
+    }
   });
 
 
