@@ -63,7 +63,6 @@ function initializeLiff(myLiffId) {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
-    alert('1');
     console.log('1');
 
 }
