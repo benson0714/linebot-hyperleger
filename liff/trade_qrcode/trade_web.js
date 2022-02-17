@@ -4,18 +4,16 @@ window.onload = function() {
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
-    let address = "";
+
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-
-        fetch('/trade_qrcode')
+        fetch('/send-qrcode')
             .then(function(reqResponse) {
                 return reqResponse.json();
             })
-            .then(function(jsonResponse) { 
+            .then(function(jsonResponse) {
                 myLiffId = jsonResponse.id;
-                console.log(myLiffId);
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
@@ -33,7 +31,7 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        console.log('no myLiffId');
+        alert('initializeLiff first');
     } else {
         initializeLiff(myLiffId);
     }
@@ -50,7 +48,7 @@ function initializeLiff(myLiffId) {
         })
         .then(() => {
             // start to use LIFF's api
-            registerButtonHandlers();
+            qrcode();
         })
         .catch((err) => {
             alert(err);
@@ -61,7 +59,7 @@ function initializeLiff(myLiffId) {
 /**
 * Register event handlers for the buttons displayed in the app
 */
-function registerButtonHandlers() {
-    console.log('112121212');
+function qrcode() {
+    console.log('qrcode');
+};
 
-}
