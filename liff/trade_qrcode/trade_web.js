@@ -8,19 +8,21 @@ window.onload = function() {
     // if node is used, fetch the environment variable and pass it to the LIFF method
     // otherwise, pass defaultLiffId
     if (useNodeJS) {
-        console.log('usssss');
+
         fetch('/trade_qrcode')
             .then(function(reqResponse) {
                 return reqResponse.json();
             })
             .then(function(jsonResponse) {
+                
                 myLiffId = jsonResponse.id;
+                console.log(myLiffId);
                 address = jsonResponse.address;
-
+                console.log(address);
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
-
+                console.log(error);
             })
     } else {
         myLiffId = defaultLiffId;
@@ -34,10 +36,9 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
+        console.log('no myLiffId');
     } else {
-
         initializeLiff(myLiffId);
-
     }
 }
 
