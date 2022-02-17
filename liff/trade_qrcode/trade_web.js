@@ -33,7 +33,6 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        alert('initializeLiff first');
     } else {
 
         initializeLiff(myLiffId);
@@ -65,39 +64,6 @@ function initializeLiff(myLiffId) {
 */
 function registerButtonHandlers() {
     alert('1');
-    alert(myLiffId);
-    alert(address);
-    // // openWindow call
-    // document.getElementById('openWindowButton').addEventListener('click', function() {
-    //     liff.openWindow({
-    //         url: 'https://line.me',
-    //         external: true
-    //     });
-    // });
-
-    // // closeWindow call
-    // document.getElementById('closeWindowButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.closeWindow();
-    //     }
-    // });
-
-    // // sendMessages call
-    // document.getElementById('sendMessageButton').addEventListener('click', function() {
-    //     if (!liff.isInClient()) {
-    //         sendAlertIfNotInClient();
-    //     } else {
-    //         liff.sendMessages([{
-    //             'type': 'text',
-    //             'text': "You've successfully sent a message! Hooray!"
-    //         }]).then(function() {
-    //             window.alert('Message sent');
-    //         }).catch(function(error) {
-    //             window.alert('Error sending message: ' + error);
-    //         });
-    //     }
-    // });
+    console.log('1');
 
 }
