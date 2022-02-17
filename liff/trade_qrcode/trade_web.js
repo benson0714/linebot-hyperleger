@@ -63,7 +63,7 @@ function initializeLiff(myLiffId) {
 function qrcode() {
     console.log('qrcode');
     let getUrlString = location.href;
-    console.log(`getUrlString = ${getUrlString}`);
+    alert(`getUrlString = ${getUrlString}`);
     let url = new URL(getUrlString);
     console.log(`url = ${url}`);
 
