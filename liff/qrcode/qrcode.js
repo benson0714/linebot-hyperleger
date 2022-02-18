@@ -83,9 +83,7 @@ $(function() {
         url:'/upload',
         type : "POST",
         data : JSON.stringify(formData),
-        contentType: false,
-        cache: false,
-        processData: false,
+        dataType: "json",
         success : function(data) 
         {
             console.log(data);
