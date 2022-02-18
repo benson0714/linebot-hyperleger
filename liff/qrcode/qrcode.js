@@ -92,10 +92,12 @@ $(function() {
 
       var formData = $(this).serializeObject();
       console.log(formData);
+      $('.datahere').html(JSON.stringify(formData));
+
       $.ajax({
         url:'/upload',
         type : "POST",
-        data : JSON.stringify(formData),
+        data : formData,
         contentType: false,
         cache: false,
         processData: false,
@@ -106,7 +108,8 @@ $(function() {
         {
             console.log('無法送出');
         }
-        })
+      })
     })
+
 });
 
