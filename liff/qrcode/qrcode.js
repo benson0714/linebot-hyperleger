@@ -70,34 +70,20 @@ function qrcode() {
     });
 };
 
-$.fn.serializeObject = function() {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name]) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
+
 
 $(function() {
-    $('form.login').on('submit', function(e) {
+    $('#btn').on('click', function(e) {
       e.preventDefault();
-
-      var formData = $(this).serializeObject();
+      var qrcode_address = $('qrcode_address').val()
+      var formData = $('form').serializeArray();
       console.log(formData);
       $('.datahere').html(JSON.stringify(formData));
 
       $.ajax({
         url:'/upload',
         type : "POST",
-        data : JSON.stringify(formData),
+        data : formData,
         contentType: false,
         cache: false,
         processData: false,
@@ -108,8 +94,7 @@ $(function() {
         {
             console.log('無法送出');
         }
-      })
     })
-
+    });
 });
 
