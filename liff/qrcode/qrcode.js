@@ -83,7 +83,7 @@ $(function() {
       $.ajax({
         url:'/upload',
         type : "POST",
-        data : formData,
+        data : JSON.stringify(formData),
         contentType: false,
         cache: false,
         processData: false,
