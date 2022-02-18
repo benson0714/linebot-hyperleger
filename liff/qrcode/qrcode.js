@@ -95,7 +95,7 @@ $(function() {
       $.ajax({
         url:'/upload',
         type : "POST",
-        data : formData,
+        data : JSON.stringify(formData),
         contentType: false,
         cache: false,
         processData: false,
@@ -106,7 +106,7 @@ $(function() {
         {
             console.log('無法送出');
         }
+        })
     })
-    });
 });
 
