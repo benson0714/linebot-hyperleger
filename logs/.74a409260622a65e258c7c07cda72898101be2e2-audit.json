@@ -1,0 +1,59 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/user/demo-project/webapi/lineBotApp/logs/.74a409260622a65e258c7c07cda72898101be2e2-audit.json",
+    "files": [
+        {
+            "date": 1651825995750,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-06.log",
+            "hash": "fbb083b7a8fb2faac2d4b1366b3623bc"
+        },
+        {
+            "date": 1652062265082,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-09.log",
+            "hash": "d6754915e89c9a1f1ea251da97aa85e9"
+        },
+        {
+            "date": 1652152491220,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-10.log",
+            "hash": "74608fba4ce584d141c091cd5fc0f0c5"
+        },
+        {
+            "date": 1652246627853,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-11.log",
+            "hash": "fb92afd9bde8702bec5eda6385915e6a"
+        },
+        {
+            "date": 1652321987414,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-12.log",
+            "hash": "1a1f8b40fe67abbf60c11f6e9b753c05"
+        },
+        {
+            "date": 1652406022386,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-13.log",
+            "hash": "f79fe5f3d21df338b596b34217398b21"
+        },
+        {
+            "date": 1652666487689,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-16.log",
+            "hash": "c97c92f61ee19e75345db599649b7047"
+        },
+        {
+            "date": 1652757850914,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-17.log",
+            "hash": "440364930bbe2be31f4b5314d4233d86"
+        },
+        {
+            "date": 1652927196899,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-19.log",
+            "hash": "e927a15d18ee8cae522b90a7a9f45215"
+        },
+        {
+            "date": 1653018267766,
+            "name": "/home/user/demo-project/webapi/lineBotApp/logs/service-2022-05-20.log",
+            "hash": "ea0a17b84b836a9e781832c06eee293b"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/media/sf_E_DRIVE/DevWork/1_WebAPI/lineBotApp/logs/.b3e269f2830df834e1541c85f2500fea3d4a6b8d-audit.json",
+    "files": [
+        {
+            "date": 1651038603550,
+            "name": "/media/sf_E_DRIVE/DevWork/1_WebAPI/lineBotApp/logs/service-2022-04-27.log",
+            "hash": "8c7c8136d31f5b2f9f0e19a9c8bb67ac"
+        }
+    ]
+}

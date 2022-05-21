@@ -50,7 +50,7 @@ router
         '終於': '做出來了',
         '您': '辛苦了',
       });
-    } else if(events[0].type === 'postback') {
+    } else if(events[0].type === 'postback') { //偵測到postback action(richmenu的postback action)
       console.log('detect postback action');
       data = await replyPostback.replyPostback(events, lineBotToken);
       console.log('postback action done');
