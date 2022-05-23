@@ -10,7 +10,6 @@ const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-var proxy = require('koa-proxy');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -29,10 +28,6 @@ const myLiffIdTradeAddress = process.env.MY_LIFF_ID_TRADE_ADDRESS;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
-
-app.use(proxy({
-  host: 'http://c0z5ssq4vdr17p:63xn6kyrv711uk2y0gn59bz0syuaun@us-east-static-10.quotaguard.com/'
-}));
 
 // do something when someone POST/GET this server
 app.use(async (ctx, next) => {
@@ -145,7 +140,7 @@ router
 
 app.use(router.routes());
 
-const server = app.listen(process.env.PORT || 9293, function () {
+const server = app.listen(process.env.PORT || 8080, function () {
   const port = server.address().port;
   console.log("App now running on port", port);
 });
