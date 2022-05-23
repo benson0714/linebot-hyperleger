@@ -47,29 +47,7 @@
                     },
                     {
                       "type": "text",
-                      "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                      "wrap": true,
-                      "color": "#666666",
-                      "size": "sm",
-                      "flex": 5
-                    }
-                  ]
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "sm",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "餘額",
-                      "color": "#aaaaaa",
-                      "size": "sm",
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "$100",
+                      "text": "",
                       "wrap": true,
                       "color": "#666666",
                       "size": "sm",
@@ -92,7 +70,7 @@
               "height": "sm",
               "action": {
                 "type": "uri",
-                "label": "詳細資訊",
+                "label": "複製地址",
                 "uri": "http://linecorp.com/"
               }
             },
