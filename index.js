@@ -62,6 +62,7 @@ router
   .get('/', async (ctx) => {
     const clientIP = ctx.request.ip;
     console.log(`ip: ${clientIP}`);
+    ctx.body = 'hello world';
   })
   .get('/create', async (ctx) => {
     // delete old rich menu
