@@ -59,6 +59,10 @@ router
     }
     ctx.body = data;
   })
+  .get('/', async (ctx) => {
+    const clientIP = ctx.request.ip;
+    console.log(`ip: ${clientIP}`);
+  })
   .get('/create', async (ctx) => {
     // delete old rich menu
     let deleteRichMenu = await richMenu.deleteList(lineBotToken)
