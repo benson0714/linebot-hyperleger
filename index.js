@@ -38,6 +38,8 @@ app.use(async (ctx, next) => {
 app.use(check.middleware(channelSecret));
 router
   .post('/', async (ctx) => {
+    const clientIP = ctx.request.ip;
+    console.log(`ip: ${clientIP}`);
     let events = ctx.request.body.events;
     console.log(`event type = ${events[0].type}`);
     console.log(`body = ${ctx.request.body}`)
@@ -79,6 +81,7 @@ router
   })
   //login to hyperledger_api and get the token
   .post('/login', async (ctx) => {
+    
     userid = 'eric';
     password = 'pw$168';
     let login = await hyperledger.login(userid, password);
