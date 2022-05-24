@@ -71,7 +71,7 @@
               "action": {
                 "type": "uri",
                 "label": "複製地址",
-                "uri": "http://linecorp.com/"
+                "uri": "https://line-sdk-test.herokuapp.com/show_address?address="
               }
             },
             {
