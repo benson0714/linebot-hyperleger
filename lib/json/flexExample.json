@@ -66,12 +66,11 @@
           "contents": [
             {
               "type": "button",
-              "style": "link",
               "height": "sm",
               "action": {
-                "type": "uri",
+                "type": "postback",
                 "label": "複製地址",
-                "uri": "https://line-sdk-test.herokuapp.com/show_address?address="
+                "data": ""
               }
             },
             {
