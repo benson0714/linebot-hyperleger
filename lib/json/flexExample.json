@@ -70,7 +70,7 @@
               "action": {
                 "type": "postback",
                 "label": "複製地址",
-                "data": ""
+                "data": "action=show_address&"
               }
             },
             {

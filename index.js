@@ -10,7 +10,7 @@ const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const hyperledger_api = require('./lib/example/hyperledger_api.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-const pushMessage = require('./lib/lineAPI/pushMessageAPI.js');
+
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
@@ -83,10 +83,6 @@ router
     console.log('GET listRichMenu request')
     let richMenuObj = await richMenu.listRichMenu(lineBotToken);
     ctx.body = richMenuObj;
-  })
-  .get('/show_address', async (ctx) => {
-    address = ctx.request.get("address");
-    pushMessage.pushMessage(address, userId, lineBotToken);
   })
   //login to hyperledger_api and get the token
   .post('/login', async (ctx) => {
