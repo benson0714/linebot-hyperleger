@@ -67,10 +67,10 @@
             {
               "type": "button",
               "height": "sm",
+              "style": "secondary",
               "action": {
                 "type": "postback",
                 "label": "複製地址",
-                "style": "secondary",
                 "data": "action=show_address&"
               }
             },
