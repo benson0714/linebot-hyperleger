@@ -46,7 +46,7 @@
         },
         "action": {
           "type": "postback",
-          "data": "action=tradeOptions"
+          "data": "action=balance"
         }
       },
 
