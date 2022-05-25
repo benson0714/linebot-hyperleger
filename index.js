@@ -65,6 +65,7 @@ router
     ctx.body = 'hello world';
   })
   .get('/create', async (ctx) => {
+    console.log('create rich menu');
     // delete old rich menu
     let deleteRichMenu = await richMenu.deleteList(lineBotToken)
     //create rich menu
