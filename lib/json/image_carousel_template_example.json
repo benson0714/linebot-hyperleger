@@ -4,14 +4,6 @@
     "template": {
         "type": "image_carousel",
         "columns": [
-            {
-              "imageUrl": "https://example.com/bot/images/item1.jpg",
-              "action": {
-                "type": "postback",
-                "label": "details",
-                "data": "action=img_carousel_details&details="
-              }
-            }
         ]
     }
 }
