@@ -14,7 +14,7 @@ const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
-const mount = require('koa-mount')
+const mount = require('koa-mount');
 
 app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
 app.use(mount('/trade_address',serve(path.join(__dirname, '/liff/trade_address'))));
