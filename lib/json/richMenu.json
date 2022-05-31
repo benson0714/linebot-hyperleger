@@ -46,7 +46,7 @@
         },
         "action": {
           "type": "postback",
-          "data": "action=balance"
+          "data": "action=transfer"
         }
       },
 
@@ -60,6 +60,18 @@
         "action": {
           "type": "postback",
           "data": "action=history"
+        }
+      },
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 833,
+          "height": 1686
+        },
+        "action": {
+          "type": "postback",
+          "data": "action=balance"
         }
       }
     ]
