@@ -1,5 +1,6 @@
 {
   "type": "flex",
+  "size":"giga",
   "altText": "this is a flex message",
   "contents": {
     "type": "carousel",
