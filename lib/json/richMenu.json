@@ -46,7 +46,7 @@
         },
         "action": {
           "type": "postback",
-          "data": "action=transfer"
+          "data": "action=transfer_balance"
         }
       },
 
@@ -71,7 +71,7 @@
         },
         "action": {
           "type": "postback",
-          "data": "action=balance"
+          "data": "action=transfer_balance"
         }
       }
     ]
