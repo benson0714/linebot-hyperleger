@@ -65,7 +65,7 @@ function qrcode() {
 
 
 
-$(async function() {
+$(function() {
     $('#btn').on('click', function(e) {
       var qrcode_address = qrcode();
       console.log(qrcode_address);
