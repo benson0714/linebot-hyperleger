@@ -68,7 +68,6 @@ function qrcode() {
 $(function() {
     $('#btn').on('click', function(e) {
       var qrcode_address = qrcode();
-      console.log(qrcode_address);
         
       $.ajax({
         url:'/check_address',
@@ -77,7 +76,7 @@ $(function() {
         dataType: "json",
         success : function(data) 
         {
-            liff.closeWindow();
+            // liff.closeWindow();
         },error: function(data) 
         {
             console.log('無法送出');
