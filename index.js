@@ -14,10 +14,10 @@ const serve = require('koa-static');
 const path = require('path');
 const mount = require('koa-mount');
 
-app.use(mount('/amount',serve(path.join(__dirname, '/liff/amouunt'))));
-app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
+app.use(mount('/liff',serve(path.join(__dirname, '/liff/'))));
+// app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
 
-app.use(mount('/trade_qrcode',serve(path.join(__dirname, '/liff/trade_qrcode'))));
+// app.use(mount('/trade_qrcode',serve(path.join(__dirname, '/liff/trade_qrcode'))));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
