@@ -1,3 +1,4 @@
+var userId = '';
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -43,6 +44,12 @@ function initializeLiff(myLiffId) {
     liff
         .init({
             liffId: myLiffId
+        })
+        .then(()=>{
+            liff.getProfile()
+            .then((res)=>{
+                userId = res['userId'];
+            })
         })
 }
 
@@ -112,30 +119,26 @@ function getAllUrlParams(url) {
     return obj;
   }
 
-async function check_amount_func() {
-    liff.getProfile()
-    .then((res)=>{
-        e.preventDefault();
-        var formData = $('form').serializeArray();
-        formData.push({'name':"tokenId",'value':getAllUrlParams().tokenid});
-        formData.push({'name':"userId", 'value':res['userId']});
-        return formData;
-    })
-    .then((formData)=>{
-        $.ajax({
-            url:'/check_amount',
-            type : "POST",
-            data : formData,
-            dataType: "json"
-        })
-    })
-    .then(()=>{
-        liff.closeWindow();
-    })
-}
+
 $(function() {
     $('#btn').on('click', function(e) {
-      check_amount_func();
+      e.preventDefault();
+      var formData = $('form').serializeArray();
+        formData.push({'name':"tokenId",'value':getAllUrlParams().tokenid});
+        formData.push({'name':'userId', 'value':userId});
+      $.ajax({
+        url:'/check_amount',
+        type : "POST",
+        data : formData,
+        dataType: "json",
+        success : function(data) 
+        {
+            liff.closeWindow();
+        },error: function(data) 
+        {
+            console.log('無法送出');
+        }
+    })
     });
 });
 
