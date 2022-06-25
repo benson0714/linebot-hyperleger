@@ -57,8 +57,12 @@ async function qrcode() {
     liff.scanCodeV2()
     .then(function(res) {
         return res.value;
-    }).then(function(res){
+    })
+    .then(function(res){
         getData(res);
+    })
+    .then(()=>{
+        liff.closeWindow();
     })
     .catch(function(error) {
         alert(error);
@@ -73,7 +77,7 @@ function getData(qrcode_address){
         dataType: "json",
         success : function(data) 
         {
-            liff.closeWindow();
+            console.log(data);
         },error: function(data) 
         {
             console.log('無法送出');
