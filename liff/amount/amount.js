@@ -116,8 +116,7 @@ $(function() {
     $('#btn').on('click', function(e) {
       e.preventDefault();
       var formData = $('form').serializeArray();
-      const abc = getAllUrlParams().tokenId;
-        formData.push({'name':"tokenId",'value':abc});
+        formData.push({'name':"name",'value':getAllUrlParams().name});
       $.ajax({
         url:'/check_amount',
         type : "POST",
