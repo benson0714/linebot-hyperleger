@@ -70,7 +70,7 @@ $(async function() {
       var qrcode_address = qrcode();
       console.log(qrcode_address);
         
-      await $.ajax({
+      $.ajax({
         url:'/check_address',
         type : "POST",
         data : qrcode_address,
