@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@line/liff": "^2.18.1",
+    "bootstrap": "^5.2.0-beta1",
     "crypto": "^1.0.1",
     "fs": "0.0.1-security",
     "koa": "^2.13.4",
