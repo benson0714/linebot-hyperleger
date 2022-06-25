@@ -56,14 +56,16 @@ async function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
-        alert(res.value);
+        return res.value;
+    }).then(function(res){
+        getData(res);
     })
     .catch(function(error) {
         alert(error);
     });
 };
 
-function getData(){
+function getData(qrcode_address){
     return $.ajax({
         url:'/check_address',
         type : "POST",
@@ -81,9 +83,7 @@ function getData(){
 
 $(function() {
     $('#btn').on('click', async function(e) {
-      var qrcode_address = await qrcode();
-        await getData();
-
+      await qrcode();
     });
 });
 
