@@ -112,7 +112,7 @@ function getAllUrlParams(url) {
     return obj;
   }
 
-const check_amount_func = async function() {
+async function check_amount_func() {
     liff.getContext()
     .then((res)=>{
         e.preventDefault();
