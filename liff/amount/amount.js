@@ -44,29 +44,6 @@ function initializeLiff(myLiffId) {
         .init({
             liffId: myLiffId
         })
-        .then(()=>{
-            $('#btn').on('click', function(e) {
-                e.preventDefault();
-                var formData = $('form').serializeArray();
-                  formData.push({'name':"tokenId",'value':getAllUrlParams().tokenId});
-                return formData;
-              });
-        })
-        .then((formData)=>{
-            $.ajax({
-                url:'/check_amount',
-                type : "POST",
-                data : formData,
-                dataType: "json",
-                success : function(data) 
-                {
-                    liff.closeWindow();
-                },error: function(data) 
-                {
-                    console.log('無法送出');
-                }
-            })
-        })
 }
 
 function getAllUrlParams(url) {
@@ -136,6 +113,23 @@ function getAllUrlParams(url) {
 
 
 $(function() {
-
+    $('#btn').on('click', function(e) {
+      e.preventDefault();
+      var formData = $('form').serializeArray();
+        formData.push({'name':"tokenId",'value':getAllUrlParams().tokenId});
+      $.ajax({
+        url:'/check_amount',
+        type : "POST",
+        data : formData,
+        dataType: "json",
+        success : function(data) 
+        {
+            liff.closeWindow();
+        },error: function(data) 
+        {
+            console.log('無法送出');
+        }
+    })
+    });
 });
 
