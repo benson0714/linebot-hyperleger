@@ -71,7 +71,7 @@ function getData(){
         dataType: "json",
         success : function(data) 
         {
-            // liff.closeWindow();
+            liff.closeWindow();
         },error: function(data) 
         {
             console.log('無法送出');
