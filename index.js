@@ -18,9 +18,7 @@ app.use(mount('/liff',serve(path.join(__dirname, '/liff/'))));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-// const myLiffId = process.env.MY_LIFF_ID;
 const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
-const myLiffIdTradeAddress = process.env.MY_LIFF_ID_TRADE_ADDRESS;
 const myLiffIdAmount = process.env.MY_LIFF_ID_AMOUNT;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
@@ -106,7 +104,6 @@ router
       amount: data.input_amount
     }
   });
-
 
 app.use(router.routes());
 
