@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  
   <head>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
 <body>
 
-
-<div>
-    <form class="login">
-        <label for="fname">地址</label>
-        <input type="text" id="qrcode_address" name="qrcode_address" placeholder="qrcode" readonly style="display:block">
-    
-        <label for="lname">交易數量</label>
-        <input type="text" id="deal" name="lastname">
-    
-     
-        <button type='button' id='btn'>qwe</button>
-    </form>
-    <div class="datahere"></div>
+<div class="container">
+    <div class="form-group">
+      <label id="amount_text">請按下方按鈕開啟相機掃描qrcode地址</label>
+      <div class="d-flex justify-content-center mt-4">
+        <button id="btn" type="button" class="btn btn-primary">開啟相機</button>
+      </div>
 </div>
 
+
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-<script src="qrcode.js"></script>
+<script src="./qrcode/qrcode.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
 

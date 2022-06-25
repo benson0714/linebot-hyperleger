@@ -46,13 +46,6 @@ function initializeLiff(myLiffId) {
         .init({
             liffId: myLiffId
         })
-        .then(() => {
-            // start to use LIFF's api
-            qrcode();
-        })
-        .catch((err) => {
-            alert(err);
-        });
 }
 
 
@@ -63,7 +56,7 @@ function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
-        $('#qrcode_address').val(res.value);
+        return res.value;
     })
     .catch(function(error) {
         alert(error);
@@ -75,14 +68,13 @@ function qrcode() {
 $(function() {
     $('#btn').on('click', function(e) {
       e.preventDefault();
-      var qrcode_address = $('qrcode_address').val()
-      var formData = $('form').serializeArray();
-      console.log(formData);
+      var qrcode_address = qrcode();
+      console.log(qrcode_address);
         
       $.ajax({
-        url:'/upload',
+        url:'/check_address',
         type : "POST",
-        data : formData,
+        data : qrcode_address,
         dataType: "json",
         success : function(data) 
         {

@@ -53,7 +53,7 @@ $(function() {
       e.preventDefault();
       var formData = $('form').serializeArray();
       $.ajax({
-        url:'/upload',
+        url:'/check_amount',
         type : "POST",
         data : formData,
         dataType: "json",
