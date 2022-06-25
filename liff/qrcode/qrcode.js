@@ -69,7 +69,7 @@ function getData(qrcode_address){
     return $.ajax({
         url:'/check_address',
         type : "POST",
-        data : qrcode_address,
+        data : `qrcode_address=${qrcode_address}`,
         dataType: "json",
         success : function(data) 
         {
