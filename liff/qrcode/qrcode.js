@@ -63,13 +63,8 @@ async function qrcode() {
     });
 };
 
-
-
-$(function() {
-    $('#btn').on('click', async function(e) {
-      var qrcode_address = await qrcode();
-        
-      await $.ajax({
+function getData(){
+    return $.ajax({
         url:'/check_address',
         type : "POST",
         data : qrcode_address,
@@ -82,6 +77,13 @@ $(function() {
             console.log('無法送出');
         }
     })
+}
+
+$(function() {
+    $('#btn').on('click', async function(e) {
+      var qrcode_address = await qrcode();
+        await getData();
+
     });
 });
 
