@@ -118,9 +118,10 @@ async function check_amount_func() {
         e.preventDefault();
         var formData = $('form').serializeArray();
         formData.push({'name':"tokenId",'value':getAllUrlParams().tokenid});
-        formData.push({'name':"userId", 'value':res['userId']})
+        formData.push({'name':"userId", 'value':res['userId']});
+        return formData;
     })
-    .then(()=>{
+    .then((formData)=>{
         $.ajax({
             url:'/check_amount',
             type : "POST",
