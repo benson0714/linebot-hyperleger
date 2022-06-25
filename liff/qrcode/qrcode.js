@@ -65,11 +65,11 @@ function qrcode() {
 
 
 
-$(function() {
-    $('#btn').on('click', function(e) {
+$(async function() {
+    $('#btn').on('click', async function(e) {
       var qrcode_address = qrcode();
         
-      $.ajax({
+      await $.ajax({
         url:'/check_address',
         type : "POST",
         data : qrcode_address,
