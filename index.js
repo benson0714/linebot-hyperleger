@@ -91,7 +91,7 @@ router
   .post('/check_address', async (ctx) => {
     const data = ctx.request.body;
     console.log(data);
-    console.log(`amount = ${data.input_amount}`);
+    console.log(`amount = ${data}`);
     console.log(`test console.log`);
     ctx.body = {
       amount: data.input_amount

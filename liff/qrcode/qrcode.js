@@ -65,13 +65,12 @@ function qrcode() {
 
 
 
-$(function() {
+$(async function() {
     $('#btn').on('click', function(e) {
-      e.preventDefault();
       var qrcode_address = qrcode();
       console.log(qrcode_address);
         
-      $.ajax({
+      await $.ajax({
         url:'/check_address',
         type : "POST",
         data : qrcode_address,
