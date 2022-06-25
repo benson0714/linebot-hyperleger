@@ -125,15 +125,11 @@ const check_amount_func = async function() {
             url:'/check_amount',
             type : "POST",
             data : formData,
-            dataType: "json",
-            success : function(data) 
-            {
-                liff.closeWindow();
-            },error: function(data) 
-            {
-                console.log('無法送出');
-            }
+            dataType: "json"
         })
+    })
+    .then(()=>{
+        liff.closeWindow();
     })
 }
 $(function() {
