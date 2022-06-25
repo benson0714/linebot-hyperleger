@@ -116,7 +116,7 @@ $(function() {
     $('#btn').on('click', function(e) {
       e.preventDefault();
       var formData = $('form').serializeArray();
-        formData.push({'name':getAllUrlParams().name});
+        formData.push('name'=getAllUrlParams().name);
       $.ajax({
         url:'/check_amount',
         type : "POST",
