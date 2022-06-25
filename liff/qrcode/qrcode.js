@@ -59,7 +59,7 @@ async function qrcode() {
         return res.value;
     })
     .then(function(res){
-        getData(res);
+        return getData(res);
     })
     .then(()=>{
         liff.closeWindow();
