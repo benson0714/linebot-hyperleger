@@ -88,8 +88,17 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
+  .post('/check_address', async (ctx) => {
+    const data = ctx.request.body;
+    console.log(data);
+    console.log(`amount = ${data.input_amount}`);
+    console.log(`test console.log`);
+    ctx.body = {
+      amount: data.input_amount
+    }
+  })
   .post('/check_amount', async (ctx) => {
-    let data = ctx.request.body;
+    const data = ctx.request.body;
     console.log(data);
     console.log(`amount = ${data.input_amount}`);
     console.log(`test console.log`);
