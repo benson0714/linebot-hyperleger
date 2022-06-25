@@ -113,7 +113,7 @@ function getAllUrlParams(url) {
   }
 
 async function check_amount_func() {
-    liff.getContext()
+    liff.getProfile()
     .then((res)=>{
         e.preventDefault();
         var formData = $('form').serializeArray();
