@@ -46,18 +46,19 @@ function initializeLiff(myLiffId) {
         })
 }
 
+const keys = urlParams.keys();
+const values = urlParams.values();
+let newData ={};
+for(const i in keys){
+  newData[keys[i]]=values[i];
+}
+formData.push(newData);
 
 $(function() {
     $('#btn').on('click', function(e) {
       e.preventDefault();
       var formData = $('form').serializeArray();
-      const keys = urlParams.keys();
-      const values = urlParams.values();
-      let newData ={};
-      for(const i in keys){
-        newData[keys[i]]=values[i];
-      }
-      formData.push(newData);
+
       $.ajax({
         url:'/check_amount',
         type : "POST",
