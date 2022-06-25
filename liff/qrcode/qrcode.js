@@ -56,7 +56,7 @@ function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
-        return res.value;
+        alert(res.value);
     })
     .catch(function(error) {
         alert(error);
