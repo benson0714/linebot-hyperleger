@@ -8,7 +8,7 @@ const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
-
+const check_amount_func = require('./lib/hyperledgerAPI/check_amount_liff.js');
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
@@ -100,6 +100,7 @@ router
     console.log(data);
     console.log(`amount = ${data.input_amount}`);
     console.log(`test console.log`);
+
     ctx.body = {
       amount: data.input_amount
     }

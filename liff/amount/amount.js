@@ -46,6 +46,7 @@ function initializeLiff(myLiffId) {
         })
 }
 
+// 不能用大寫的網址!!!
 function getAllUrlParams(url) {
 
     // get query string from url (optional) or window
@@ -111,25 +112,33 @@ function getAllUrlParams(url) {
     return obj;
   }
 
-
-$(function() {
-    $('#btn').on('click', function(e) {
-      e.preventDefault();
-      var formData = $('form').serializeArray();
+const check_amount_func = async function() {
+    liff.getContext()
+    .then((res)=>{
+        e.preventDefault();
+        var formData = $('form').serializeArray();
         formData.push({'name':"tokenId",'value':getAllUrlParams().tokenid});
-      $.ajax({
-        url:'/check_amount',
-        type : "POST",
-        data : formData,
-        dataType: "json",
-        success : function(data) 
-        {
-            liff.closeWindow();
-        },error: function(data) 
-        {
-            console.log('無法送出');
-        }
+        formData.push({'name':"userId", 'value':res['userId']})
     })
+    .then(()=>{
+        $.ajax({
+            url:'/check_amount',
+            type : "POST",
+            data : formData,
+            dataType: "json",
+            success : function(data) 
+            {
+                liff.closeWindow();
+            },error: function(data) 
+            {
+                console.log('無法送出');
+            }
+        })
+    })
+}
+$(function() {
+    $('#btn').on('click', async function(e) {
+      await check_amount_func();
     });
 });
 
