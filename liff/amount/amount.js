@@ -133,8 +133,8 @@ async function check_amount_func() {
     })
 }
 $(function() {
-    $('#btn').on('click', async function(e) {
-      await check_amount_func();
+    $('#btn').on('click', function(e) {
+      check_amount_func();
     });
 });
 
