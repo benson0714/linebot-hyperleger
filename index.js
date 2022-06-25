@@ -15,9 +15,6 @@ const path = require('path');
 const mount = require('koa-mount');
 
 app.use(mount('/liff',serve(path.join(__dirname, '/liff/'))));
-// app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
-
-// app.use(mount('/trade_qrcode',serve(path.join(__dirname, '/liff/trade_qrcode'))));
 
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
@@ -91,27 +88,13 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
-  .get('/trade_address', async (ctx) => {
-    ctx.body = {id: myLiffIdTradeAddress};
-  })
-  .get('/trade_qrcode', async (ctx) => {
-    let address = ctx.request.bodyliff.state;
-    ctx.body = {
-      id: myLiffIdTradeWeb,
-      address: address
-    };
-  })
   .post('/upload', async (ctx) => {
     let data = ctx.request.body;
     console.log(data);
-    console.log(`amount = ${data.lastname}`);
-    console.log(`qrcode_address = ${data.qrcode_address}`);
-    console.log(`coin = ${data.coin}`);
+    console.log(`amount = ${data.input_amount}`);
     console.log(`test console.log`);
     ctx.body = {
-      amount: data.lastname,
-      qrcode_address: data.qrcode_address,
-      coin: data.coin
+      amount: data.input_amount
     }
   });
 

@@ -78,7 +78,7 @@ $(function() {
       var qrcode_address = $('qrcode_address').val()
       var formData = $('form').serializeArray();
       console.log(formData);
-
+        
       $.ajax({
         url:'/upload',
         type : "POST",
