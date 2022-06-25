@@ -112,11 +112,11 @@ function getAllUrlParams(url) {
   }
 
 
-$(function() {
+$(async function() {
     $('#btn').on('click', function(e) {
       e.preventDefault();
-      var formData = $('form').serializeArray();
-        formData.push({'name':"tokenId",'value':getAllUrlParams().tokenId});
+      var formData = await $('form').serializeArray();
+        await formData.push({'name':"tokenId",'value':getAllUrlParams().tokenId});
       $.ajax({
         url:'/check_amount',
         type : "POST",
