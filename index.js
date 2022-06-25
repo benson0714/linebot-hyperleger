@@ -14,7 +14,7 @@ const serve = require('koa-static');
 const path = require('path');
 const mount = require('koa-mount');
 
-app.use(mount('/get_amount_liff',serve(path.join(__dirname, '/liff/amouunt'))));
+app.use(mount('/amount',serve(path.join(__dirname, '/liff/amouunt'))));
 app.use(mount('/qrcode',serve(path.join(__dirname, '/liff/qrcode'))));
 
 app.use(mount('/trade_qrcode',serve(path.join(__dirname, '/liff/trade_qrcode'))));
