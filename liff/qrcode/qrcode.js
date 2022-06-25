@@ -75,13 +75,6 @@ function getData(qrcode_address){
         type : "POST",
         data : `qrcode_address=${qrcode_address}`,
         dataType: "json",
-        success : function(data) 
-        {
-            console.log(data);
-        },error: function(data) 
-        {
-            console.log('無法送出');
-        }
     })
 }
 
