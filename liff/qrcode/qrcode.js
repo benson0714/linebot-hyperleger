@@ -157,6 +157,10 @@ function getData(qrcode_address){
             type : "POST",
             data : message,
             dataType: "json",
+            success : function(data) 
+            {
+                liff.closeWindow();
+            }
         })
         return;
 }
