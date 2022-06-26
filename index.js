@@ -106,7 +106,7 @@ router
   .post('/check_amount', async (ctx) => {
     const data = ctx.request.body;
     console.log(data);
-    console.log(`amount = ${data.amount}`);
+    console.log(`amount = ${data.input_amount}`);
     console.log(`test console.log`);
     const amount = data.input_amount;
     const tokenId = data.tokenId;
