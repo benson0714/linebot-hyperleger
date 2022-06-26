@@ -145,10 +145,17 @@ async function qrcode() {
 };
 
 function getData(qrcode_address){
+    const message = {
+        "qrcode_address":qrcode_address, 
+        "amount":amount, 
+        "time":old_time, 
+        "userId":userId, 
+        "tokenId":tokenId
+    }
     return $.ajax({
         url:'/check_address',
         type : "POST",
-        data : `qrcode_address:${qrcode_address}, amount:${amount}, time:${old_time}, userId:${userId}, tokenId:${tokenId}`,
+        data : message,
         dataType: "json",
     })
 }
