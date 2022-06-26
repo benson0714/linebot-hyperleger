@@ -9,6 +9,7 @@ const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 const check_amount_func = require('./lib/hyperledgerAPI/check_amount_liff.js');
+const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -92,7 +93,10 @@ router
     console.log(data);
     console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
-
+    const amount = data.input_amount;
+    const tokenId = data.tokenId;
+    const userId = data.userId;
+    check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
     ctx.body = {
       amount: data.input_amount
     }
@@ -105,7 +109,9 @@ router
     const amount = data.input_amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
+    const address = data.address;
+    const time = data.time;
+    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time);
     ctx.body = {
       amount: data.input_amount
     }
