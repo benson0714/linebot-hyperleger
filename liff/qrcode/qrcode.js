@@ -164,7 +164,9 @@ function getData(qrcode_address){
 $(function() {
     $('#btn').on('click', async function(e) {
       await qrcode();
-      await liff.closeWindow()
+    })
+    .then(()=>{
+        liff.closeWindow();
     });
 });
 
