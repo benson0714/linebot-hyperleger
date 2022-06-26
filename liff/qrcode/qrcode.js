@@ -140,7 +140,6 @@ async function qrcode() {
         liff.closeWindow();
     })
     .catch(function(error) {
-        alert(error);
         liff.closeWindow();
     });
 };
