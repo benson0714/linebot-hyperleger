@@ -145,6 +145,7 @@ async function qrcode() {
 };
 
 function getData(qrcode_address){
+    
     const message = {
         "qrcode_address":qrcode_address, 
         "amount":amount, 
@@ -152,20 +153,18 @@ function getData(qrcode_address){
         "userId":userId, 
         "tokenId":tokenId
     }
-    return $.ajax({
+    $.ajax({
         url:'/check_address',
         type : "POST",
         data : message,
         dataType: "json",
     })
+    liff.closeWindow();
 }
 
 $(function() {
     $('#btn').on('click', async function(e) {
       await qrcode();
     })
-    .then(()=>{
-        liff.closeWindow();
-    });
 });
 
