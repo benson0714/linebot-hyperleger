@@ -145,7 +145,6 @@ async function qrcode() {
 };
 
 function getData(qrcode_address){
-    try{
         const message = {
             "qrcode_address":qrcode_address, 
             "amount":amount, 
@@ -159,10 +158,7 @@ function getData(qrcode_address){
             data : message,
             dataType: "json",
         })
-    }catch{
-        liff.closeWindow();
-    }
-
+        return;
 }
 
 $(function() {
