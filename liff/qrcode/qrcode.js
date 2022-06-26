@@ -148,7 +148,7 @@ function getData(qrcode_address){
     return $.ajax({
         url:'/check_address',
         type : "POST",
-        data : `[qrcode_address:${qrcode_address}, amount:${amount}, time:${old_time}, userId:${userId}, tokenId:${tokenId}]`,
+        data : `{qrcode_address:${qrcode_address}, amount:${amount}, time:${old_time}, userId:${userId}, tokenId:${tokenId}}`,
         dataType: "json",
     })
 }
