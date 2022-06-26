@@ -145,21 +145,24 @@ async function qrcode() {
 };
 
 function getData(qrcode_address){
-    
-    const message = {
-        "qrcode_address":qrcode_address, 
-        "amount":amount, 
-        "time":old_time, 
-        "userId":userId, 
-        "tokenId":tokenId
+    try{
+        const message = {
+            "qrcode_address":qrcode_address, 
+            "amount":amount, 
+            "time":old_time, 
+            "userId":userId, 
+            "tokenId":tokenId
+        }
+        $.ajax({
+            url:'/check_address',
+            type : "POST",
+            data : message,
+            dataType: "json",
+        })
+    }catch{
+        liff.closeWindow();
     }
-    $.ajax({
-        url:'/check_address',
-        type : "POST",
-        data : message,
-        dataType: "json",
-    })
-    liff.closeWindow();
+
 }
 
 $(function() {
