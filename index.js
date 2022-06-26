@@ -90,7 +90,7 @@ router
   .post('/check_address', async (ctx) => {
     const data = ctx.request.body;
     console.log(data);
-    console.log(`amount = ${data.qrcode_address}`);
+    console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
 
     ctx.body = {

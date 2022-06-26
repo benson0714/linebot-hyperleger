@@ -137,10 +137,11 @@ async function qrcode() {
         return getData(res);
     })
     .then(()=>{
-        return liff.closeWindow();
+        liff.closeWindow();
     })
     .catch(function(error) {
         alert(error);
+        liff.closeWindow();
     });
 };
 
