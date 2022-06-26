@@ -137,7 +137,7 @@ async function qrcode() {
         return getData(res);
     })
     .then(()=>{
-        liff.closeWindow();
+        return liff.closeWindow();
     })
     .catch(function(error) {
         alert(error);
