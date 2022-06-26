@@ -127,7 +127,7 @@ function initializeLiff(myLiffId) {
 /**
 * Register event handlers for the buttons displayed in the app
 */
-async function qrcode() {
+function qrcode() {
     // qrcode 
     liff.scanCodeV2()
     .then(function(res) {
@@ -162,8 +162,8 @@ function getData(qrcode_address){
 }
 
 $(function() {
-    $('#btn').on('click', async function(e) {
-      await qrcode();
+    $('#btn').on('click', function(e) {
+      qrcode();
     })
 });
 
