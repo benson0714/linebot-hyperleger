@@ -100,7 +100,7 @@ router
     const time = data.time;
     check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time);
     ctx.body = {
-      amount: data.input_amount
+      amount: data.amount
     }
   })
   .post('/check_amount', async (ctx) => {
