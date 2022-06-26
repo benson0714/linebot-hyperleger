@@ -93,10 +93,12 @@ router
     console.log(data);
     console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
-    const amount = data.input_amount;
+    const amount = data.amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
+    const address = data.qrcode_address;
+    const time = data.time;
+    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time);
     ctx.body = {
       amount: data.input_amount
     }
@@ -106,12 +108,11 @@ router
     console.log(data);
     console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
-    const amount = data.amount;
+    const amount = data.input_amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    const address = data.address;
-    const time = data.time;
-    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time);
+
+    check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
     ctx.body = {
       amount: data.input_amount
     }
