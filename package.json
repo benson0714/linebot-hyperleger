@@ -7,9 +7,9 @@
     "start": "node ."
   },
   "engines": {
-    "node": "10.15.3"
+    "node": "16.15.1"
   },
-  "author": "",
+  "author": "Benson",
   "license": "ISC",
   "dependencies": {
     "@line/liff": "^2.18.1",
