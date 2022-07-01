@@ -10,7 +10,7 @@ const richMenu = require('./lib/example/richMenu.js');
 const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 const check_amount_func = require('./lib/hyperledgerAPI/check_amount_liff.js');
 const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js');
-const levelDB = require("./lib/levelDB/createDB.js");
+const createDB = require("./lib/levelDB/createDB.js");
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -119,7 +119,13 @@ router
     }
   })
   .post('/createDB', async (ctx)=>{
-    levelDB.run();
+    const data = ctx.request.body;
+    const userId = data.userId;
+
+    const jwtToken = createDB.createDB(userId);
+    ctx.body={
+      jwtToken:jwtToken
+    }
   });
 
 app.use(router.routes());

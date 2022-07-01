@@ -49,6 +49,25 @@ function initializeLiff(myLiffId) {
             liff.getProfile()
             .then((res)=>{
                 userId = res['userId'];
+                return userId;
+            })
+            .then((res)=>{
+              const message = {
+                "userId": res
+              }
+              $.ajax({
+                url:'/createDB',
+                type : "POST",
+                data : message,
+                dataType: "json",
+                success : function(data) 
+                {
+                    console.log(data);
+                },error: function(data) 
+                {
+                    console.log('無法送出');
+                }
+            })     
             })
         })
 }
