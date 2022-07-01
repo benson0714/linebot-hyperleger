@@ -123,6 +123,7 @@ router
     const userId = data.userId;
 
     const jwtToken = createDB.createDB(userId);
+    console.log(`jwt token in index.js${jwtToken}`);
     ctx.body={
       jwtToken:jwtToken
     }
