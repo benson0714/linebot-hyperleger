@@ -125,11 +125,11 @@ router
     const temp = await createDB.createDB(userId);
     console.log(temp);
     const jwtToken = temp[0];
-    const status = temp[1];
+    const state = temp[1];
     console.log(`jwt token in index.js${jwtToken}`);
     ctx.body={
       jwtToken:jwtToken,
-      status: status
+      state: state
     }
   });
 
