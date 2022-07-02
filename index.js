@@ -122,10 +122,10 @@ router
     const data = ctx.request.body;
     const userId = data.userId;
 
-    const result = await createDB.createDB(userId);
-    console.log(result);
-    const jwtToken = result[0];
-    const status = result[1];
+    const temp = await createDB.createDB(userId);
+    console.log(temp);
+    const jwtToken = temp[0];
+    const status = temp[1];
     console.log(`jwt token in index.js${jwtToken}`);
     ctx.body={
       jwtToken:jwtToken,
