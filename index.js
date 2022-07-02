@@ -113,7 +113,7 @@ router
     const tokenId = data.tokenId;
     const userId = data.userId;
 
-    check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
+    await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
     ctx.body = {
       amount: data.input_amount
     }
@@ -122,10 +122,13 @@ router
     const data = ctx.request.body;
     const userId = data.userId;
 
-    const jwtToken = await createDB.createDB(userId);
+    const result = await createDB.createDB(userId);
+    const jwtToken = result[0];
+    const status = result[1];
     console.log(`jwt token in index.js${jwtToken}`);
     ctx.body={
-      jwtToken:jwtToken
+      jwtToken:jwtToken,
+      status: status
     }
   });
 

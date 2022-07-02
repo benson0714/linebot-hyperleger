@@ -6,6 +6,7 @@ window.onload = function () {
   // DO NOT CHANGE THIS
   let myLiffId = "";
   let jwtToken = "";
+  let state = "";
 
   // if node is used, fetch the environment variable and pass it to the LIFF method
   // otherwise, pass defaultLiffId
@@ -63,6 +64,7 @@ function initializeLiff(myLiffId) {
             dataType: "json",
             success: function (data) {
               jwtToken = data['jwtToken'];
+              state = data['state'];
             }, error: function (data) {
               console.log('無法送出');
             }
@@ -145,7 +147,8 @@ $(function () {
     formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
     formData.push({ 'name': 'userId', 'value': userId });
     formData.push({"name":"jwtToken", "value": jwtToken});
-    
+    formData.push({"name":"state", "value":state});
+
     $.ajax({
       url: '/check_amount',
       type: "POST",
