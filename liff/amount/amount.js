@@ -75,6 +75,7 @@ function initializeLiff(myLiffId) {
         })
         .then((res)=>{
           // 如果已經在step2狀態卻跑回來執行step1
+          console.log(`res = ${res}`)
           if (res === 'step2handle') {
             console.log('enter step2handle');
             const message = {
