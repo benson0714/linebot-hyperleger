@@ -71,32 +71,32 @@ function initializeLiff(myLiffId) {
           })
           return res;
         })
-
-    })
-    .then(()=>{
-      // 如果已經在step2狀態卻跑回來執行step1
-      state = 'step2handle'
-      if (state === 'step2handle') {
-        const message = {
-          "userId": userId,
-          "state": state,
-          "currentState": "step1"
-        }
-        $.ajax({
-          url: '/errorStateHandle',
-          type: "POST",
-          data: message,
-          dataType: "json",
-          success: function (data) {
-            liff.closeWindow();
-          }, error: function (data) {
-            console.log('無法送出');
+        .then(()=>{
+          // 如果已經在step2狀態卻跑回來執行step1
+          state = 'step2handle'
+          if (state === 'step2handle') {
+            const message = {
+              "userId": userId,
+              "state": state,
+              "currentState": "step1"
+            }
+            $.ajax({
+              url: '/errorStateHandle',
+              type: "POST",
+              data: message,
+              dataType: "json",
+              success: function (data) {
+                liff.closeWindow();
+              }, error: function (data) {
+                console.log('無法送出');
+              }
+            })
+          }else {
+            return;
           }
         })
-      }else {
-        return;
-      }
     })
+
 }
 
 // 不能用大寫的網址!!!
