@@ -11,6 +11,7 @@ const replyPostback = require('./lib/replyRoot/replyPostMessage.js');
 const check_amount_func = require('./lib/hyperledgerAPI/check_amount_liff.js');
 const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js');
 const createDB = require("./lib/levelDB/createDB.js");
+const stateError = require('./lib/ErrorHandle/stateError.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -112,7 +113,8 @@ router
     const amount = data.input_amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-
+    const currentState = data.currentState;
+    const state = data.state;
     await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
     ctx.body = {
       amount: data.input_amount
@@ -131,6 +133,13 @@ router
       jwtToken:jwtToken,
       state: state
     }
+  })
+  .post('/errorStateHandle', async (ctx)=>{
+    const data = ctx.request.body;
+    const userId = data.userId;
+    const state = data.state; // 目前已經執行到的state
+    const currentState = data.currentState; // 錯誤執行的state
+    stateError.stateError(userId, lineBotToken, state, currentState);
   });
 
 app.use(router.routes());
