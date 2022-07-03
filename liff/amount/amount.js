@@ -53,11 +53,10 @@ function initializeLiff(myLiffId) {
       liff.getProfile()
         .then((res) => {
           userId = res['userId'];
-          return userId;
         })
-        .then((res) => {
+        .then(() => {
           const message = {
-            "userId": res
+            "userId": userId
           }
           $.ajax({
             url: '/createDB',
