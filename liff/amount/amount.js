@@ -1,5 +1,3 @@
-const { default: liff } = require("@line/liff/dist/lib");
-
 var userId = '';
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
