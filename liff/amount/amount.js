@@ -28,7 +28,7 @@ window.onload = function () {
 
 const errorStateHandle = (res) => {
   // 如果已經在step2狀態卻跑回來執行step1
-  console.log(`res = ${res}`)
+  console.log(`err res = ${res}`)
   if (res === 'step2handle') {
     console.log('enter step2handle');
     const message = {
@@ -44,6 +44,7 @@ const errorStateHandle = (res) => {
       success: function (data) {
         liff.closeWindow();
       }, error: function (err) {
+        liff.closeWindow();
         console.log(`無法送出 ${err}`);
       }
     })
