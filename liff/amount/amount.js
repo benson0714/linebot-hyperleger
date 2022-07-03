@@ -67,7 +67,6 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
-              return state;
             }, error: function (data) {
               console.log('無法送出');
             }
