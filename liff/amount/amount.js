@@ -78,7 +78,7 @@ function initializeLiff(myLiffId) {
       state = 'step2handle'
       if (state === 'step2handle') {
         const message = {
-          "userId": res,
+          "userId": userId,
           "state": state,
           "currentState": "step1"
         }
