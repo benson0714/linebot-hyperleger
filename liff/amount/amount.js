@@ -1,3 +1,5 @@
+const { default: liff } = require("@line/liff/dist/lib");
+
 var userId = '';
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
@@ -89,6 +91,7 @@ function initializeLiff(myLiffId) {
                 liff.closeWindow();
               }, error: function (data) {
                 console.log('無法送出');
+                liff.closeWindow();
               }
             })
           }else {
