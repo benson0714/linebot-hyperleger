@@ -84,24 +84,26 @@ function initializeLiff(myLiffId) {
           const message = {
             "userId": res
           }
-          return $.ajax({
+          $.ajax({
             url: '/createDB',
             type: "POST",
             data: message,
+            async : false,
             dataType: "json",
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
               state = 'step2handle'
               console.log(state)
-              return state;
+
             }, error: function (data) {
               console.log('無法送出');
             }
           })
-
+          return state;
         })
         .then((res)=>{
+          console.log(`res = ${res}`)
           errorStateHandle(res);
         })
     })
