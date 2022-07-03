@@ -69,6 +69,7 @@ function initializeLiff(myLiffId) {
               console.log('無法送出');
             }
           })
+          return res;
         })
 
     })
