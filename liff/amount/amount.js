@@ -1,5 +1,6 @@
 const { default: liff } = require("@line/liff/dist/lib");
-
+let jwtToken = "";
+let state = "";
 var userId = '';
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
@@ -7,8 +8,7 @@ window.onload = function () {
 
   // DO NOT CHANGE THIS
   let myLiffId = "";
-  let jwtToken = "";
-  let state = "";
+
 
   // if node is used, fetch the environment variable and pass it to the LIFF method
   // otherwise, pass defaultLiffId
