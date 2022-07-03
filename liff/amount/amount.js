@@ -65,6 +65,7 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
+              state = 'step2handle'
             }, error: function (data) {
               console.log('無法送出');
             }
@@ -73,7 +74,7 @@ function initializeLiff(myLiffId) {
         })
         .then(()=>{
           // 如果已經在step2狀態卻跑回來執行step1
-          state = 'step2handle'
+
           if (state === 'step2handle') {
             const message = {
               "userId": userId,
