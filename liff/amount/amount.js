@@ -1,12 +1,12 @@
 var userId = '';
+let jwtToken = "";
+let state = "";
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
   const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
   // DO NOT CHANGE THIS
   let myLiffId = "";
-  let jwtToken = "";
-  let state = "";
 
   // if node is used, fetch the environment variable and pass it to the LIFF method
   // otherwise, pass defaultLiffId
@@ -66,11 +66,12 @@ function initializeLiff(myLiffId) {
               jwtToken = data['jwtToken'];
               state = data['state'];
               state = 'step2handle'
+              return state;
             }, error: function (data) {
               console.log('無法送出');
             }
           })
-          return state;
+
         })
         .then((res)=>{
           // 如果已經在step2狀態卻跑回來執行step1
