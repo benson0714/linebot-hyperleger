@@ -72,6 +72,7 @@ function initializeLiff(myLiffId) {
         })
         .then(()=>{
           // 如果已經在step2狀態卻跑回來執行step1
+          state = 'step2handle'
           if (state === 'step2handle') {
             const message = {
               "userId": res,
