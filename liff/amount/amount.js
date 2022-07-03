@@ -1,6 +1,3 @@
-const { default: liff } = require("@line/liff/dist/lib");
-let jwtToken = "";
-let state = "";
 var userId = '';
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
@@ -8,7 +5,8 @@ window.onload = function () {
 
   // DO NOT CHANGE THIS
   let myLiffId = "";
-
+  let jwtToken = "";
+  let state = "";
 
   // if node is used, fetch the environment variable and pass it to the LIFF method
   // otherwise, pass defaultLiffId
@@ -53,10 +51,11 @@ function initializeLiff(myLiffId) {
       liff.getProfile()
         .then((res) => {
           userId = res['userId'];
+          return userId;
         })
-        .then(() => {
+        .then((res) => {
           const message = {
-            "userId": userId
+            "userId": res
           }
           $.ajax({
             url: '/createDB',
@@ -71,7 +70,6 @@ function initializeLiff(myLiffId) {
             }
           })
         })
-
     })
 }
 
@@ -148,9 +146,9 @@ $(function () {
     var formData = $('form').serializeArray();
     formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
     formData.push({ 'name': 'userId', 'value': userId });
-    formData.push({ "name": "jwtToken", "value": jwtToken });
-    formData.push({ "name": "state", "value": state });
-    formData.push({ "name": "currentState", "value": "step1" });
+    formData.push({"name":"jwtToken", "value": jwtToken});
+    formData.push({"name":"state", "value":state});
+
     $.ajax({
       url: '/check_amount',
       type: "POST",
