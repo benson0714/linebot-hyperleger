@@ -26,14 +26,14 @@ window.onload = function () {
   }
 };
 
-const errorStateHandle = () => {
+const errorStateHandle = (res) => {
   // 如果已經在step2狀態卻跑回來執行step1
-  console.log(`res = ${state}`)
-  if (state === 'step2handle') {
+  console.log(`res = ${res}`)
+  if (res === 'step2handle') {
     console.log('enter step2handle');
     const message = {
       "userId": userId,
-      "state": state,
+      "state": res,
       "currentState": "step1"
     }
     $.ajax({
@@ -47,6 +47,7 @@ const errorStateHandle = () => {
         console.log(`無法送出 ${err}`);
       }
     })
+
   } else {
     return;
   }
@@ -83,7 +84,7 @@ function initializeLiff(myLiffId) {
           const message = {
             "userId": res
           }
-          $.ajax({
+          return $.ajax({
             url: '/createDB',
             type: "POST",
             data: message,
@@ -92,12 +93,16 @@ function initializeLiff(myLiffId) {
               jwtToken = data['jwtToken'];
               state = data['state'];
               state = 'step2handle'
+              console.log(state)
               return state;
             }, error: function (data) {
               console.log('無法送出');
             }
           })
 
+        })
+        .then((res)=>{
+          errorStateHandle(res);
         })
     })
 
