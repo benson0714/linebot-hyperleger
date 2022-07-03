@@ -91,7 +91,6 @@ function initializeLiff(myLiffId) {
                 liff.closeWindow();
               }, error: function (data) {
                 console.log('無法送出');
-                liff.closeWindow();
               }
             })
           }else {
