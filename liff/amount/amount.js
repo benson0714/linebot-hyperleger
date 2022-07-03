@@ -1,3 +1,5 @@
+const { time } = require("console");
+
 var userId = '';
 let jwtToken = "";
 let state = "";
@@ -73,7 +75,7 @@ function initializeLiff(myLiffId) {
           })
 
         })
-        .then((res)=>{
+        .then(setTimeout((res)=>{
           // 如果已經在step2狀態卻跑回來執行step1
           console.log(`res = ${res}`)
           if (res === 'step2handle') {
@@ -97,7 +99,7 @@ function initializeLiff(myLiffId) {
           }else {
             return;
           }
-        })
+        }), 1000)
     })
 
 }
