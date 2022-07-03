@@ -1,5 +1,3 @@
-const { time } = require("console");
-
 var userId = '';
 let jwtToken = "";
 let state = "";
@@ -28,6 +26,31 @@ window.onload = function () {
   }
 };
 
+const errorStateHandle = ()=>{
+            // 如果已經在step2狀態卻跑回來執行step1
+            console.log(`res = ${state}`)
+            if (res === 'step2handle') {
+              console.log('enter step2handle');
+              const message = {
+                "userId": userId,
+                "state": state,
+                "currentState": "step1"
+              }
+              $.ajax({
+                url: '/errorStateHandle',
+                type: "POST",
+                data: message,
+                dataType: "json",
+                success: function (data) {
+                  liff.closeWindow();
+                }, error: function (err) {
+                  console.log(`無法送出 ${err}`);
+                }
+              })
+            }else {
+              return;
+            }
+}
 /**
 * Check if myLiffId is null. If null do not initiate liff.
 * @param {string} myLiffId The LIFF ID of the selected element
@@ -37,6 +60,7 @@ function initializeLiffOrDie(myLiffId) {
     alert('initializeLiff first');
   } else {
     initializeLiff(myLiffId);
+    errorStateHandle();
   }
 }
 
@@ -75,31 +99,6 @@ function initializeLiff(myLiffId) {
           })
 
         })
-        .then(setTimeout((res)=>{
-          // 如果已經在step2狀態卻跑回來執行step1
-          console.log(`res = ${res}`)
-          if (res === 'step2handle') {
-            console.log('enter step2handle');
-            const message = {
-              "userId": userId,
-              "state": res,
-              "currentState": "step1"
-            }
-            $.ajax({
-              url: '/errorStateHandle',
-              type: "POST",
-              data: message,
-              dataType: "json",
-              success: function (data) {
-                liff.closeWindow();
-              }, error: function (err) {
-                console.log(`無法送出 ${err}`);
-              }
-            })
-          }else {
-            return;
-          }
-        }), 1000)
     })
 
 }
