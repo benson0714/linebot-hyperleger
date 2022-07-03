@@ -89,8 +89,8 @@ function initializeLiff(myLiffId) {
               dataType: "json",
               success: function (data) {
                 liff.closeWindow();
-              }, error: function (data) {
-                console.log('無法送出');
+              }, error: function (err) {
+                console.log(`無法送出 ${err}`);
               }
             })
           }else {
