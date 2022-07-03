@@ -66,12 +66,11 @@ function initializeLiff(myLiffId) {
               jwtToken = data['jwtToken'];
               state = data['state'];
               state = 'step2handle'
-              return state;
             }, error: function (data) {
               console.log('無法送出');
             }
           })
-          return res;
+          return state;
         })
         .then((res)=>{
           // 如果已經在step2狀態卻跑回來執行step1
