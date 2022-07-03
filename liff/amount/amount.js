@@ -26,30 +26,30 @@ window.onload = function () {
   }
 };
 
-const errorStateHandle = ()=>{
-            // 如果已經在step2狀態卻跑回來執行step1
-            console.log(`res = ${state}`)
-            if (res === 'step2handle') {
-              console.log('enter step2handle');
-              const message = {
-                "userId": userId,
-                "state": state,
-                "currentState": "step1"
-              }
-              $.ajax({
-                url: '/errorStateHandle',
-                type: "POST",
-                data: message,
-                dataType: "json",
-                success: function (data) {
-                  liff.closeWindow();
-                }, error: function (err) {
-                  console.log(`無法送出 ${err}`);
-                }
-              })
-            }else {
-              return;
-            }
+const errorStateHandle = () => {
+  // 如果已經在step2狀態卻跑回來執行step1
+  console.log(`res = ${state}`)
+  if (state === 'step2handle') {
+    console.log('enter step2handle');
+    const message = {
+      "userId": userId,
+      "state": state,
+      "currentState": "step1"
+    }
+    $.ajax({
+      url: '/errorStateHandle',
+      type: "POST",
+      data: message,
+      dataType: "json",
+      success: function (data) {
+        liff.closeWindow();
+      }, error: function (err) {
+        console.log(`無法送出 ${err}`);
+      }
+    })
+  } else {
+    return;
+  }
 }
 /**
 * Check if myLiffId is null. If null do not initiate liff.
@@ -176,8 +176,8 @@ $(function () {
     var formData = $('form').serializeArray();
     formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
     formData.push({ 'name': 'userId', 'value': userId });
-    formData.push({"name":"jwtToken", "value": jwtToken});
-    formData.push({"name":"state", "value":state});
+    formData.push({ "name": "jwtToken", "value": jwtToken });
+    formData.push({ "name": "state", "value": state });
 
     $.ajax({
       url: '/check_amount',
