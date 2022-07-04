@@ -146,7 +146,8 @@ function initializeLiff(myLiffId) {
             })
             .then((res) => {
               const message = {
-                "userId": res
+                "userId": res,
+                "jwtToken": jwtToken
               }
               $.ajax({
                 url: '/step2checkDB',
@@ -166,7 +167,7 @@ function initializeLiff(myLiffId) {
             })
             .then((res) => {
               console.log(`res = ${res[0]}`)
-              if (res[0] === 'step1handle' || res ==="expireMessage") {
+              if (res[0] === 'step1handle' || res[0] ==="expireMessage" || res[0] === 'stepXhandle') {
                 errorStateHandle(res[0], res[1]);
               }
             })

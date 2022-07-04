@@ -151,7 +151,7 @@ router
     const userId = data.userId;
     const jwtToken = data.jwtToken;
     const state = await step2CheckDB.step2checkDB(userId, jwtToken);
-    console.log('state');
+    console.log(state);
     ctx.body = {
       state:state
     }
