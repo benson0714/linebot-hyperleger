@@ -25,7 +25,7 @@ window.onload = function () {
   }
 };
 
-const errorStateHandle = (res) => {
+const errorStateHandle = (res, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
   console.log(`err res = ${res}`)
   if (res === 'step2handle') {
@@ -100,11 +100,11 @@ function initializeLiff(myLiffId) {
               console.log('無法送出');
             }
           })
-          return state;
+          return [state, res];
         })
         .then((res)=>{
-          console.log(`res = ${res}`)
-          errorStateHandle(res);
+          console.log(`res = ${res[0]}`)
+          errorStateHandle(res[0], res[1]);
         })
     })
 
