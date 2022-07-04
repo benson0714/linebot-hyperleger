@@ -113,7 +113,7 @@ router
     const amount = data.input_amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    const currentState = data.currentState;
+    const jwtToken = data.jwtToken;
     const state = data.state;
     await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId);
     ctx.body = {
