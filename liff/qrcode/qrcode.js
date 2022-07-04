@@ -63,7 +63,6 @@ function getAllUrlParams(url) {
   
     return obj;
   }
-var userId = "";
 const amount = getAllUrlParams().amount
 const tokenId = getAllUrlParams().tokenid;
 const old_time = getAllUrlParams().time;
@@ -142,7 +141,8 @@ function initializeLiff(myLiffId) {
         .then(()=>{
             liff.getProfile()
             .then((res)=>{
-                userId = res['userId'];
+                const userId = res['userId'];
+                return userId;
             })
             .then((res) => {
               const message = {
@@ -155,7 +155,6 @@ function initializeLiff(myLiffId) {
                 async: false,
                 dataType: "json",
                 success: function (data) {
-                  jwtToken = data['jwtToken'];
                   state = data['state'];
                   console.log(state)
     
@@ -163,12 +162,12 @@ function initializeLiff(myLiffId) {
                   console.log('無法送出');
                 }
               })
-              return [state, res];
+              return state;
             })
             .then((res) => {
-              console.log(`res = ${res[0]}`)
-              if (res[0] === 'step2handle') {
-                errorStateHandle(res[0], res[1]);
+              console.log(`res = ${res}`)
+              if (res[0] === 'step1handle') {
+                errorStateHandle(jwtToken, res);
               }
             })
         })

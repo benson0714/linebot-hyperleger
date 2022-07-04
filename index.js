@@ -152,7 +152,6 @@ router
     const jwtToken = data.jwtToken;
     const state = step2CheckDB.step2checkDB(userId, jwtToken);
     ctx.body = {
-      jwtToken:jwtToken,
       state:state
     }
   });
