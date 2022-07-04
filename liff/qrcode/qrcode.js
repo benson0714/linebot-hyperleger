@@ -67,7 +67,7 @@ var userId = "";
 const amount = getAllUrlParams().amount
 const tokenId = getAllUrlParams().tokenid;
 const old_time = getAllUrlParams().time;
-const jwtToken = getAllUrlParams().jwttoken;
+let jwtToken = getAllUrlParams().jwttoken;
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -149,7 +149,7 @@ function initializeLiff(myLiffId) {
                 "userId": res
               }
               $.ajax({
-                url: '/checkDB',
+                url: '/step2checkDB',
                 type: "POST",
                 data: message,
                 async: false,

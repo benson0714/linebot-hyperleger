@@ -146,12 +146,13 @@ router
       state: state
     }
   })
-  .post('/checkDB', async(ctx)=>{
+  .post('/step2checkDB', async(ctx)=>{
     const data = ctx.request.body;
     const userId = data.userId;
     const jwtToken = data.jwtToken;
     const state = step2CheckDB.step2checkDB(userId, jwtToken);
     ctx.body = {
+      jwtToken:jwtToken,
       state:state
     }
   });
