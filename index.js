@@ -13,6 +13,7 @@ const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js')
 const createDB = require("./lib/levelDB/createDB.js");
 const stateError = require('./lib/ErrorHandle/stateError.js');
 
+
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
 const path = require('path');
