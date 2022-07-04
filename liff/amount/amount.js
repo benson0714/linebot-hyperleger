@@ -108,7 +108,7 @@ const errorStateHandle = (res, userId) => {
       success: function (data) {
         liff.closeWindow();
       }, error: function (err) {
-       // liff.closeWindow();
+        liff.closeWindow();
         console.log(`無法送出 ${err}`);
       }
     })
@@ -158,7 +158,6 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
-              state = 'step2handle'
               console.log(state)
 
             }, error: function (data) {
