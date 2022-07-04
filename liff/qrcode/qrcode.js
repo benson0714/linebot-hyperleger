@@ -162,12 +162,12 @@ function initializeLiff(myLiffId) {
                   console.log('無法送出');
                 }
               })
-              return state;
+              return [state, res];
             })
             .then((res) => {
-              console.log(`res = ${res}`)
-              if (res[0] === 'step1handle') {
-                errorStateHandle(jwtToken, res);
+              console.log(`res = ${res[0]}`)
+              if (res[0] === 'step1handle' || res ==="expireMessage") {
+                errorStateHandle(res[0], res[1]);
               }
             })
         })
