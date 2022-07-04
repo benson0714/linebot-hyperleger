@@ -12,7 +12,7 @@ const check_amount_func = require('./lib/hyperledgerAPI/check_amount_liff.js');
 const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js');
 const createDB = require("./lib/levelDB/createDB.js");
 const stateError = require('./lib/ErrorHandle/stateError.js');
-
+const step2CheckDB = require('./lib/levelDB/step2CheckDB.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -106,6 +106,7 @@ router
       amount: data.amount
     }
   })
+  //檢查輸入數量後submit按鈕
   .post('/check_amount', async (ctx) => {
     const data = ctx.request.body;
     console.log(data);
@@ -144,7 +145,15 @@ router
     ctx.body = {
       state: state
     }
-  
+  })
+  .post('/checkDB', async(ctx)=>{
+    const data = ctx.request.body;
+    const userId = data.userId;
+    const jwtToken = data.jwtToken;
+    const state = step2CheckDB.step2checkDB(userId, jwtToken);
+    ctx.body = {
+      state:state
+    }
   });
 
 app.use(router.routes());

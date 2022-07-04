@@ -93,29 +93,26 @@ window.onload = function () {
 const errorStateHandle = (res, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
   console.log(`err res = ${res}`)
-  if (res === 'step2handle') {
-    console.log('enter step2handle');
-    const message = {
-      "userId": userId,
-      "state": res,
-      "currentState": "step1"
-    }
-    $.ajax({
-      url: '/errorStateHandle',
-      type: "POST",
-      data: message,
-      dataType: "json",
-      success: function (data) {
-        liff.closeWindow();
-      }, error: function (err) {
-        liff.closeWindow();
-        console.log(`無法送出 ${err}`);
-      }
-    })
 
-  } else {
-    return;
+  console.log('enter step2handle');
+  const message = {
+    "userId": userId,
+    "state": res,
+    "currentState": "step1"
   }
+  $.ajax({
+    url: '/errorStateHandle',
+    type: "POST",
+    data: message,
+    dataType: "json",
+    success: function (data) {
+      liff.closeWindow();
+    }, error: function (err) {
+      liff.closeWindow();
+      console.log(`無法送出 ${err}`);
+    }
+  })
+
 }
 /**
 * Check if myLiffId is null. If null do not initiate liff.
@@ -126,7 +123,6 @@ function initializeLiffOrDie(myLiffId) {
     alert('initializeLiff first');
   } else {
     initializeLiff(myLiffId);
-    errorStateHandle();
   }
 }
 
@@ -153,7 +149,7 @@ function initializeLiff(myLiffId) {
             url: '/createDB',
             type: "POST",
             data: message,
-            async : false,
+            async: false,
             dataType: "json",
             success: function (data) {
               jwtToken = data['jwtToken'];
@@ -166,45 +162,47 @@ function initializeLiff(myLiffId) {
           })
           return [state, res];
         })
-        .then((res)=>{
+        .then((res) => {
           console.log(`res = ${res[0]}`)
-          errorStateHandle(res[0], res[1]);
+          if (res[0] === 'step2handle') {
+            errorStateHandle(res[0], res[1]);
+          }
         })
     })
 
 }
 
 
-
-
 $(function () {
   $('#btn').on('click', function (e) {
+
+    $('.loader-inner').loaders();
     e.preventDefault();
     liff.getProfile()
-    .then((res) => {
-      const userId = res['userId'];
-      return userId;
-    })
-    .then((res)=>{
-      var formData = $('form').serializeArray();
-      formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
-      formData.push({ 'name': 'userId', 'value': res });
-      formData.push({ "name": "jwtToken", "value": jwtToken });
-      formData.push({ "name": "state", "value": state });
-  
-      $.ajax({
-        url: '/check_amount',
-        type: "POST",
-        data: formData,
-        dataType: "json",
-        success: function (data) {
-          liff.closeWindow();
-        }, error: function (data) {
-          console.log('無法送出');
-        }
+      .then((res) => {
+        const userId = res['userId'];
+        return userId;
       })
-    })
-    
+      .then((res) => {
+        var formData = $('form').serializeArray();
+        formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
+        formData.push({ 'name': 'userId', 'value': res });
+        formData.push({ "name": "jwtToken", "value": jwtToken });
+        formData.push({ "name": "state", "value": state });
+
+        $.ajax({
+          url: '/check_amount',
+          type: "POST",
+          data: formData,
+          dataType: "json",
+          success: function () {
+            liff.closeWindow();
+          }, error: function () {
+            console.log('無法送出');
+          }
+        })
+      })
+
   });
 });
 

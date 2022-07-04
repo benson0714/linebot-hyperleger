@@ -105,7 +105,30 @@ function initializeLiffOrDie(myLiffId) {
         initializeLiff(myLiffId);
     }
 }
+const errorStateHandle = (res, userId) => {
+  // 如果已經在step2狀態卻跑回來執行step1
+  console.log(`err res = ${res}`)
 
+  console.log('enter step1handle');
+  const message = {
+    "userId": userId,
+    "state": res,
+    "currentState": "step2"
+  }
+  $.ajax({
+    url: '/errorStateHandle',
+    type: "POST",
+    data: message,
+    dataType: "json",
+    success: function (data) {
+      liff.closeWindow();
+    }, error: function (err) {
+      liff.closeWindow();
+      console.log(`無法送出 ${err}`);
+    }
+  })
+
+}
 /**
 * Initialize LIFF
 * @param {string} myLiffId The LIFF ID of the selected element
@@ -119,6 +142,33 @@ function initializeLiff(myLiffId) {
             liff.getProfile()
             .then((res)=>{
                 userId = res['userId'];
+            })
+            .then((res) => {
+              const message = {
+                "userId": res
+              }
+              $.ajax({
+                url: '/checkDB',
+                type: "POST",
+                data: message,
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                  jwtToken = data['jwtToken'];
+                  state = data['state'];
+                  console.log(state)
+    
+                }, error: function (data) {
+                  console.log('無法送出');
+                }
+              })
+              return [state, res];
+            })
+            .then((res) => {
+              console.log(`res = ${res[0]}`)
+              if (res[0] === 'step2handle') {
+                errorStateHandle(res[0], res[1]);
+              }
             })
         })
 }
