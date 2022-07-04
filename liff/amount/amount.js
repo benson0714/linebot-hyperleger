@@ -1,4 +1,3 @@
-var userId = '';
 let jwtToken = "";
 let state = "";
 window.onload = function () {
@@ -78,7 +77,7 @@ function initializeLiff(myLiffId) {
     .then(() => {
       liff.getProfile()
         .then((res) => {
-          userId = res['userId'];
+          const userId = res['userId'];
           return userId;
         })
         .then((res) => {
@@ -181,23 +180,31 @@ function getAllUrlParams(url) {
 $(function () {
   $('#btn').on('click', function (e) {
     e.preventDefault();
-    var formData = $('form').serializeArray();
-    formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
-    formData.push({ 'name': 'userId', 'value': userId });
-    formData.push({ "name": "jwtToken", "value": jwtToken });
-    formData.push({ "name": "state", "value": state });
-
-    $.ajax({
-      url: '/check_amount',
-      type: "POST",
-      data: formData,
-      dataType: "json",
-      success: function (data) {
-        liff.closeWindow();
-      }, error: function (data) {
-        console.log('無法送出');
-      }
+    liff.getProfile()
+    .then((res) => {
+      const userId = res['userId'];
+      return userId;
     })
+    .then((res)=>{
+      var formData = $('form').serializeArray();
+      formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
+      formData.push({ 'name': 'userId', 'value': res });
+      formData.push({ "name": "jwtToken", "value": jwtToken });
+      formData.push({ "name": "state", "value": state });
+  
+      $.ajax({
+        url: '/check_amount',
+        type: "POST",
+        data: formData,
+        dataType: "json",
+        success: function (data) {
+          liff.closeWindow();
+        }, error: function (data) {
+          console.log('無法送出');
+        }
+      })
+    })
+    
   });
 });
 
