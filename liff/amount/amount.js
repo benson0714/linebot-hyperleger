@@ -176,7 +176,6 @@ function initializeLiff(myLiffId) {
 $(function () {
   $('#btn').on('click', function (e) {
 
-    $('.loader-inner').loaders();
     e.preventDefault();
     liff.getProfile()
       .then((res) => {
