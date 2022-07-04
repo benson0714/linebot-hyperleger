@@ -24,9 +24,9 @@ function getAllUrlParams(url) {
         var paramName = a[0];
         var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
   
-        // (optional) keep case consistent
-        paramName = paramName.toLowerCase();
-        if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+        // // (optional) keep case consistent
+        // paramName = paramName.toLowerCase();
+        // if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
   
         // if the paramName ends with square brackets, e.g. colors[] or colors[2]
         if (paramName.match(/\[(\d+)?\]$/)) {
@@ -64,9 +64,9 @@ function getAllUrlParams(url) {
     return obj;
   }
 const amount = getAllUrlParams().amount
-const tokenId = getAllUrlParams().tokenid;
+const tokenId = getAllUrlParams().tokenId;
 const old_time = getAllUrlParams().time;
-let jwtToken = getAllUrlParams().jwttoken;
+let jwtToken = getAllUrlParams().jwtToken;
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
