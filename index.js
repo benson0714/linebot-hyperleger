@@ -139,7 +139,11 @@ router
     const userId = data.userId;
     const state = data.state; // 目前已經執行到的state
     const currentState = data.currentState; // 錯誤執行的state
-    stateError.stateError(userId, lineBotToken, state, currentState);
+    await stateError.stateError(userId, lineBotToken, state, currentState);
+    ctx.body = {
+      state: state
+    }
+  
   });
 
 app.use(router.routes());
