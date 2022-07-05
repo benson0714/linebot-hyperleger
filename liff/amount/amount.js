@@ -26,10 +26,6 @@ function getAllUrlParams(url) {
       var paramName = a[0];
       var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
-      // (optional) keep case consistent
-      paramName = paramName.toLowerCase();
-      if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
-
       // if the paramName ends with square brackets, e.g. colors[] or colors[2]
       if (paramName.match(/\[(\d+)?\]$/)) {
 
@@ -184,7 +180,7 @@ $(function () {
       })
       .then((res) => {
         var formData = $('form').serializeArray();
-        formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenid });
+        formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
         formData.push({ "name": "jwtToken", "value": jwtToken });
         formData.push({ "name": "state", "value": state });
