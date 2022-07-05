@@ -101,7 +101,8 @@ router
     const userId = data.userId;
     const address = data.qrcode_address;
     const time = data.time;
-    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time);
+    const jwtToken = data.jwtToken;
+    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
     ctx.body = {
       amount: data.amount
     }
@@ -116,7 +117,6 @@ router
     const tokenId = data.tokenId;
     const userId = data.userId;
     const jwtToken = data.jwtToken;
-    const state = data.state;
     await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
     ctx.body = {
       amount: data.input_amount

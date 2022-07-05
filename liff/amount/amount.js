@@ -1,5 +1,4 @@
 let jwtToken = "";
-let state = "";
 // 不能用大寫的網址!!!
 function getAllUrlParams(url) {
 
@@ -149,7 +148,7 @@ function initializeLiff(myLiffId) {
             dataType: "json",
             success: function (data) {
               jwtToken = data['jwtToken'];
-              state = data['state'];
+              const state = data['state'];
               console.log(state)
 
             }, error: function (data) {
@@ -159,6 +158,7 @@ function initializeLiff(myLiffId) {
           return [state, res, jwtToken];
         })
         .then((res) => {
+          // error handler
           console.log(`res = ${res[0]}`)
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
             jwtToken = res[2];
@@ -184,7 +184,6 @@ $(function () {
         formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
         formData.push({ "name": "jwtToken", "value": jwtToken });
-        formData.push({ "name": "state", "value": state });
 
         $.ajax({
           url: '/check_amount',

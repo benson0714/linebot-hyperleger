@@ -66,7 +66,6 @@ function getAllUrlParams(url) {
 const amount = getAllUrlParams().amount
 const tokenId = getAllUrlParams().tokenId;
 const old_time = getAllUrlParams().time;
-let jwtToken = getAllUrlParams().jwtToken;
 window.onload = function() {
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -147,7 +146,7 @@ function initializeLiff(myLiffId) {
             .then((res) => {
               const message = {
                 "userId": res,
-                "jwtToken": jwtToken
+                "jwtToken": getAllUrlParams().jwtToken
               }
               $.ajax({
                 url: '/step2checkDB',
@@ -201,7 +200,8 @@ function getData(qrcode_address){
             "amount":amount, 
             "time":old_time, 
             "userId":userId, 
-            "tokenId":tokenId
+            "tokenId":tokenId,
+            "jwtToken":getAllUrlParams().jwtToken
         }
         $.ajax({
             url:'/check_address',
