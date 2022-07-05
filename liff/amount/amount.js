@@ -156,11 +156,12 @@ function initializeLiff(myLiffId) {
               console.log('無法送出');
             }
           })
-          return [state, res];
+          return [state, res, jwtToken];
         })
         .then((res) => {
           console.log(`res = ${res[0]}`)
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
+            jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
           }
         })
