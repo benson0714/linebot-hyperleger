@@ -160,7 +160,7 @@ function initializeLiff(myLiffId) {
         })
         .then((res) => {
           console.log(`res = ${res[0]}`)
-          if (res[0] === 'step2handle') {
+          if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
             errorStateHandle(res[0], res[1]);
           }
         })
