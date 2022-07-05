@@ -181,10 +181,19 @@ function qrcode() {
   // qrcode 
   liff.scanCodeV2()
     .then(function (res) {
+      // address
       return res.value;
     })
     .then(function (res) {
-      return getData(res);
+      liff.getProfile()
+        .then((profileRes) => {
+          const userId = profileRes['userId'];
+          return userId;
+        })
+        .then((userId)=>{
+          return getData(res, userId);
+        })
+
     })
     .then(() => {
       liff.closeWindow();
@@ -194,7 +203,7 @@ function qrcode() {
     });
 };
 
-function getData(qrcode_address) {
+function getData(qrcode_address, userId) {
   console.log(qrcode_address);
   console.log(getAllUrlParams().jwtToken);
   const message = {
