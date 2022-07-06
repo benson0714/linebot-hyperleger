@@ -1,7 +1,3 @@
-const { default: liff } = require("@line/liff/dist/lib");
-
-
-
 let jwtToken = "";
 // 不能用大寫的網址!!!
 function getAllUrlParams(url) {
@@ -83,6 +79,7 @@ window.onload = function () {
         myLiffId = jsonResponse.id;
         initializeLiffOrDie(myLiffId);
       })
+
   } else {
     myLiffId = defaultLiffId;
     initializeLiffOrDie(myLiffId);
@@ -167,7 +164,7 @@ function initializeLiff(myLiffId) {
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
             jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
-          } 
+          }
         })
     })
 
@@ -176,6 +173,7 @@ function initializeLiff(myLiffId) {
 
 $(function () {
   $('#btn').on('click', function (e) {
+
     e.preventDefault();
     liff.getProfile()
       .then((res) => {
@@ -195,9 +193,7 @@ $(function () {
           dataType: "json",
           success: function () {
             liff.closeWindow();
-
           }, error: function () {
-            liff.closeWindow()
             console.log('無法送出');
           }
         })
