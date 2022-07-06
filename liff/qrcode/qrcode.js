@@ -193,7 +193,7 @@ function qrcode() {
           return userId;
         })
         .then((userId)=>{
-          if(res.value === ""){
+          if(res === ""){
             errorStateHandle("noAddress", userId);
             return;
           }else {
