@@ -1,5 +1,5 @@
 const { default: liff } = require("@line/liff/dist/lib");
-import * as Ladda from 'ladda';
+
 
 
 let jwtToken = "";
@@ -66,9 +66,6 @@ function getAllUrlParams(url) {
 }
 
 window.onload = function () {
-  var l = Ladda.create(document.querySelector('.my-button'));
-  l.start();
-  l.isLoading();
   const useNodeJS = true;   // if you are not using a node server, set this value to false
   const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
@@ -86,7 +83,6 @@ window.onload = function () {
         myLiffId = jsonResponse.id;
         initializeLiffOrDie(myLiffId);
       })
-      
   } else {
     myLiffId = defaultLiffId;
     initializeLiffOrDie(myLiffId);
