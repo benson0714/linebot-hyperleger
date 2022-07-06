@@ -1,4 +1,6 @@
 const { default: liff } = require("@line/liff/dist/lib");
+import * as Ladda from 'ladda';
+var l = Ladda.create(document.querySelector('.my-button'));
 
 let jwtToken = "";
 // 不能用大寫的網址!!!
@@ -62,9 +64,9 @@ function getAllUrlParams(url) {
 
   return obj;
 }
-			var l = Ladda.create( document.querySelector( 'button' ) );
-			l.start();
+
 window.onload = function () {
+  l.start();
   l.isLoading();
   const useNodeJS = true;   // if you are not using a node server, set this value to false
   const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -168,8 +170,8 @@ function initializeLiff(myLiffId) {
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
             jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
-          } else{
-            			l.toggle();
+          } else {
+            // l.toggle();
           }
         })
     })
