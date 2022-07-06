@@ -1,3 +1,5 @@
+const { default: liff } = require("@line/liff/dist/lib");
+
 // 不能用大寫的網址!!!
 function getAllUrlParams(url) {
 
@@ -191,14 +193,19 @@ function qrcode() {
           return userId;
         })
         .then((userId)=>{
-          return getData(res, userId);
+          if(res.value === ""){
+            errorStateHandle("noAddress", userId);
+            return;
+          }else {
+            return getData(res, userId);
+          }
         })
-
     })
     .then(() => {
       liff.closeWindow();
     })
     .catch(function (error) {
+      console.log(error)
       liff.closeWindow();
     });
 };
