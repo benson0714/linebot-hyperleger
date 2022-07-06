@@ -1,3 +1,5 @@
+const { default: liff } = require("@line/liff/dist/lib");
+
 let jwtToken = "";
 // 不能用大寫的網址!!!
 function getAllUrlParams(url) {
@@ -60,7 +62,10 @@ function getAllUrlParams(url) {
 
   return obj;
 }
+			var l = Ladda.create( document.querySelector( 'button' ) );
+			l.start();
 window.onload = function () {
+  l.isLoading();
   const useNodeJS = true;   // if you are not using a node server, set this value to false
   const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
@@ -163,6 +168,8 @@ function initializeLiff(myLiffId) {
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
             jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
+          } else{
+            			l.toggle();
           }
         })
     })
@@ -172,7 +179,7 @@ function initializeLiff(myLiffId) {
 
 $(function () {
   $('#btn').on('click', function (e) {
-
+    l.toggle();
     e.preventDefault();
     liff.getProfile()
       .then((res) => {
@@ -191,8 +198,12 @@ $(function () {
           data: formData,
           dataType: "json",
           success: function () {
+            l.stop();
             liff.closeWindow();
+
           }, error: function () {
+            l.stop();
+            liff.closeWindow()
             console.log('無法送出');
           }
         })
