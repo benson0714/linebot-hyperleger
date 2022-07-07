@@ -174,7 +174,8 @@ function initializeLiff(myLiffId) {
 
 $(function () {
   $('#btn').on('click', function (e) {
-
+    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
+    $("#preloader").delay(700).fadeIn();
     e.preventDefault();
     liff.getProfile()
       .then((res) => {
