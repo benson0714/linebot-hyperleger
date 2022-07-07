@@ -1,38 +1,18 @@
-input[type=text], select {
+#preloader {/*   這是整個會蓋住畫面的底色色塊  */
+    position: fixed;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    background-color: #fff;
+    z-index: 9999;
   }
-  
-  input[type=submit] {
-    width: 50%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    margin-bottom: 50px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transform: translate(50%, 50%)
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-    
-  }
-  
-  div {
-    border-radius: 50px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    width: 50%;
-    top: 50%;
+  #status {/*   這是中間loading的gif坐標css,我們盡量讓他畫面置中  */
+    position: fixed;
+    width: 218px;
+    height: 419px;
+    margin-left: -220px;
+    margin-top: -160px;
     left: 50%;
-    margin-right: 50%;
-    transform: translate(50%, 50%)
+    top: 50%;
   }
