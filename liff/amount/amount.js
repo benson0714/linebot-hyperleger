@@ -151,7 +151,7 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
-              console.log(state)
+              console.log(`1111111111111${data['state']}`);
 
             }, error: function (data) {
               console.log('無法送出');

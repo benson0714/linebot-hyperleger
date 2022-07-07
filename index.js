@@ -134,6 +134,7 @@ router
     ctx.body={
       jwtToken:jwtToken,
       state: state
+
     }
   })
   .post('/errorStateHandle', async (ctx)=>{
