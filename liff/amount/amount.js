@@ -90,7 +90,7 @@ const errorStateHandle = (res, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
   console.log(`err res = ${res}`)
 
-  console.log('enter step2handle');
+  console.log('enter stephandle');
   const message = {
     "userId": userId,
     "state": res,
@@ -151,7 +151,6 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
-              console.log(`1111111111111${data['state']}`);
 
             }, error: function (data) {
               console.log('無法送出');
@@ -162,7 +161,7 @@ function initializeLiff(myLiffId) {
         .then((res) => {
           // error handler
           console.log(`res = ${res[0]}`)
-          if (res[0] === 'step2handle' || res[0] === 'stepXhandle') {
+          if (res[0] === 'step2handle' || res[0] === 'stepXhandle' || res[0] === 'step3handle' || res[0] === 'step4handle') {
             jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
           }
