@@ -187,7 +187,8 @@ $(function () {
       })
       .then((res) => {
         var formData = [];
-        formData.push({ 'name': 'input_amount', 'value': $("#input_amount").val()})
+        const input = $("#input_amount").val()
+        formData.push({ 'name': 'input_amount', 'value': input})
         formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
         formData.push({ "name": "jwtToken", "value": jwtToken });
