@@ -170,11 +170,11 @@ function initializeLiff(myLiffId) {
 
 }
 
-document.getElementById('input').onKeydown = function (e) {
-  if (e.keyCode == 13 || e.keyCode == 9) {
-    e.preventDefault();//禁止鍵盤默認事件
-  }
-}
+// document.getElementById('input').onKeydown = function (e) {
+//   if (e.keyCode == 13 || e.keyCode == 9) {
+//     e.preventDefault();//禁止鍵盤默認事件
+//   }
+// }
 $(function () {
   $('#btn').on('click', function (e) {
     $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
