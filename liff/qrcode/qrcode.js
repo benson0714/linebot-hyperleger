@@ -226,8 +226,8 @@ function getData(qrcode_address, userId) {
 
 $(function () {
   $('#btn').on('click', function (e) {
-    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
-    $("#preloader").delay(700).fadeIn();
+    $("#status").delay().fadeIn(); //delay --> 延遲幾秒才fadeOut
+    $("#preloader").delay().fadeIn();
     qrcode();
   })
 });
