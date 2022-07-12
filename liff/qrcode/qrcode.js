@@ -195,12 +195,8 @@ function qrcode() {
         })
 
     })
-    .then(() => {
-      liff.closeWindow();
-    })
     .catch(function (error) {
       console.log(error)
-      liff.closeWindow();
     });
 };
 
