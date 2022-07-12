@@ -176,7 +176,7 @@ function initializeLiff(myLiffId) {
 //   }
 // }
 
-var x = document.getElementById("some_input");
+var x = document.getElementById("input_amount");
 x.addEventListener('keyup', function (e) {
      if (e.key === 'Enter') {    
         e.preventDefault(); 
