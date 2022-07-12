@@ -175,6 +175,15 @@ function initializeLiff(myLiffId) {
 //     e.preventDefault();//禁止鍵盤默認事件
 //   }
 // }
+
+var x = document.getElementById("some_input");
+x.addEventListener('keyup', function (e) {
+     if (e.key === 'Enter') {    
+        e.preventDefault(); 
+        $('#btn').trigger("click");
+     }
+}, false);
+
 $(function () {
   $('#btn').on('click', function (e) {
     $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
