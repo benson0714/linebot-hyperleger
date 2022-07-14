@@ -18,7 +18,8 @@
           "type": "text",
           "text": "帳戶資訊",
           "weight": "bold",
-          "size": "xl"
+          "size": "xl",
+          "align": "center"
         },
         {
           "type": "box",
