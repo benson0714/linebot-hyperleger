@@ -1,86 +1,85 @@
 {
-        "type": "flex",
-        "altText": "This is a Flex Message",
-        "contents": 
-         {
-        "type": "bubble",
-        "hero": {
-          "type": "image",
-          "url": "https://chart.googleapis.com/chart?cht=qr&chs=300x300&cht=qr&chl=",
-          "size": "full",
-          "aspectRatio": "15:13",
-          "aspectMode": "cover"
+  "type": "flex",
+  "altText": "This is a Flex Message",
+  "contents": {
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://chart.googleapis.com/chart?cht=qr&chs=300x300&cht=qr&chl=",
+      "size": "full",
+      "aspectRatio": "15:13",
+      "aspectMode": "cover",
+      "height": "200px"
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "帳戶資訊",
+          "weight": "bold",
+          "size": "xl"
         },
-        "body": {
+        {
+          "type": "box",
+          "layout": "baseline",
+          "margin": "md",
+          "contents": []
+        },
+        {
           "type": "box",
           "layout": "vertical",
+          "margin": "lg",
+          "spacing": "sm",
           "contents": [
-            {
-              "type": "text",
-              "text": "帳戶資訊",
-              "weight": "bold",
-              "size": "xl"
-            },
             {
               "type": "box",
               "layout": "baseline",
-              "margin": "md",
-              "contents": []
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "margin": "lg",
               "spacing": "sm",
               "contents": [
                 {
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "sm",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "地址",
-                      "color": "#aaaaaa",
-                      "size": "sm",
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "",
-                      "wrap": true,
-                      "color": "#666666",
-                      "size": "sm",
-                      "flex": 5
-                    }
-                  ]
+                  "type": "text",
+                  "text": "地址",
+                  "color": "#aaaaaa",
+                  "size": "sm",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "",
+                  "wrap": true,
+                  "color": "#666666",
+                  "size": "sm",
+                  "flex": 5
                 }
               ]
             }
           ]
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "contents": [
-            {
-              "type": "button",
-              "height": "sm",
-              "style": "secondary",
-              "action": {
-                "type": "postback",
-                "label": "複製地址",
-                "data": "action=show_address&"
-              }
-            },
-            {
-              "type": "spacer",
-              "size": "sm"
-            }
-          ],
-          "flex": 0
         }
-      }
-        
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "height": "sm",
+          "style": "secondary",
+          "action": {
+            "type": "postback",
+            "label": "複製地址",
+            "data": "action=show_address&"
+          }
+        },
+        {
+          "type": "spacer",
+          "size": "sm"
+        }
+      ],
+      "flex": 0
+    }
+  }
 }
