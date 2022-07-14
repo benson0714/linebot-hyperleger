@@ -3,6 +3,7 @@
     "altText": "this is a image carousel template",
     "template": {
         "type": "image_carousel",
+        "imageSize": "contain",
         "columns": [
         ]
     }
