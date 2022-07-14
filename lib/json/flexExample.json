@@ -6,10 +6,9 @@
     "hero": {
       "type": "image",
       "url": "https://chart.googleapis.com/chart?cht=qr&chs=300x300&cht=qr&chl=",
-      "size": "full",
+      "size": "sm",
       "aspectRatio": "15:13",
-      "aspectMode": "cover",
-      "height": "200px"
+      "aspectMode": "cover"
     },
     "body": {
       "type": "box",
