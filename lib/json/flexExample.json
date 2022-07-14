@@ -4,22 +4,22 @@
   "contents": {
     "type": "bubble",
     "hero": {
-      "type": "image",
-      "url": "https://chart.googleapis.com/chart?cht=qr&chs=300x300&cht=qr&chl=",
-      "size": "3xl",
-      "aspectRatio": "15:13",
-      "aspectMode": "cover"
+      "type": "text",
+      "text": "帳戶資訊",
+      "weight": "bold",
+      "size": "xl",
+      "align": "center"
     },
     "body": {
       "type": "box",
       "layout": "vertical",
       "contents": [
         {
-          "type": "text",
-          "text": "帳戶資訊",
-          "weight": "bold",
-          "size": "xl",
-          "align": "center"
+          "type": "image",
+          "url": "https://chart.googleapis.com/chart?cht=qr&chs=300x300&cht=qr&chl=",
+          "size": "3xl",
+          "aspectRatio": "15:13",
+          "aspectMode": "cover"
         },
         {
           "type": "box",
