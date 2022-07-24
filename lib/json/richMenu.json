@@ -1,7 +1,7 @@
 {
     "size": {
       "width": 2500,
-      "height": 1670
+      "height": 843
     },
     "selected": false,
     "name": "richmenu",
@@ -19,7 +19,7 @@
         "action": 
         {
           "type": "postback",
-          "data": "action=register"
+          "data": "action=myWallet"
         }
       },
       {
@@ -33,33 +33,7 @@
         "action": 
         {
           "type": "postback",
-          "data":"action=myWallet"
-        }
-      },
-
-      {
-        "bounds": {
-          "x": 834,
-          "y": 834,
-          "width": 833,
-          "height": 843
-        },
-        "action": {
-          "type": "postback",
-          "data": "action=transfer_balance"
-        }
-      },
-
-      {
-        "bounds": {
-          "x": 1668,
-          "y": 834,
-          "width": 833,
-          "height": 843
-        },
-        "action": {
-          "type": "postback",
-          "data": "action=history"
+          "data":"action=transfer_balance"
         }
       },
       {
@@ -67,11 +41,11 @@
           "x": 0,
           "y": 0,
           "width": 833,
-          "height": 1686
+          "height": 843
         },
         "action": {
           "type": "postback",
-          "data": "action=transfer_balance"
+          "data": "action=register"
         }
       }
     ]
