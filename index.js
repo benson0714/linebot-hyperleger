@@ -97,9 +97,12 @@ router
     const address = data.qrcode_address;
     const time = data.time;
     const jwtToken = data.jwtToken;
-    check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
+    const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
+    const state = flexMessageTmp[0];
+    const flexMessage = flexMessageTmp[1];
     ctx.body = {
-      amount: data.amount
+      state:state,
+      flexMessage: flexMessage
     }
   })
   //檢查輸入數量後submit按鈕
