@@ -190,7 +190,7 @@ function qrcode() {
           const userId = profileRes['userId'];
           return userId;
         })
-        .then((userId)=>{
+        .then((userId) => {
           return getData(res, userId);
         })
 
@@ -221,8 +221,71 @@ function getData(qrcode_address, userId) {
       console.log(data.flexMessage);
       console.log(data.state);
       if (data.state === '200') {
+        const temp = {
+          "type": "flex",
+          "altText": "This is a Flex Message",
+          "contents":
+          {
+            "type": "bubble",
+            "header":
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "請確認交易資訊",
+                  "size": "xl",
+                  "weight": "bold",
+                  "wrap": true
+                }
+              ]
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents":
+                [
+                  {
+                    "type":
+                      "text",
+                    "text": "資產名稱:Time Coin",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "交易數量:1"
+                  },
+                  {
+                    "type": "text",
+                    "text": "交易對象\n0x1af57c8dda4503843d043b96a12d7e6fa619c219",
+                    "wrap": true
+                  }
+                ]
+            },
+            "footer":
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents":
+                [
+                  {
+                    "type": "button",
+                    "action":
+                    {
+                      "type": "postback",
+                      "label": "移轉",
+                      "data": "action=tf&re=0x1af57c8dda4503843d043b96a12d7e6fa619c219&tId=6&amount=1&jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhlNzBiNWJhYTc2N2FlYmUwOTMwMzdiNzVkYjgxZTIwZmVlZmNhNzgyIiwiaWF0IjoxNjU4ODM5MTg4LCJleHAiOjE2NTg4Mzk0ODh9.9t5YpRak8GhYUSRZ8xDDwEsZ6fWtA9ZHb1rL_Pt2S78"
+                    },
+                    "style": "primary",
+                    "color": "#0000ff"
+                  }
+                ]
+            }
+          }
+        }
         liff
-          .sendMessages(data.flexMessage)
+          .sendMessages(temp)
           .then(() => {
             console.log("message sent");
             // liff.closeWindow();
@@ -231,32 +294,32 @@ function getData(qrcode_address, userId) {
             console.log("error", err);
             // liff.closeWindow();
           });
-      } else if(data.state === '404'){
+      } else if (data.state === '404') {
         liff
-        .sendMessages(data.flexMessage)
-        .then(() => {
-          console.log("error message sent");
-          // liff.closeWindow();
-        })
-        .catch((err) => {
-          console.log("error", err);
-          // liff.closeWindow();
-        });
-      } else{
+          .sendMessages(data.flexMessage)
+          .then(() => {
+            console.log("error message sent");
+            // liff.closeWindow();
+          })
+          .catch((err) => {
+            console.log("error", err);
+            // liff.closeWindow();
+          });
+      } else {
         liff
-        .sendMessages([
-          {
-            type: "text",
-            text: "未知錯誤，請重新開始",
-          },
-        ])
-        .then(() => {
-          console.log("message sent");
-          // liff.closeWindow();
-        })
-        .catch((err) => {
-          console.log("error", err);
-        });
+          .sendMessages([
+            {
+              type: "text",
+              text: "未知錯誤，請重新開始",
+            },
+          ])
+          .then(() => {
+            console.log("message sent");
+            // liff.closeWindow();
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
       }
     }
   })
@@ -271,7 +334,7 @@ $(function () {
   })
 });
 
-$(window).load(function() { // 確認整個頁面讀取完畢再將這三個div隱藏起來
+$(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
   $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
   $("#preloader").delay(700).fadeOut(300);
 })
