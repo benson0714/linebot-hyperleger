@@ -218,7 +218,8 @@ function getData(qrcode_address, userId) {
     data: message,
     dataType: "json",
     success: function (data) {
-      console.log(data.flexMessage);
+      console.log(typeof(data.flexMessage));
+      console.log(JSON.stringify(data.flexMessage));
       console.log(data.state);
       if (data.state === '200') {
         liff
