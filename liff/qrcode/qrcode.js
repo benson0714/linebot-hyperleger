@@ -227,62 +227,52 @@ function getData(qrcode_address, userId) {
           "contents":
           {
             "type": "bubble",
-            "header":
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "請確認交易資訊",
-                  "size": "xl",
-                  "weight": "bold",
-                  "wrap": true
-                }
-              ]
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "請確認交易資訊，如正確請按下方按鈕掃描地址",
+                        "size": "xl",
+                        "weight": "bold",
+                        "wrap": true
+                    }
+                ]
             },
             "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents":
-                [
-                  {
-                    "type":
-                      "text",
-                    "text": "資產名稱:Time Coin",
-                    "wrap": true
-                  },
-                  {
-                    "type": "text",
-                    "text": "交易數量:1"
-                  },
-                  {
-                    "type": "text",
-                    "text": "交易對象0x1af57c8dda4503843d043b96a12d7e6fa619c219",
-                    "wrap": true
-                  }
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": `資產名稱:`,
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
+                        "text": `交易數量:`
+                    }
                 ]
             },
-            "footer":
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents":
-                [
-                  {
-                    "type": "button",
-                    "action":
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
                     {
-                      "type": "postback",
-                      "label": "移轉",
-                      "data": "action=tf&re=0x1af57c8dda4503843d043b96a12d7e6fa619c219&tId=6&amount=1&jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhlNzBiNWJhYTc2N2FlYmUwOTMwMzdiNzVkYjgxZTIwZmVlZmNhNzgyIiwiaWF0IjoxNjU4ODM5MTg4LCJleHAiOjE2NTg4Mzk0ODh9.9t5YpRak8GhYUSRZ8xDDwEsZ6fWtA9ZHb1rL_Pt2S78"
-                    },
-                    "style": "primary",
-                    "color": "#0000ff"
-                  }
+                        "type": "button",
+                        "action": {
+                            "type": "uri",
+                            "label": "Tap me",
+                            "uri": `https://liff.line.me/1656864170-pOEXXm7R?amount=&tokenId=&time=&jwtToken`
+                        },
+                        "style": "primary",
+                        "color": "#0000ff"
+                    }
                 ]
             }
-          }
+
+        }
         }
         liff
           .sendMessages(temp)
