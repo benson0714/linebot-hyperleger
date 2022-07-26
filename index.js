@@ -13,6 +13,7 @@ const check_address_func = require('./lib/hyperledgerAPI/check_address_liff.js')
 const createDB = require("./lib/levelDB/createDB.js");
 const stateError = require('./lib/ErrorHandle/stateError.js');
 const step2CheckDB = require('./lib/levelDB/step2CheckDB.js');
+const transfer = require('./lib/hyperledgerAPI/transfer.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -86,25 +87,36 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
-  .get('/check_address', async (ctx) => {
-    const data = ctx.request.query;
+  .post('/check_address', async (ctx) => {
+    const data = ctx.request.body;
     console.log(data);
     console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
     const amount = data.amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    const address = data.address;
+    const address = data.qrcode_address;
+    const time = data.time;
     const jwtToken = data.jwtToken;
-    const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, jwtToken);
+    const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
     const state = flexMessageTmp[0];
     const flexMessage = flexMessageTmp[1];
-    console.log(flexMessage[0]);
-    
+    console.log(flexMessage)
     ctx.body = {
       state:state,
       flexMessage: flexMessage
     }
+  })
+  .get('check_address', async (ctx)=>{
+    const data = ctx.request.query;
+    console.log(data);
+    console.log(`amount = ${data.amount}`);
+    const address = data.address;
+    const tokenId = data.tokenId;
+    const amount = data.amount;
+    const jwtToken = data.jwtToken;
+    const message = transfer.transfer(userId, lineBotToken, address, tokenId, amount, jwtToken);
+    console.log(flexMessage)
   })
   //檢查輸入數量後submit按鈕
   .post('/check_amount', async (ctx) => {
