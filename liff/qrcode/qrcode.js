@@ -258,7 +258,7 @@ function getData(qrcode_address, userId) {
                   },
                   {
                     "type": "text",
-                    "text": "交易對象\n0x1af57c8dda4503843d043b96a12d7e6fa619c219",
+                    "text": "交易對象0x1af57c8dda4503843d043b96a12d7e6fa619c219",
                     "wrap": true
                   }
                 ]
