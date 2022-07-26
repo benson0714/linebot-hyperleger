@@ -254,7 +254,6 @@ function getData(qrcode_address, userId) {
         })
         .catch((err) => {
           console.log("error", err);
-          liff.closeWindow();
         });
       }
     }
