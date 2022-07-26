@@ -221,9 +221,8 @@ function getData(qrcode_address, userId) {
       console.log(data.flexMessage);
       console.log(data.state);
       if (data.state === '200') {
-        const temp = {"type":"flex","altText":"This is a Flex Message","contents":{"type":"bubble","header":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"請確認交易資訊，如正確請按下方按鈕掃描地址","size":"xl","weight":"bold","wrap":true}]},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"資產名稱:Time Coin","wrap":true},{"type":"text","text":"交易數量:1"}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","action":{"type":"uri","label":"Tap me","uri":"https://liff.line.me/1656864170-pOEXXm7R?amount=1&tokenId=6&time=1658840543011&jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhlNzBiNWJhYTc2N2FlYmUwOTMwMzdiNzVkYjgxZTIwZmVlZmNhNzgyIiwiaWF0IjoxNjU4ODQwNTM3LCJleHAiOjE2NTg4NDA4Mzd9._7oQusCTW2Sh3vvMhvfTegm7Sc4uMXNx6HtcnEyXyjA"},"style":"primary","color":"#0000ff"}]}}}
         liff
-          .sendMessages([temp])
+          .sendMessages(data.flexMessage)
           .then(() => {
             console.log("message sent");
             // liff.closeWindow();
