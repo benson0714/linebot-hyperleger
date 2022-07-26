@@ -217,22 +217,22 @@ $(function () {
                 .sendMessages(data.flexMessage)
                 .then(() => {
                   console.log("message sent");
-                  // liff.closeWindow();
+                  liff.closeWindow();
                 })
                 .catch((err) => {
                   console.log("error", err);
-                  // liff.closeWindow();
+                  liff.closeWindow();
                 });
             } else if(data.state === '404'){
               liff
               .sendMessages(data.flexMessage)
               .then(() => {
                 console.log("error message sent");
-                // liff.closeWindow();
+                liff.closeWindow();
               })
               .catch((err) => {
                 console.log("error", err);
-                // liff.closeWindow();
+                liff.closeWindow();
               });
             } else{
               liff
@@ -244,9 +244,11 @@ $(function () {
               ])
               .then(() => {
                 console.log("message sent");
+                liff.closeWindow();
               })
               .catch((err) => {
                 console.log("error", err);
+                liff.closeWindow();
               });
             }
             
