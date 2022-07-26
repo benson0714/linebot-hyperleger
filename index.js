@@ -120,6 +120,8 @@ router
     const flexMessageTmp = await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
     const state = flexMessageTmp[0];
     const flexMessage = flexMessageTmp[1];
+    console.log(state);
+    console.log(flexMessage);
     ctx.body = {
       state:state,
       flexMessage: flexMessage
