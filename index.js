@@ -100,6 +100,8 @@ router
     const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
     const state = flexMessageTmp[0];
     const flexMessage = flexMessageTmp[1];
+    console.log(flexMessage[0]);
+    
     ctx.body = {
       state:state,
       flexMessage: flexMessage
