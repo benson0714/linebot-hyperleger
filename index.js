@@ -86,18 +86,17 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
-  .post('/check_address', async (ctx) => {
-    const data = ctx.request.body;
+  .get('/check_address', async (ctx) => {
+    const data = ctx.request.query;
     console.log(data);
     console.log(`amount = ${data.amount}`);
     console.log(`test console.log`);
     const amount = data.amount;
     const tokenId = data.tokenId;
     const userId = data.userId;
-    const address = data.qrcode_address;
-    const time = data.time;
+    const address = data.address;
     const jwtToken = data.jwtToken;
-    const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, time, jwtToken);
+    const flexMessageTmp = await check_address_func.check_address(userId, lineBotToken, amount, tokenId, address, jwtToken);
     const state = flexMessageTmp[0];
     const flexMessage = flexMessageTmp[1];
     console.log(flexMessage[0]);
