@@ -218,27 +218,29 @@ function getData(qrcode_address, userId) {
     data: message,
     dataType: "json",
     success: function (data) {
+      console.log(data.flexMessage);
+      console.log(data.state);
       if (data.state === '200') {
         liff
           .sendMessages(data.flexMessage)
           .then(() => {
             console.log("message sent");
-            liff.closeWindow();
+            // liff.closeWindow();
           })
           .catch((err) => {
             console.log("error", err);
-            liff.closeWindow();
+            // liff.closeWindow();
           });
       } else if(data.state === '404'){
         liff
         .sendMessages(data.flexMessage)
         .then(() => {
           console.log("error message sent");
-          liff.closeWindow();
+          // liff.closeWindow();
         })
         .catch((err) => {
           console.log("error", err);
-          liff.closeWindow();
+          // liff.closeWindow();
         });
       } else{
         liff
@@ -250,7 +252,7 @@ function getData(qrcode_address, userId) {
         ])
         .then(() => {
           console.log("message sent");
-          liff.closeWindow();
+          // liff.closeWindow();
         })
         .catch((err) => {
           console.log("error", err);
