@@ -166,20 +166,23 @@ function initializeLiff(myLiffId) {
             errorStateHandle(res[0], res[1]);
           }
         })
-      liff
-        .sendMessages([
-          {
-            type: "text",
-            text: "Hello, World!",
-          },
-        ])
         .then(() => {
-          console.log("message sent");
+          liff
+            .sendMessages([
+              {
+                type: "text",
+                text: "Hello, World!",
+              },
+            ])
+            .then(() => {
+              console.log("message sent");
+            })
+            .catch((err) => {
+              console.log("error", err);
+            });
         })
-        .catch((err) => {
-          console.log("error", err);
-        });
     })
+
 
 }
 
