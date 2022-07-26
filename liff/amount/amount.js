@@ -166,21 +166,7 @@ function initializeLiff(myLiffId) {
             errorStateHandle(res[0], res[1]);
           }
         })
-        .then(() => {
-          liff
-            .sendMessages([
-              {
-                type: "text",
-                text: "Hello, World!",
-              },
-            ])
-            .then(() => {
-              console.log("message sent");
-            })
-            .catch((err) => {
-              console.log("error", err);
-            });
-        })
+
     })
 
 
@@ -223,8 +209,45 @@ $(function () {
           type: "POST",
           data: formData,
           dataType: "json",
-          success: function () {
-            liff.closeWindow();
+          success: function (data) {
+            if (data.state === '200') {
+              liff
+                .sendMessages(data.flexMessage)
+                .then(() => {
+                  console.log("message sent");
+                  // liff.closeWindow();
+                })
+                .catch((err) => {
+                  console.log("error", err);
+                  // liff.closeWindow();
+                });
+            } else if(data.state === '404'){
+              liff
+              .sendMessages(data.flexMessage)
+              .then(() => {
+                console.log("error message sent");
+                // liff.closeWindow();
+              })
+              .catch((err) => {
+                console.log("error", err);
+                // liff.closeWindow();
+              });
+            } else{
+              liff
+              .sendMessages([
+                {
+                  type: "text",
+                  text: "未知錯誤，請重新開始",
+                },
+              ])
+              .then(() => {
+                console.log("message sent");
+              })
+              .catch((err) => {
+                console.log("error", err);
+              });
+            }
+            
           }, error: function () {
             console.log('無法送出');
           }

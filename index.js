@@ -117,9 +117,12 @@ router
     const tokenId = data.tokenId;
     const userId = data.userId;
     const jwtToken = data.jwtToken;
-    const flexMessage = await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
+    const flexMessageTmp = await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
+    const state = flexMessageTmp[0];
+    const flexMessage = flexMessageTmp[1];
     ctx.body = {
-      amount: data.input_amount
+      state:state,
+      flexMessage: flexMessage
     }
   })
   .post('/createDB', async (ctx)=>{
