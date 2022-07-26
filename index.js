@@ -3,7 +3,7 @@ const Router = require('koa-router');
 const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
-const replyMessage = require('./lib/example/replyMessage.js');
+const replyMessageAPI = require('./lib/example/replyMessage.js');
 const app = new koa();
 const router = Router();
 const richMenu = require('./lib/example/richMenu.js');
@@ -46,12 +46,7 @@ router
     let data = 'unsucess';
     if (events[0].type === 'message') {
       console.log(`typeof message = ${typeof (events[0].message)}`)
-      data = await replyMessage.replyMessage(events, lineBotToken, {
-        '哈囉': '你好阿',
-        '晚安': '晚安',
-        '終於': '做出來了',
-        '您': '辛苦了',
-      });
+      data = await replyMessageAPI.replyMessage(events, lineBotToken);
     } else if(events[0].type === 'postback') { //偵測到postback action(richmenu的postback action)
       console.log('detect postback action');
       data = await replyPostback.replyPostback(events, lineBotToken);
