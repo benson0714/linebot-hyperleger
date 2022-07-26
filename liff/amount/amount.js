@@ -166,6 +166,19 @@ function initializeLiff(myLiffId) {
             errorStateHandle(res[0], res[1]);
           }
         })
+      liff
+        .sendMessages([
+          {
+            type: "text",
+            text: "Hello, World!",
+          },
+        ])
+        .then(() => {
+          console.log("message sent");
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
     })
 
 }
@@ -178,10 +191,10 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("input_amount");
 x.addEventListener('keyup', function (e) {
-     if (e.key === 'Enter') {    
-        e.preventDefault(); 
-        $('#btn').trigger("click");
-     }
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    $('#btn').trigger("click");
+  }
 }, false);
 
 $(function () {
@@ -197,7 +210,7 @@ $(function () {
       .then((res) => {
         var formData = [];
         const input = $("#input_amount").val()
-        formData.push({ 'name': 'input_amount', 'value': input})
+        formData.push({ 'name': 'input_amount', 'value': input })
         formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
         formData.push({ "name": "jwtToken", "value": jwtToken });

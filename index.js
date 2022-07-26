@@ -117,7 +117,7 @@ router
     const tokenId = data.tokenId;
     const userId = data.userId;
     const jwtToken = data.jwtToken;
-    await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
+    const flexMessage = await check_amount_func.check_amount(userId, lineBotToken, amount, tokenId, jwtToken);
     ctx.body = {
       amount: data.input_amount
     }
