@@ -210,6 +210,8 @@ $(function () {
           data: formData,
           dataType: "json",
           success: function (data) {
+            console.log(data.flexMessage);
+            console.log(data.state);
             if (data.state === '200') {
               liff
                 .sendMessages(data.flexMessage)
