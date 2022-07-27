@@ -91,25 +91,26 @@ window.onload = function () {
 const errorStateHandle = async(state, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
   console.log('enter stephandle');
+  let message = []
   if (state === 'step2handle') {
-    const message = [{
+    message = [{
       "type": "text",
       "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
     }]
     pushMessage.pushMessage(message, userId, lineBotToken);
   }
   else if (state === "stepXhandle") {
-    const message = [{
+    message = [{
       "type": "text",
       "text": "未知錯誤，請重新開始交易"
     }]
   } else if (state === "step3handle") {
-    const message = [{
+    message = [{
       "type": "text",
       "text": "請點選移轉繼續交易"
     }]
   } else if (state === "step4handle") {
-    const message = [{
+    message = [{
       "type": "text",
       "text": "已完成交易，請重新開始交易"
     }]
