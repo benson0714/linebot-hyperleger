@@ -168,6 +168,7 @@ function initializeLiff(myLiffId) {
       liff.getProfile()
         .then((res) => {
           const userId = res['userId'];
+          console.log(userId);
           return userId;
         })
         .then((res) => {
@@ -220,6 +221,7 @@ $(function () {
     liff.getProfile()
       .then((res) => {
         const userId = res['userId'];
+        
         return userId;
       })
       .then((res) => {
