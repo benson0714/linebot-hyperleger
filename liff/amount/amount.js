@@ -86,30 +86,6 @@ window.onload = function () {
   }
 };
 
-const errorStateHandle = (res, userId) => {
-  // 如果已經在step2狀態卻跑回來執行step1
-  console.log(`err res = ${res}`)
-
-  console.log('enter stephandle');
-  const message = {
-    "userId": userId,
-    "state": res,
-    "currentState": "step1"
-  }
-  $.ajax({
-    url: '/errorStateHandle',
-    type: "POST",
-    data: message,
-    dataType: "json",
-    success: function (data) {
-      liff.closeWindow();
-    }, error: function (err) {
-      liff.closeWindow();
-      console.log(`無法送出 ${err}`);
-    }
-  })
-
-}
 /**
 * Check if myLiffId is null. If null do not initiate liff.
 * @param {string} myLiffId The LIFF ID of the selected element
@@ -158,62 +134,6 @@ function initializeLiff(myLiffId) {
           })
           return [state, res, jwtToken];
         })
-        .then((res) => {
-          // error handler
-          console.log(`res = ${res[0]}`)
-          if (res[0] === 'step2handle'){
-            message = message.push({
-              "type": "text",
-              "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
-            })
-            liff.sendMessages(message)
-            .then(() => {
-              liff.closeWindow();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          }else if(res[0] === 'stepXhandle'){
-            message = message.push({
-              "type": "text",
-              "text": "未知錯誤，請重新開始交易"
-            })
-            liff.sendMessages(message)
-            .then(() => {
-              liff.closeWindow();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          }else if(res[0] === 'step3handle'){
-            message = message.push({
-              "type": "text",
-              "text": "請點選移轉繼續交易"
-            })
-            liff.sendMessages(message)
-            .then(() => {
-              liff.closeWindow();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          }else if(res[0] === 'step4handle') {
-            message = message.push({
-              "type": "text",
-              "text": "已完成交易，請重新開始交易"
-            })
-            liff.sendMessages(message)
-            .then(() => {
-              liff.closeWindow();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          }else {
-            return;
-          }
-        })
-
     })
 
 
