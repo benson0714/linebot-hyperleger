@@ -207,7 +207,7 @@ function initializeLiff(myLiffId) {
           }else if(res[0] === 'stepXhandle'){
             message = {
               "type": "text",
-              "text": "請重新點選transfer重新開始交易"
+              "text": "請重新點選transfer重新開始交易或繼續您的交易"
             }
             liff.sendMessages([message])
             .then(() => {
