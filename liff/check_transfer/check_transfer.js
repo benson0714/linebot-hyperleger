@@ -126,6 +126,7 @@ function initializeLiff(myLiffId) {
             "amount": getAllUrlParams().amount,
             "tokenId": getAllUrlParams().tokenId
           }
+          console.log(message);
           $.ajax({
             url: '/check_transfer',
             type: "POST",
