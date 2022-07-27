@@ -166,14 +166,13 @@ function initializeLiff(myLiffId) {
         })
         .then((res) => {
           // error handler
-          let message = []
           console.log(`res = ${res[0]}`)
           if (res[0] === 'step1handle'){
-            message = message.push({
+            message = {
               "type": "text",
               "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
-            })
-            liff.sendMessages(message)
+            }
+            liff.sendMessages([message])
             .then(() => {
               liff.closeWindow();
             })
@@ -181,11 +180,11 @@ function initializeLiff(myLiffId) {
               console.log(err);
             });
           }else if(res[0] === 'expireMessage'){
-            message = message.push({
+            message = {
               "type": "text",
               "text": "此筆交易已超過5分鐘，請重新開始交易"
-            })
-            liff.sendMessages(message)
+            }
+            liff.sendMessages([message])
             .then(() => {
               liff.closeWindow();
             })
@@ -193,11 +192,11 @@ function initializeLiff(myLiffId) {
               console.log(err);
             });
           }else if(res[0] === 'stepXhandle'){
-            message = message.push({
+            message = {
               "type": "text",
               "text": "請點選移轉繼續交易"
-            })
-            liff.sendMessages(message)
+            }
+            liff.sendMessages([message])
             .then(() => {
               liff.closeWindow();
             })
