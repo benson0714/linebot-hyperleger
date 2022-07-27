@@ -90,10 +90,7 @@ window.onload = function () {
 
 const errorStateHandle = (state, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
-  console.log(`err res = ${res}`)
-
   console.log('enter stephandle');
-
   if (state === 'step2handle') {
     const message = [{
       "type": "text",
@@ -179,6 +176,8 @@ function initializeLiff(myLiffId) {
           if (res[0] === 'step2handle' || res[0] === 'stepXhandle' || res[0] === 'step3handle' || res[0] === 'step4handle') {
             jwtToken = res[2];
             errorStateHandle(res[0], res[1]);
+          } else{
+            return;
           }
         })
 
