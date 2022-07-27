@@ -87,6 +87,9 @@ router
   .get('/send-qrcode', async (ctx) => {
     ctx.body = {id: myLiffIdQrcode};
   })
+  .get('/send-transfer', async (ctx) => {
+    ctx.body = {id: myLiffIdQrcode};
+  })
   .post('/check_address', async (ctx) => {
     const data = ctx.request.body;
     console.log(data);
@@ -107,16 +110,19 @@ router
       flexMessage: flexMessage
     }
   })
-  .get('check_address', async (ctx)=>{
-    const data = ctx.request.query;
+  .post('/check_transfer', async (ctx)=>{
+    const data = ctx.request.body;
+    const {userId, address, tokenId, amount, jwtToken} = data;
     console.log(data);
     console.log(`amount = ${data.amount}`);
-    const address = data.address;
-    const tokenId = data.tokenId;
-    const amount = data.amount;
-    const jwtToken = data.jwtToken;
-    const message = transfer.transfer(userId, lineBotToken, address, tokenId, amount, jwtToken);
-    console.log(flexMessage)
+    const flexMessageTemp = transfer.transfer(userId, lineBotToken, address, tokenId, amount, jwtToken);
+    const state = flexMessageTemp[0];
+    const flexMessage = flexMessageTemp[1];
+    console.log(flexMessage);
+     ctx.body = {
+      state: state, 
+      flexMessage: flexMessage
+     }
   })
   //檢查輸入數量後submit按鈕
   .post('/check_amount', async (ctx) => {
