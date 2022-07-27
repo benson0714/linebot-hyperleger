@@ -166,6 +166,7 @@ function initializeLiff(myLiffId) {
         })
         .then((res) => {
           // error handler
+          let message = []
           console.log(`res = ${res[0]}`)
           if (res[0] === 'step1handle'){
             message = message.push({
