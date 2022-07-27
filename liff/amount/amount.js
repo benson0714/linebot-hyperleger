@@ -1,5 +1,3 @@
-const { default: liff } = require("@line/liff/dist/lib");
-
 let jwtToken = "";
 // 不能用大寫的網址!!!
 function getAllUrlParams(url) {
@@ -88,59 +86,28 @@ window.onload = function () {
   }
 };
 
-const errorStateHandle = async(state) => {
+const errorStateHandle = (res, userId) => {
   // 如果已經在step2狀態卻跑回來執行step1
+  console.log(`err res = ${res}`)
+
   console.log('enter stephandle');
-  let message = []
-  if (state === 'step2handle') {
-    message = message.push({
-      "type": "text",
-      "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
-    })
-    liff.sendMessages(message)
-    .then(() => {
-      liff.closeWindow();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  } else if (state === "stepXhandle") {
-    message = message.push({
-      "type": "text",
-      "text": "未知錯誤，請重新開始交易"
-    })
-    liff.sendMessages(message)
-    .then(() => {
-      liff.closeWindow();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  } else if (state === "step3handle") {
-    message = message.push({
-      "type": "text",
-      "text": "請點選移轉繼續交易"
-    })
-    liff.sendMessages(message)
-    .then(() => {
-      liff.closeWindow();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  } else if (state === "step4handle") {
-    message = message.push({
-      "type": "text",
-      "text": "已完成交易，請重新開始交易"
-    })
-    liff.sendMessages(message)
-    .then(() => {
-      liff.closeWindow();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const message = {
+    "userId": userId,
+    "state": res,
+    "currentState": "step1"
   }
+  $.ajax({
+    url: '/errorStateHandle',
+    type: "POST",
+    data: message,
+    dataType: "json",
+    success: function (data) {
+      liff.closeWindow();
+    }, error: function (err) {
+      liff.closeWindow();
+      console.log(`無法送出 ${err}`);
+    }
+  })
 
 }
 /**
@@ -168,7 +135,6 @@ function initializeLiff(myLiffId) {
       liff.getProfile()
         .then((res) => {
           const userId = res['userId'];
-          console.log(userId);
           return userId;
         })
         .then((res) => {
@@ -185,15 +151,22 @@ function initializeLiff(myLiffId) {
             success: function (data) {
               jwtToken = data['jwtToken'];
               state = data['state'];
-              if(state === 'step2handle' || state === 'stepXhandle' || state === 'step3handle' || state === 'step4handle'){
-                await errorStateHandle(state);
-              }
 
             }, error: function (data) {
               console.log('無法送出');
             }
           })
+          return [state, res, jwtToken];
         })
+        .then((res) => {
+          // error handler
+          console.log(`res = ${res[0]}`)
+          if (res[0] === 'step2handle' || res[0] === 'stepXhandle' || res[0] === 'step3handle' || res[0] === 'step4handle') {
+            jwtToken = res[2];
+            errorStateHandle(res[0], res[1]);
+          }
+        })
+
     })
 
 
@@ -215,13 +188,12 @@ x.addEventListener('keyup', function (e) {
 
 $(function () {
   $('#btn').on('click', function (e) {
-    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadein
+    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
     $("#preloader").delay(700).fadeIn();
     e.preventDefault();
     liff.getProfile()
       .then((res) => {
         const userId = res['userId'];
-        
         return userId;
       })
       .then((res) => {
@@ -230,7 +202,7 @@ $(function () {
         formData.push({ 'name': 'input_amount', 'value': input })
         formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
-        formData.push({ "name": "jwtToken", "value": getAllUrlParams().jwtToken });
+        formData.push({ "name": "jwtToken", "value": jwtToken });
 
         $.ajax({
           url: '/check_amount',
@@ -238,7 +210,7 @@ $(function () {
           data: formData,
           dataType: "json",
           success: function (data) {
-            console.log(typeof (data.flexMessage));
+            console.log(typeof(data.flexMessage));
             console.log(JSON.stringify(data.flexMessage));
             console.log(data.state);
             if (data.state === '200') {
@@ -252,35 +224,35 @@ $(function () {
                   console.log("error", err);
                   liff.closeWindow();
                 });
-            } else if (data.state === '404') {
+            } else if(data.state === '404'){
               liff
-                .sendMessages(data.flexMessage)
-                .then(() => {
-                  console.log("error message sent");
-                  liff.closeWindow();
-                })
-                .catch((err) => {
-                  console.log("error", err);
-                  liff.closeWindow();
-                });
-            } else {
+              .sendMessages(data.flexMessage)
+              .then(() => {
+                console.log("error message sent");
+                liff.closeWindow();
+              })
+              .catch((err) => {
+                console.log("error", err);
+                liff.closeWindow();
+              });
+            } else{
               liff
-                .sendMessages([
-                  {
-                    type: "text",
-                    text: "未知錯誤，請重新開始",
-                  },
-                ])
-                .then(() => {
-                  console.log("message sent");
-                  liff.closeWindow();
-                })
-                .catch((err) => {
-                  console.log("error", err);
-                  liff.closeWindow();
-                });
+              .sendMessages([
+                {
+                  type: "text",
+                  text: "未知錯誤，請重新開始",
+                },
+              ])
+              .then(() => {
+                console.log("message sent");
+                liff.closeWindow();
+              })
+              .catch((err) => {
+                console.log("error", err);
+                liff.closeWindow();
+              });
             }
-
+            
           }, error: function () {
             console.log('無法送出');
             liff.closeWindow();
