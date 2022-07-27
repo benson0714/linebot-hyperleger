@@ -137,7 +137,7 @@ function initializeLiff(myLiffId) {
               console.log(JSON.stringify(data.flexMessage));
               console.log(data.state);
               if (data.state === '200') {
-                await liff
+                liff
                   .sendMessages(data.flexMessage)
                   .then(() => {
                     console.log("message sent");
@@ -148,7 +148,7 @@ function initializeLiff(myLiffId) {
                     liff.closeWindow();
                   });
               } else if (data.state === '404') {
-                await liff
+                liff
                   .sendMessages(data.flexMessage)
                   .then(() => {
                     console.log("error message sent");
@@ -159,7 +159,7 @@ function initializeLiff(myLiffId) {
                     liff.closeWindow();
                   });
               } else {
-                await liff
+                liff
                   .sendMessages([
                     {
                       type: "text",
