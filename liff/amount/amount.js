@@ -97,7 +97,6 @@ const errorStateHandle = async(state, userId) => {
       "type": "text",
       "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
     }]
-    pushMessage.pushMessage(message, userId, lineBotToken);
   }
   else if (state === "stepXhandle") {
     message = [{
