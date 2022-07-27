@@ -176,7 +176,20 @@ function initializeLiff(myLiffId) {
                   });
               }
             }, error: function (data) {
-              console.log('無法送出');
+              liff
+              .sendMessages([
+                {
+                  type: "text",
+                  text: "未知錯誤，請重新開始",
+                },
+              ])
+              .then(() => {
+                console.log("message sent");
+                // liff.closeWindow();
+              })
+              .catch((err) => {
+                console.log("error", err);
+              });
             }
           })
         })
