@@ -118,7 +118,7 @@ router
     const flexMessageTemp = transfer.transfer(userId, lineBotToken, address, tokenId, amount, jwtToken);
     const state = flexMessageTemp[0];
     const flexMessage = flexMessageTemp[1];
-    console.log(flexMessage);
+    console.log(`flexMessage in index.js = ${flexMessage}`);
      ctx.body = {
       state: state, 
       flexMessage: flexMessage
