@@ -130,6 +130,7 @@ function initializeLiff(myLiffId) {
           $.ajax({
             url: '/check_transfer',
             type: "POST",
+            async: false,
             data: message,
             dataType: "json",
             success: function (data) {
