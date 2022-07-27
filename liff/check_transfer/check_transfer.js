@@ -130,14 +130,13 @@ function initializeLiff(myLiffId) {
             url: '/check_transfer',
             type: "POST",
             data: message,
-            async: false,
             dataType: "json",
-            success: function (data) {
+            success: function async (data) {
               console.log(typeof(data.flexMessage));
               console.log(JSON.stringify(data.flexMessage));
               console.log(data.state);
               if (data.state === '200') {
-                liff
+                await liff
                   .sendMessages(data.flexMessage)
                   .then(() => {
                     console.log("message sent");
@@ -148,7 +147,7 @@ function initializeLiff(myLiffId) {
                     liff.closeWindow();
                   });
               } else if (data.state === '404') {
-                liff
+                await liff
                   .sendMessages(data.flexMessage)
                   .then(() => {
                     console.log("error message sent");
@@ -159,7 +158,7 @@ function initializeLiff(myLiffId) {
                     liff.closeWindow();
                   });
               } else {
-                liff
+                await liff
                   .sendMessages([
                     {
                       type: "text",
