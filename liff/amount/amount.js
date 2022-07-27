@@ -161,9 +161,56 @@ function initializeLiff(myLiffId) {
         .then((res) => {
           // error handler
           console.log(`res = ${res[0]}`)
-          if (res[0] === 'step2handle' || res[0] === 'stepXhandle' || res[0] === 'step3handle' || res[0] === 'step4handle') {
-            jwtToken = res[2];
-            errorStateHandle(res[0], res[1]);
+          if (res[0] === 'step2handle'){
+            message = message.push({
+              "type": "text",
+              "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
+            })
+            liff.sendMessages(message)
+            .then(() => {
+              liff.closeWindow();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }else if(res[0] === 'stepXhandle'){
+            message = message.push({
+              "type": "text",
+              "text": "未知錯誤，請重新開始交易"
+            })
+            liff.sendMessages(message)
+            .then(() => {
+              liff.closeWindow();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }else if(res[0] === 'step3handle'){
+            message = message.push({
+              "type": "text",
+              "text": "請點選移轉繼續交易"
+            })
+            liff.sendMessages(message)
+            .then(() => {
+              liff.closeWindow();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }else if(res[0] === 'step4handle') {
+            message = message.push({
+              "type": "text",
+              "text": "已完成交易，請重新開始交易"
+            })
+            liff.sendMessages(message)
+            .then(() => {
+              liff.closeWindow();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }else {
+            return;
           }
         })
 
