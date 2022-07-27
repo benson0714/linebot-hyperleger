@@ -132,7 +132,7 @@ function initializeLiff(myLiffId) {
             type: "POST",
             data: message,
             dataType: "json",
-            success: function async (data) {
+            success: function (data) {
               console.log(typeof(data.flexMessage));
               console.log(JSON.stringify(data.flexMessage));
               console.log(data.state);
