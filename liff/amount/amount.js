@@ -214,7 +214,7 @@ x.addEventListener('keyup', function (e) {
 
 $(function () {
   $('#btn').on('click', function (e) {
-    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadeOut
+    $("#status").delay(500).fadeIn(); //delay --> 延遲幾秒才fadein
     $("#preloader").delay(700).fadeIn();
     e.preventDefault();
     liff.getProfile()
@@ -228,7 +228,7 @@ $(function () {
         formData.push({ 'name': 'input_amount', 'value': input })
         formData.push({ 'name': "tokenId", 'value': getAllUrlParams().tokenId });
         formData.push({ 'name': 'userId', 'value': res });
-        formData.push({ "name": "jwtToken", "value": jwtToken });
+        formData.push({ "name": "jwtToken", "value": getAllUrlParams().jwtToken });
 
         $.ajax({
           url: '/check_amount',
