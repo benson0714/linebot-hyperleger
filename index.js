@@ -26,6 +26,7 @@ const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
 const myLiffIdAmount = process.env.MY_LIFF_ID_AMOUNT;
+const myLiffIdTransfer = process.env.MY_LIFF_TRANSFER;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
@@ -88,7 +89,7 @@ router
     ctx.body = {id: myLiffIdQrcode};
   })
   .get('/send-transfer', async (ctx) => {
-    ctx.body = {id: myLiffIdQrcode};
+    ctx.body = {id: myLiffIdTransfer};
   })
   .post('/check_address', async (ctx) => {
     const data = ctx.request.body;
