@@ -130,8 +130,10 @@ function initializeLiff(myLiffId) {
           data: message,
           dataType: "json",
           success: function (data) {
-            for(const i of data){
+            let html_string = "";
+            for(const i in data){
               console.log(i)
+               
             }
           }, error: function (err) {
             
