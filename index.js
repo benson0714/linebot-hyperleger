@@ -14,6 +14,7 @@ const createDB = require("./lib/levelDB/createDB.js");
 const stateError = require('./lib/ErrorHandle/stateError.js');
 const step2CheckDB = require('./lib/levelDB/step2CheckDB.js');
 const transfer = require('./lib/hyperledgerAPI/transfer.js');
+const record_details_liff = require('./lib/hyperledgerAPI/record_details_liff.js');
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -27,6 +28,7 @@ const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
 const myLiffIdAmount = process.env.MY_LIFF_ID_AMOUNT;
 const myLiffIdTransfer = process.env.MY_LIFF_ID_TRANSFER;
+const myLiffIdRecordDetails = process.env.MY_LIFF_ID_RECORD_DETAILS;
 // use body parser to check ctx.request.body
 app.use(bodyParser());
 app.use(logger());
@@ -90,6 +92,22 @@ router
   })
   .get('/send-transfer', async (ctx) => {
     ctx.body = {id: myLiffIdTransfer};
+  })
+  .get('/send-record_details', async(ctx) => {
+    ctx.body = {id: myLiffIdRecordDetails};
+  })
+  .post('/liff_record_details', async (ctx) => {
+    const data = ctx.request.body;
+    console.log(data);
+    console.log(`amount = ${data.userId}`);
+    console.log(`test console.log`);
+    const userId = data.userId;
+    const tokenId = data.tokenId;
+    const record_array = await record_details_liff.record_details_liff(userId, tokenId);
+
+    ctx.body = {
+      record_array:record_array
+    }
   })
   .post('/check_address', async (ctx) => {
     const data = ctx.request.body;
