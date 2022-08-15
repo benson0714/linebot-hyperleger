@@ -131,13 +131,14 @@ function initializeLiff(myLiffId) {
           dataType: "json",
           success: function (data) {
             let html_string = "";
-            console.log(data)
+            console.log(data[0])
             for(const i in data){
-               html_string = `<tr>
-               <td data-th="轉出/入">${data["record_array"][i]["transfer_option"]}</td>
-               <td data-th="對象">${data[i]["record_array"]["transfer_address"]}</td>
-               <td data-th="數量">${data[i]["record_array"]["amount"]}</td>
-               <td data-th="時間">${data[i]["record_array"]["human_date"]}</td>
+              console.log(i)
+               html_string = html_string + `<tr>
+               <td data-th="轉出/入">${data[i]["transfer_option"]}</td>
+               <td data-th="對象">${data[i]["transfer_address"]}</td>
+               <td data-th="數量">${data[i]["amount"]}</td>
+               <td data-th="時間">${data[i]["human_date"]}</td>
              </tr>`
             }
             console.log(html_string)
