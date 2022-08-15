@@ -133,11 +133,7 @@ function initializeLiff(myLiffId) {
           success: function (data) {
             let html_string = "";
             const record_array = data["record_array"];
-            console.log(record_array);
-            console.log(record_array[0])
             for(const i in record_array){
-              console.log(i)
-              console.log(typeof(i))
                html_string = html_string + `<tr>
                <td data-th="轉出/入">${record_array[i]["transfer_option"]}</td>
                <td data-th="對象">${record_array[i]["transfer_address"]}</td>
@@ -145,6 +141,7 @@ function initializeLiff(myLiffId) {
                <td data-th="時間">${record_array[i]["human_date"]}</td>
              </tr>`
             }
+            $("#main").innerHTML = html_string
             console.log(html_string)
           }, error: function (err) {
             
