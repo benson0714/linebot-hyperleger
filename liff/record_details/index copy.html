@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>交易紀錄</title>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="./record_details/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="preloader">
+    <div id="status"><img src="./record_details/Loading.gif"/></div>
+  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-6">
+				<table class="rwd-table">
+					<tr>
+						<th>轉出/入</th>
+						<th>對象</th>
+						<th>數量</th>
+						<th>時間</th>
+					</tr>
+          <div id="main"></div>
+				</table>
+			</div>
+		</div>
+	</div>
+  <script src="./record_details/record_details.js"></script>
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+<script>
+  // VConsole will be exported to `window.VConsole` by default.
+  var vConsole = new window.VConsole();
+</script>
+
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</body>
+</html>
