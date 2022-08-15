@@ -106,7 +106,7 @@ router
     const record_array = await record_details_liff.record_details_liff(userId, tokenId);
 
     ctx.body = {
-      record_array:record_array
+      record_array: record_array
     }
   })
   .post('/check_address', async (ctx) => {

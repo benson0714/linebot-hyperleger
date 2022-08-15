@@ -63,7 +63,6 @@ function getAllUrlParams(url) {
 
   return obj;
 }
-
 const tokenId = getAllUrlParams().tokenId;
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
@@ -157,15 +156,7 @@ function initializeLiff(myLiffId) {
         })
     })
 }
-
-
-$(function () {
-  $('#btn').on('click', function (e) {
-    $("#status").delay().fadeIn(); //delay --> 延遲幾秒才fadeOut
-    $("#preloader").delay().fadeIn();
-    qrcode();
-  })
-});
+$("#tokenName").append(getAllUrlParams().tokenName);
 
 $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
   $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
