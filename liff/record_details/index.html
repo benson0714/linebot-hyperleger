@@ -5,58 +5,9 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <style type="text/css">
-        .rwd-table {
-            background: #fff;
-            overflow: hidden;
-        }
-        .rwd-table tr:nth-of-type(2n) {
-            background: #eee;
-        }
-        .rwd-table th, .rwd-table td {
-            margin: 0.5em 1em;
-        }
-        .rwd-table {
-            min-width: 100%;
-        }
-        .rwd-table th {
-            display: none;
-        }
-        .rwd-table td {
-            display: block;
-        }
-        .rwd-table td:before {
-            content: attr(data-th) " : ";
-            font-weight: bold;
-            width: 6.5em;
-            display: inline-block;
-        }
-        .rwd-table th, .rwd-table td {
-            text-align: left;
-        }
-        .rwd-table th, .rwd-table td:before {
-            color: #D20B2A;
-            font-weight: bold;
-        }
-        @media (min-width: 480px) {
-            .rwd-table td:before {
-                display: none;
-            }
-            .rwd-table th, .rwd-table td {
-                display: table-cell;
-                padding: 0.25em 0.5em;
-            }
-            .rwd-table th:first-child, .rwd-table td:first-child {
-                padding-left: 0;
-            }
-            .rwd-table th:last-child, .rwd-table td:last-child {
-                padding-right: 0;
-            }
-            .rwd-table th, .rwd-table td {
-                padding: 1em !important;
-            }
-        }
-    </style>
+    <link href="./record_details/style.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -109,5 +60,11 @@
             </div>
         </div>
     </div>
+    <script src="./record_details/record_details.js"></script>
+    <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    // VConsole will be exported to `window.VConsole` by default.
+    var vConsole = new window.VConsole();
+  </script>
 </body>
 </html>
