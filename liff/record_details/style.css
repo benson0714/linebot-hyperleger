@@ -1,68 +1,198 @@
-#preloader {/*   這是整個會蓋住畫面的底色色塊  */
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0%;
-    top: 0%;
-    background-color: #fff;
-    z-index: 9999;
-  }
-  #status {/*   這是中間loading的gif坐標css,我們盡量讓他畫面置中  */
-    position: fixed;
-    width: 218px;
-    height: 419px;
-    margin-left: -220px;
-    margin-top: -160px;
-    left: 50%;
-    top: 50%;
-  }
-  .rwd-table {
-    background: #fff;
-    overflow: hidden;
+#preloader {
+  /*   這是整個會蓋住畫面的底色色塊  */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  background-color: #fff;
+  z-index: 9999;
 }
-.rwd-table tr:nth-of-type(2n) {
-    background: #eee;
+
+#status {
+  /*   這是中間loading的gif坐標css,我們盡量讓他畫面置中  */
+  position: fixed;
+  width: 218px;
+  height: 419px;
+  margin-left: -220px;
+  margin-top: -160px;
+  left: 50%;
+  top: 50%;
 }
-.rwd-table th, .rwd-table td {
-    margin: 0.5em 1em;
-}
+
 .rwd-table {
-    min-width: 100%;
+  background: #fff;
+  overflow: hidden;
 }
-.rwd-table th {
-    display: none;
+
+.rwd-table tr:nth-of-type(2n) {
+  background: #eee;
 }
+
+.rwd-table th,
 .rwd-table td {
-    display: block;
+  margin: 0.5em 1em;
 }
+
+.rwd-table {
+  min-width: 100%;
+}
+
+.rwd-table th {
+  display: none;
+}
+
+.rwd-table td {
+  display: block;
+}
+
 .rwd-table td:before {
-    content: attr(data-th) " : ";
-    font-weight: bold;
-    width: 6.5em;
-    display: inline-block;
+  content: attr(data-th) " : ";
+  font-weight: bold;
+  width: 6.5em;
+  display: inline-block;
 }
-.rwd-table th, .rwd-table td {
-    text-align: left;
+
+.rwd-table th,
+.rwd-table td {
+  text-align: left;
 }
-.rwd-table th, .rwd-table td:before {
-    color: #D20B2A;
-    font-weight: bold;
+
+.rwd-table th,
+.rwd-table td:before {
+  color: #D20B2A;
+  font-weight: bold;
 }
+
 @media (min-width: 480px) {
-    .rwd-table td:before {
-        display: none;
-    }
-    .rwd-table th, .rwd-table td {
-        display: table-cell;
-        padding: 0.25em 0.5em;
-    }
-    .rwd-table th:first-child, .rwd-table td:first-child {
-        padding-left: 0;
-    }
-    .rwd-table th:last-child, .rwd-table td:last-child {
-        padding-right: 0;
-    }
-    .rwd-table th, .rwd-table td {
-        padding: 1em !important;
-    }
+  .rwd-table td:before {
+    display: none;
+  }
+
+  .rwd-table th,
+  .rwd-table td {
+    display: table-cell;
+    padding: 0.25em 0.5em;
+  }
+
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+  }
+
+  .rwd-table th:last-child,
+  .rwd-table td:last-child {
+    padding-right: 0;
+  }
+
+  .rwd-table th,
+  .rwd-table td {
+    padding: 1em !important;
+  }
+}
+
+
+/*table格式*/
+.table_change {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.table_change th,
+.table_change td {
+  padding: 5px 5px;
+}
+
+@media only screen and (min-width: 769px) {
+
+  .table_change th,
+  .table_change td {
+    border: 1px solid #fff;
+  }
+}
+
+.table_change thead {
+  background-color: #01977a;
+}
+
+.table_change thead th {
+  color: #fff;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 769px) {
+  .table_change tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  .table_change tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .table_change thead {
+    display: none;
+  }
+
+  .table_change tbody tr {
+    display: block;
+    border: 1px solid #01977a;
+    margin: 10px 0;
+    border-radius: 5pt;
+    background-color: #fff;
+  }
+
+  .table_change tbody td {
+    display: block;
+    text-align: left;
+    padding: 5px 1rem 5px 2rem;
+    color: black;
+  }
+
+  .table_change tbody td::before {
+    color: #01977a;
+    text-indent: -1rem;
+    content: attr(data-th);
+    font-weight: bold;
+    display: block;
+  }
+}
+
+/**/
+a {
+  text-decoration: none;
+}
+
+#pageModule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pageModule a {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  color: #fff;
+  border: 1px solid #01977a;
+  background-color: #01977a;
+}
+
+#pageModule a:hover {
+  background-color: #01980c;
+}
+
+#pageModule a.disabled {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+
+#numberPageModule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
 }

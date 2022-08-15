@@ -119,30 +119,42 @@ function initializeLiff(myLiffId) {
           const userId = res['userId'];
           return userId;
         })
-      .then((userId)=>{
-        const message = {
-          "userId": userId,
-          "tokenId": tokenId
-        }
-        $.ajax({
-          url: '/liff_record_details',
-          type: "POST",
-          data: message,
-          dataType: "json",
-          async: false,
-          success: function (data) {
-            let html_string = "";
-            const record_array = data["record_array"];
-            for(const i in record_array){
-               html_string = html_string + `<tr><td data-th="轉出/入">${record_array[i]["transfer_option"]}</td><td data-th="對象">${record_array[i]["transfer_address"]}</td><td data-th="數量">${record_array[i]["amount"]}</td><td data-th="時間">${record_array[i]["human_date"]}</td></tr>`
-            }
-            $("#record_details_table").append(html_string);
-            console.log(html_string);
-          }, error: function (err) {
-            console.log(err)
+        .then((userId) => {
+          const message = {
+            "userId": userId,
+            "tokenId": tokenId
           }
+          $.ajax({
+            url: '/liff_record_details',
+            type: "POST",
+            data: message,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+              let html_string = "";
+              const record_array = data["record_array"];
+              for (const i in record_array) {
+                html_string = html_string + `<tr><td data-th="轉出/入">${record_array[i]["transfer_option"]}</td><td data-th="對象">${record_array[i]["transfer_address"]}</td><td data-th="數量">${record_array[i]["amount"]}</td><td data-th="時間">${record_array[i]["human_date"]}</td></tr>`
+              }
+              $("#record_details_table").append(html_string);
+              console.log(html_string);
+            }, error: function (err) {
+              console.log(err)
+            }
+          })
         })
-      })
+        .then(() => {
+          /*----產生data-th-----*/
+          let $table = $(".table_change");
+          let $thRows = $table.find("thead th");
+          $thRows.each(function (key, thRow) {
+            $table
+              .find("tbody tr td:nth-child(" + (key + 1) + ")")
+              .attr("data-th", $(thRow).text());
+          });
+          /*-----------*/
+          goPage(1, 4); // 一開始先秀第一頁,以及每一頁最多兩筆資料
+        })
     })
 }
 
@@ -161,72 +173,61 @@ $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div
 })
 
 
-$(function () {
-  /*----產生data-th-----*/
-  let $table = $(".table_change");
-  let $thRows = $table.find("thead th");
-  $thRows.each(function (key, thRow) {
-    $table
-      .find("tbody tr td:nth-child(" + (key + 1) + ")")
-      .attr("data-th", $(thRow).text());
-  });
-  /*-----------*/
-  goPage(1, 4); // 一開始先秀第一頁,以及每一頁最多兩筆資料
-});
+
 
 
 function goPage(currentPage, pageSize) {
-  
-    var tr = $(".table_change tbody tr");
-    var num = $(".table_change tbody tr").length; //表格所有行數(所有記錄數)
-    var totalPage = Math.ceil(num / pageSize ); // 表格所有行數/每頁顯示行數 = 總頁數
-  
-    $('#numberPage').attr('max',totalPage); // 寫入跳至第幾頁input
-  
-    $("#numberPage").off('change').on("change",function(){// 跳至第幾頁
-      let numberPage =  $("#numberPage").val();
-      if( numberPage > totalPage ){
-        console.log("頁數超過")
-        return
-     }
-      goPage(numberPage, 4);
-    });
- 
-    var startRow = (currentPage - 1) * pageSize + 1; //開始顯示的行
-    var endRow = currentPage * pageSize; //結束顯示的行
-    endRow = (endRow > num) ? num : endRow; 
-  
-  
-    //遍歷顯示資料實現分頁
-    for (var i = 1; i < (num + 1); i++) {
-        var trRow = tr[i - 1];
-        if (i >= startRow && i <= endRow) {
-            trRow.style.display = "";
-        } else {
-            trRow.style.display = "none";
-        }
-    }
 
-    var tempStr = "";
-    if (currentPage > 1) {
-        tempStr += `<a href="javascript:;" onClick="goPage(1,${pageSize})">首頁</a>`;
-        tempStr += `<a href="javascript:;" onClick="goPage(${currentPage - 1},${pageSize})">上一頁</a>`;
-       
+  var tr = $(".table_change tbody tr");
+  var num = $(".table_change tbody tr").length; //表格所有行數(所有記錄數)
+  var totalPage = Math.ceil(num / pageSize); // 表格所有行數/每頁顯示行數 = 總頁數
+
+  $('#numberPage').attr('max', totalPage); // 寫入跳至第幾頁input
+
+  $("#numberPage").off('change').on("change", function () {// 跳至第幾頁
+    let numberPage = $("#numberPage").val();
+    if (numberPage > totalPage) {
+      console.log("頁數超過")
+      return
+    }
+    goPage(numberPage, 4);
+  });
+
+  var startRow = (currentPage - 1) * pageSize + 1; //開始顯示的行
+  var endRow = currentPage * pageSize; //結束顯示的行
+  endRow = (endRow > num) ? num : endRow;
+
+
+  //遍歷顯示資料實現分頁
+  for (var i = 1; i < (num + 1); i++) {
+    var trRow = tr[i - 1];
+    if (i >= startRow && i <= endRow) {
+      trRow.style.display = "";
     } else {
-        tempStr += `<a href="javascript:;" class="disabled">首頁</a>`;
-        tempStr += `<a href="javascript:;" class="disabled">上一頁</a>`;
+      trRow.style.display = "none";
     }
-  
-        tempStr += `<div><span>第${currentPage}頁</span>/<span>共${totalPage}頁</span></div>`;
+  }
 
-    if (currentPage < totalPage) {
-        tempStr += `<a href="javascript:;" onClick="goPage(${currentPage + 1},${pageSize})">下一頁</a>`;
-        tempStr += `<a href="javascript:;" onClick="goPage(${totalPage},${pageSize})">尾頁</a>`;
-    } else {
-        tempStr += `<a href="javascript:;" class="disabled">下一頁</a>`;
-        tempStr += `<a href="javascript:;" class="disabled">尾頁</a>`;
-    }
+  var tempStr = "";
+  if (currentPage > 1) {
+    tempStr += `<a href="javascript:;" onClick="goPage(1,${pageSize})">首頁</a>`;
+    tempStr += `<a href="javascript:;" onClick="goPage(${currentPage - 1},${pageSize})">上一頁</a>`;
 
-    $("#pageModule").html(tempStr);
+  } else {
+    tempStr += `<a href="javascript:;" class="disabled">首頁</a>`;
+    tempStr += `<a href="javascript:;" class="disabled">上一頁</a>`;
+  }
+
+  tempStr += `<div><span>第${currentPage}頁</span>/<span>共${totalPage}頁</span></div>`;
+
+  if (currentPage < totalPage) {
+    tempStr += `<a href="javascript:;" onClick="goPage(${currentPage + 1},${pageSize})">下一頁</a>`;
+    tempStr += `<a href="javascript:;" onClick="goPage(${totalPage},${pageSize})">尾頁</a>`;
+  } else {
+    tempStr += `<a href="javascript:;" class="disabled">下一頁</a>`;
+    tempStr += `<a href="javascript:;" class="disabled">尾頁</a>`;
+  }
+
+  $("#pageModule").html(tempStr);
 }
 
