@@ -129,6 +129,7 @@ function initializeLiff(myLiffId) {
           type: "POST",
           data: message,
           dataType: "json",
+          async: false,
           success: function (data) {
             let html_string = "";
             const record_array = data["record_array"];
