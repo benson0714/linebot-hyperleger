@@ -163,10 +163,6 @@ $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div
   $("#preloader").delay(700).fadeOut(300);
 })
 
-
-
-
-
 function goPage(currentPage, pageSize) {
 
   var tr = $(".table_change tbody tr");
