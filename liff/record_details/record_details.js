@@ -131,6 +131,7 @@ function initializeLiff(myLiffId) {
           dataType: "json",
           success: function (data) {
             let html_string = "";
+            console.log(data)
             for(const i in data){
                html_string = `<tr>
                <td data-th="轉出/入">${data[i]["transfer_option"]}</td>
