@@ -134,7 +134,7 @@ function initializeLiff(myLiffId) {
             let html_string = "";
             const record_array = data["record_array"];
             for(const i in record_array){
-               html_string = html_string + `<tr><td data-th="轉出/入">${record_array[i]["transfer_option"]}</td><td data-th="對象">${record_array[i]["transfer_address"]}</td><td data-th="數量">${record_array[i]["amount"]}</td><td data-th="時間">${record_array[i]["human_date"]}</td></tr>`
+               html_string = html_string + `<tr><td data-th="轉出/入">${record_array[i]["transfer_option"]}</td><td data-th="對象" style='font-size:8px'>${record_array[i]["transfer_address"]}</td><td data-th="數量">${record_array[i]["amount"]}</td><td data-th="時間">${record_array[i]["human_date"]}</td></tr>`
             }
             $("#record_details_table").append(html_string);
             console.log(html_string);
