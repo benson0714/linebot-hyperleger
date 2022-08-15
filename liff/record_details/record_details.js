@@ -131,9 +131,10 @@ function initializeLiff(myLiffId) {
           dataType: "json",
           success: function (data) {
             let html_string = "";
-            console.log(data);
+            const record_array = data["record_array"]
+            console.log(record_array);
 
-            for(const i in data){
+            for(const i in record_array){
               console.log(i)
               console.log(typeof(i))
                html_string = html_string + `<tr>
