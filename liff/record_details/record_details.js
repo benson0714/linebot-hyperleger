@@ -156,7 +156,7 @@ function initializeLiff(myLiffId) {
         })
     })
 }
-$("#tokenName").append(`<h3>${getAllUrlParams().tokenName}</h>`);
+$("#tokenName").append(`<h3>${getAllUrlParams().tokenName}</h3>`);
 
 $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
   $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
