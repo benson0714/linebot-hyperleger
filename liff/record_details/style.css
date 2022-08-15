@@ -158,7 +158,7 @@
     text-indent: -1rem;
     content: attr(data-th);
     font-weight: bold;
-    font-size: 100%;
+    font-size: 120%;
     display: block;
   }
 }
