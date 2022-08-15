@@ -132,8 +132,10 @@ function initializeLiff(myLiffId) {
           success: function (data) {
             let html_string = "";
             console.log(data);
+
             for(const i in data){
               console.log(i)
+              console.log(typeof(i))
                html_string = html_string + `<tr>
                <td data-th="轉出/入">${data[i]["transfer_option"]}</td>
                <td data-th="對象">${data[i]["transfer_address"]}</td>
