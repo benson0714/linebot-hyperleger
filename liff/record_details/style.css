@@ -148,7 +148,7 @@
   .table_change tbody td {
     display: block;
     text-align: left;
-    padding: 5px 0rem 5px 2rem;
+    padding: 5px 1rem 5px 1rem;
     font-size: 10px;
     color: black;
   }
