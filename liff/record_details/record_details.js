@@ -63,9 +63,8 @@ function getAllUrlParams(url) {
 
   return obj;
 }
-const amount = getAllUrlParams().amount
+
 const tokenId = getAllUrlParams().tokenId;
-const old_time = getAllUrlParams().time;
 window.onload = function () {
   const useNodeJS = true;   // if you are not using a node server, set this value to false
   const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -121,6 +120,10 @@ function initializeLiff(myLiffId) {
           return userId;
         })
       .then(()=>{
+        const message = {
+          "userId": userId,
+          "tokenId": tokenId
+        }
         $.ajax({
           url: '/liff_record_details',
           type: "POST",
