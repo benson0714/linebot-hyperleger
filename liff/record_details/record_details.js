@@ -148,7 +148,7 @@ $(function () {
   })
 });
 
-// $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
-//   $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
-//   $("#preloader").delay(700).fadeOut(300);
-// })
+$(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
+  $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
+  $("#preloader").delay(700).fadeOut(300);
+})
