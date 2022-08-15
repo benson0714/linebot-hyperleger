@@ -119,7 +119,7 @@ function initializeLiff(myLiffId) {
           const userId = res['userId'];
           return userId;
         })
-      .then(()=>{
+      .then((userId)=>{
         const message = {
           "userId": userId,
           "tokenId": tokenId
