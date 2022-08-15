@@ -189,7 +189,7 @@ function goPage(currentPage, pageSize) {
         console.log("頁數超過")
         return
      }
-      goPage(numberPage, 2);
+      goPage(numberPage, 4);
     });
  
     var startRow = (currentPage - 1) * pageSize + 1; //開始顯示的行
