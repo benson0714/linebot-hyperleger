@@ -139,10 +139,10 @@ function initializeLiff(myLiffId) {
               console.log(i)
               console.log(typeof(i))
                html_string = html_string + `<tr>
-               <td data-th="轉出/入">${data[i]["transfer_option"]}</td>
-               <td data-th="對象">${data[i]["transfer_address"]}</td>
-               <td data-th="數量">${data[i]["amount"]}</td>
-               <td data-th="時間">${data[i]["human_date"]}</td>
+               <td data-th="轉出/入">${record_array[i]["transfer_option"]}</td>
+               <td data-th="對象">${record_array[i]["transfer_address"]}</td>
+               <td data-th="數量">${record_array[i]["amount"]}</td>
+               <td data-th="時間">${record_array[i]["human_date"]}</td>
              </tr>`
             }
             console.log(html_string)
