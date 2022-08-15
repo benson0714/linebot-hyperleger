@@ -144,7 +144,7 @@ function initializeLiff(myLiffId) {
             $("#main").innerHTML = html_string
             console.log(html_string)
           }, error: function (err) {
-            
+            console.log(err)
           }
         })
       })
