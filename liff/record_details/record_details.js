@@ -135,14 +135,10 @@ function initializeLiff(myLiffId) {
             const record_array = data["record_array"];
             for(const i in record_array){
                html_string = html_string + `<tr>
-               <td data-th="轉出/入">${record_array[i]["transfer_option"]}</td>
-               <td data-th="對象">${record_array[i]["transfer_address"]}</td>
-               <td data-th="數量">${record_array[i]["amount"]}</td>
-               <td data-th="時間">${record_array[i]["human_date"]}</td>
-             </tr>`
+               <td data-th="轉出/入">${record_array[i]["transfer_option"]}</td><td data-th="對象">${record_array[i]["transfer_address"]}</td><td data-th="數量">${record_array[i]["amount"]}</td><td data-th="時間">${record_array[i]["human_date"]}</td></tr>`
             }
-            $("#main").innerHTML = html_string
-            console.log(html_string)
+            $("#main").innerHTML = html_string;
+            console.log(html_string);
           }, error: function (err) {
             console.log(err)
           }
