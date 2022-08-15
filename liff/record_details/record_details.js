@@ -153,7 +153,7 @@ function initializeLiff(myLiffId) {
               .attr("data-th", $(thRow).text());
           });
           /*-----------*/
-          goPage(1, 4); // 一開始先秀第一頁,以及每一頁最多兩筆資料
+          goPage(1, 8); // 一開始先秀第一頁,以及每一頁最多兩筆資料
         })
     })
 }
@@ -190,7 +190,7 @@ function goPage(currentPage, pageSize) {
       console.log("頁數超過")
       return
     }
-    goPage(numberPage, 4);
+    goPage(numberPage, 8);
   });
 
   var startRow = (currentPage - 1) * pageSize + 1; //開始顯示的行
