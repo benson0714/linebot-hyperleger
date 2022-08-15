@@ -148,8 +148,8 @@
   .table_change tbody td {
     display: block;
     text-align: left;
-    padding: 5px 1rem 5px 2rem;
-    font-size: 90%;
+    padding: 5px 1rem 5px 1rem;
+    font-size: 85%;
     color: black;
   }
 
