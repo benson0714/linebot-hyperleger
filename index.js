@@ -15,6 +15,7 @@ const stateError = require('./lib/ErrorHandle/stateError.js');
 const step2CheckDB = require('./lib/levelDB/step2CheckDB.js');
 const transfer = require('./lib/hyperledgerAPI/transfer.js');
 const record_details_liff = require('./lib/hyperledgerAPI/record_details_liff.js');
+require('dotenv').config()
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -202,7 +203,7 @@ router
 
 app.use(router.routes());
 
-const server = app.listen(process.env.PORT || 8080, function () {
+const server = app.listen(process.env.PORT || 18211, function () {
   const port = server.address().port;
   console.log("App now running on port", port);
 });

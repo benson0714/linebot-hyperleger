@@ -183,7 +183,7 @@ function initializeLiff(myLiffId) {
           if (res[0] === 'step1handle'){
             message = {
               "type": "text",
-              "text": "錯誤操作，請點選Tap me開啟相機繼續您的交易並在5分鐘內完成整筆交易"
+              "text": "錯誤操作，請點選掃描開啟相機繼續您的交易並在5分鐘內完成整筆交易"
             }
             liff.sendMessages([message])
             .then(() => {
@@ -220,6 +220,12 @@ function initializeLiff(myLiffId) {
             return;
           }
         })
+        .then(()=>{
+          console.log('qrcode')
+          $("#status").delay().fadeIn(); //delay --> 延遲幾秒才fadeOut
+          $("#preloader").delay().fadeIn();
+          qrcode();
+        })
     })
 }
 
@@ -227,7 +233,7 @@ function initializeLiff(myLiffId) {
 /**
 * Register event handlers for the buttons displayed in the app
 */
-function qrcode() {
+async function qrcode() {
   // qrcode 
   liff.scanCodeV2()
     .then(function (res) {
@@ -314,13 +320,13 @@ function getData(qrcode_address, userId) {
   return;
 }
 
-$(function () {
-  $('#btn').on('click', function (e) {
-    $("#status").delay().fadeIn(); //delay --> 延遲幾秒才fadeOut
-    $("#preloader").delay().fadeIn();
-    qrcode();
-  })
-});
+// $(function () {
+//   $('#btn').on('click', function (e) {
+//     $("#status").delay().fadeIn(); //delay --> 延遲幾秒才fadeOut
+//     $("#preloader").delay().fadeIn();
+//     qrcode();
+//   })
+// });
 
 $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
   $("#status").delay(500).fadeOut(300); //delay --> 延遲幾秒才fadeOut
