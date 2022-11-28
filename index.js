@@ -1,5 +1,6 @@
 const koa = require('koa');
 const Router = require('koa-router');
+const fs = require('fs');
 const check = require('./lib/check.js');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
@@ -15,6 +16,10 @@ const stateError = require('./lib/ErrorHandle/stateError.js');
 const step2CheckDB = require('./lib/levelDB/step2CheckDB.js');
 const transfer = require('./lib/hyperledgerAPI/transfer.js');
 const record_details_liff = require('./lib/hyperledgerAPI/record_details_liff.js');
+const mime = require('mime-types');
+const https = require('https');
+
+require('dotenv').config()
 
 // 把全部html css等等的資料全部靜態匯入
 const serve = require('koa-static');
@@ -22,7 +27,6 @@ const path = require('path');
 const mount = require('koa-mount');
 
 app.use(mount('/liff',serve(path.join(__dirname, '/liff/'))));
-
 const channelSecret = process.env.LINE_CHANNEL_SECRET;
 const lineBotToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 const myLiffIdQrcode = process.env.MY_LIFF_ID_QRCODE;
@@ -46,7 +50,7 @@ router
     console.log(`ip: ${clientIP}`);
     let events = ctx.request.body.events;
     console.log(`event type = ${events[0].type}`);
-    console.log(`body = ${ctx.request.body}`)
+    console.log(`body = ${ctx.request.body}`);
     let data = 'unsucess';
     if (events[0].type === 'message') {
       console.log(`typeof message = ${typeof (events[0].message)}`)
@@ -198,11 +202,19 @@ router
     ctx.body = {
       state:state
     }
+  })
+  .get('/.well-known/acme-challenge/deLjNBiNO2FlYPMIpCI-AbpF8vOKQnLkf0szx1Ni4mg', async(ctx)=>{
+    
+    var mimeType = mime.lookup(path);
+    ctx.body = fs.createReadStream('.well-known/acme-challenge/deLjNBiNO2FlYPMIpCI-AbpF8vOKQnLkf0szx1Ni4mg');
+    ctx.response.set("content-type", mimeType);
+    ctx.response.set("content-disposition", "attachment; filename=deLjNBiNO2FlYPMIpCI-AbpF8vOKQnLkf0szx1Ni4mg");
+    // ctx.attachment('CCA3DA1F163115706995150CCCD81AD6.txt')
   });
 
 app.use(router.routes());
 
-const server = app.listen(process.env.PORT || 8080, function () {
+const server = app.listen(process.env.PORT || 443, function () {
   const port = server.address().port;
   console.log("App now running on port", port);
 });
