@@ -1,11 +1,11 @@
 # linebot-hyperleger
 
-# 專案簡介
+## 專案簡介
 使用Hyperledger fabric 建置區塊鏈，撰寫API供使用者串接交易功能，並且利用Linebot介面供使用者進行操作。
 
-# 成果展現
-## 註冊
-
+## 成果展現
+### 註冊
+![](https://ibb.co/7YbS9CX)
 
 # heroku
 ### line developer + heroku可參考此篇!!!
